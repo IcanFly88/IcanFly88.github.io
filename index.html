@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AutoGuardian AI — Az autód őrangyala a zsebedben</title>
-<meta name="description" content="Professzionális autódiagnosztika iPhone-on: élő adatok, 9500+ hibakód magyarul, márka-mélydiagnosztika, EV-akku elemzés, CarPlay dragméter. Az első hónap ingyenes.">
+<meta name="description" content="Professzionális autódiagnosztika iPhone-on: élő adatok, 9500+ hibakód magyarul, 13 márka mélydiagnosztika, vezetett hibakeresés 3 nyelven, EV-akku elemzés, CarPlay dragméter. Hamarosan Androidra is. Az első hónap ingyenes.">
 <meta property="og:title" content="AutoGuardian AI — Az autód őrangyala a zsebedben">
-<meta property="og:description" content="Élő motoradatok, 9500+ hibakód magyarul, 11 márka mélydiagnosztika, EV-akku elemzés és CarPlay dragméter — egyetlen apppal.">
+<meta property="og:description" content="Élő motoradatok, 9500+ hibakód magyarul, 13 márka mélydiagnosztika, vezetett hibakeresés magyarul, EV-akku elemzés és CarPlay dragméter — egyetlen apppal. Hamarosan Androidra is.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="assets/logo.png">
 <link rel="icon" type="image/png" href="assets/logo.png">
@@ -154,6 +154,26 @@ table.spec td{padding:17px 8px;border-bottom:1px solid var(--line);font-size:15p
 table.spec td:first-child{color:var(--faint);width:34%;font-size:13.5px;letter-spacing:.06em;text-transform:uppercase}
 table.spec td b{font-weight:600}
 
+.adapters{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:40px}
+.acard{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:24px 22px 20px;transition:.25s;position:relative}
+.acard:hover{transform:translateY(-4px);border-color:#2a3140}
+.acard .tag{position:absolute;top:16px;right:16px;font-size:10px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;padding:4px 10px;border-radius:99px}
+.acard h3{font-size:17px;font-weight:800;margin-bottom:8px;padding-right:78px}
+.acard p{font-size:13px;color:var(--dim);line-height:1.55}
+.acard .conn{font-size:11px;color:var(--faint);margin-top:12px;letter-spacing:.04em}
+.tag-best{color:#03131c;background:linear-gradient(92deg,#34d399,#31d6ff)}
+.tag-ok{color:var(--ok);border:1px solid rgba(52,211,153,.32)}
+.tag-bmw{color:#a78bfa;border:1px solid rgba(139,92,246,.35)}
+.androidband{border-block:1px solid var(--line);background:linear-gradient(180deg,#0c0e12,#0a0c10);padding:78px 24px;text-align:center}
+.storerow{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:36px}
+.storebadge{display:inline-flex;align-items:center;gap:13px;background:#000;border:1px solid #2a2f38;border-radius:14px;padding:11px 22px;min-width:210px;transition:.25s;position:relative}
+a.storebadge:hover{transform:translateY(-3px);border-color:#3a4150;box-shadow:0 14px 40px rgba(0,0,0,.5)}
+.storebadge svg{flex:0 0 auto}
+.storebadge .lbl{display:flex;flex-direction:column;line-height:1.16;text-align:left}
+.storebadge .lbl small{font-size:11px;font-weight:600;color:#c7ccd4;letter-spacing:.02em}
+.storebadge .lbl b{font-size:19px;font-weight:700;color:#fff;letter-spacing:-.01em}
+.storebadge.soon-badge{opacity:.92;cursor:default}
+.storebadge .ribbon{position:absolute;top:-11px;right:-9px;font-size:9.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#03131c;background:linear-gradient(92deg,#fbbf24,#31d6ff);border-radius:99px;padding:4px 10px;box-shadow:0 4px 14px rgba(0,0,0,.45)}
 .final{min-height:78svh;display:flex;align-items:center;text-align:center;background:radial-gradient(900px 500px at 50% 115%,rgba(59,130,246,.18),transparent 65%)}
 .final .wrap{max-width:820px}
 footer{border-top:1px solid var(--line);padding:36px 24px;color:var(--faint);font-size:13px}
@@ -171,6 +191,7 @@ footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
    <a href="#carplay">CarPlay</a>
    <a href="#ev">EV-akku</a>
    <a href="#brands">Márkák</a>
+   <a href="#adapters">Adapterek</a>
    <a href="#pricing">Ár</a>
    <a href="#specs">Műszaki adatok</a>
   </div>
@@ -191,9 +212,11 @@ footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
    </div>
    <div class="badges reveal">
     <span class="chip">9 500+ hibakód magyarul</span>
-    <span class="chip">11 márka mélydiagnosztika</span>
+    <span class="chip">13 márka mélydiagnosztika</span>
+    <span class="chip">Vezetett hibakeresés · 3 nyelv</span>
     <span class="chip">CarPlay dragméter</span>
     <span class="chip">EV-akku elemzés</span>
+    <span class="chip">Hamarosan Androidra is</span>
    </div>
   </div>
   <div class="reveal">
@@ -215,11 +238,23 @@ footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
 <div class="band">
  <div class="wrap">
   <div class="stat reveal"><b class="grad" data-count="9533">0</b><span>hibakód valódi magyar leírással</span></div>
-  <div class="stat reveal"><b class="grad" data-count="11">0</b><span>márka-specifikus mélymodul</span></div>
+  <div class="stat reveal"><b class="grad" data-count="13">0</b><span>márka-specifikus mélymodul</span></div>
   <div class="stat reveal"><b class="grad" data-count="96">0</b><span>cellafeszültség egy EV-akkuból</span></div>
   <div class="stat reveal"><b class="grad" data-count="3">0</b><span>nyelv: magyar · angol · német</span></div>
  </div>
 </div>
+
+<section id="news" style="padding:74px 24px 40px">
+ <div class="wrap">
+  <div class="kicker reveal">Friss az appban</div>
+  <h2 class="big reveal">Ami most <span class="grad">új</span>.</h2>
+  <div class="grid3">
+   <div class="fcard reveal"><div class="ic">🧭</div><h3>Vezetett hibakeresés — 3 nyelven</h3><p>Több mint 180 lépésről lépésre eljárás mind a 13 márkánál, most teljesen magyarul, angolul és németül. A legolcsóbb októl a legdrágábbig vezet — pontosan úgy, ahogy egy jó szerelő gondolkodik.</p></div>
+   <div class="fcard reveal"><div class="ic">🌫️</div><h3>DPF-regeneráció asszisztens</h3><p>Végigvezet egy szabályos regenerációs körön, és BMW-nél élőben olvassa a koromterhelést — csak a felismert dízeleknél jelenik meg, biztonságosan.</p></div>
+   <div class="fcard reveal"><div class="ic">🚗</div><h3>+2 új márka · passzív CAN</h3><p>Suzuki és SsangYong márkamodul (már 13 márka), plusz BMW passzív CAN-monitor élő adatokhoz — mind valós, hiteles adatokkal, kitalálás nélkül.</p></div>
+  </div>
+ </div>
+</section>
 
 <section id="screens" style="padding-bottom:80px">
  <div class="wrap">
@@ -377,25 +412,44 @@ footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
  <div class="wrap">
   <div class="kicker reveal">Márka-mélydiagnosztika</div>
   <h2 class="big reveal">A generikus OBD csak<br>a felszín. Mi <span class="grad">mélyre</span> megyünk.</h2>
-  <p class="lead reveal" style="margin-top:22px">Márkánként külön modul: gyári hibakód-adatbázisok, modul-szkennelés (ABS, légzsák, váltó, komfort), márka-specifikus élő adatok és vezetett javítás. A BMW-khez gyári DoIP/ENET Wi-Fi kapcsolat is.</p>
+  <p class="lead reveal" style="margin-top:22px">Márkánként külön modul: gyári hibakód-adatbázisok, modul-szkennelés (ABS, légzsák, váltó, komfort), márka-specifikus élő adatok és vezetett hibakeresés — mostantól teljesen magyarul, angolul és németül. A BMW-khez gyári DoIP/ENET Wi-Fi kapcsolat is.</p>
   <div class="brands reveal">
    <span class="brand">Mercedes-Benz<em>DID-mélyadat + kalibráció</em></span>
-   <span class="brand">BMW<em>DoIP/ENET + 16 modul</em></span>
+   <span class="brand">BMW<em>DoIP/ENET + passzív CAN</em></span>
    <span class="brand">Alfa Romeo<em>K-vonal + boost-diagnózis</em></span>
    <span class="brand">Renault<em>+ Zoe EV-akku</em></span>
    <span class="brand">Maxus<em>EV-flotta támogatás</em></span>
    <span class="brand">Opel / Vauxhall<em>9 modul + K-vonal</em></span>
-   <span class="brand">Ford<em>élő adat + hibatár</em></span>
+   <span class="brand">Ford<em>EcoBoost · DPFE · rail</em></span>
    <span class="brand">VAG<em>VW · Audi · Škoda · Seat</em></span>
-   <span class="brand">Toyota<em>hibrid-barát</em></span>
-   <span class="brand">Honda<em>élő adat + hibatár</em></span>
-   <span class="brand">Hyundai / Kia<em>élő adat + hibatár</em></span>
+   <span class="brand">Toyota / Lexus<em>hibrid-barát · D-4D</em></span>
+   <span class="brand">Honda<em>VTEC · élő adat + hibatár</em></span>
+   <span class="brand">Hyundai / Kia<em>CRDi · KSDS · EV-akku</em></span>
+   <span class="brand">Suzuki<em>K-series · DDiS dízel</em></span>
+   <span class="brand">SsangYong<em>Tivoli · e-XDi dízel</em></span>
   </div>
   <div class="grid3">
    <div class="fcard reveal"><div class="ic">🤖</div><h3>AI állapotjelentés</h3><p>Helyben futó elemzés rangsorolja a tüneteket, és megmondja, mi sürgős és mi várhat.</p></div>
    <div class="fcard reveal"><div class="ic">🛞</div><h3>Futómű-figyelő</h3><p>A telefon szenzoraival méri az úthibákat, a lengéscsillapítást és a kanyarstabilitást.</p></div>
    <div class="fcard reveal"><div class="ic">🗺️</div><h3>Túranapló + fogyasztás</h3><p>Automatikus útrögzítés, átlagfogyasztás és szerviz-emlékeztetők egy helyen.</p></div>
   </div>
+ </div>
+</section>
+
+<section id="adapters">
+ <div class="wrap">
+  <div class="kicker reveal">Kompatibilis adapterek</div>
+  <h2 class="big reveal">Ezekkel az adapterekkel<br><span class="grad">biztosan</span> működik.</h2>
+  <p class="lead reveal" style="margin-top:22px">Az OBD-adapter a „kábel" az autó és a telefon között. iPhone-hoz <b>Bluetooth LE</b> (vagy Wi-Fi) adapter kell — a klasszikus Bluetooth-adaptereket az iOS nem támogatja. Íme a bevált eszközök:</p>
+  <div class="adapters reveal">
+   <div class="acard"><span class="tag tag-best">Ajánlott</span><h3>OBDLink CX</h3><p>STN-chipes Bluetooth LE adapter. A leggyorsabb és legmegbízhatóbb — a régebbi K-vonalas autókhoz és a márka-mélyszkenneléshez is. Ezen fejlesztjük az appot.</p><div class="conn">Bluetooth LE · ~30 000 Ft</div></div>
+   <div class="acard"><span class="tag tag-ok">Bevált</span><h3>OBDLink MX+</h3><p>Ugyanaz az STN-firmware család. Kiváló minden szabvány OBD-II funkcióhoz és a legtöbb márkamodulhoz, gyors és stabil.</p><div class="conn">Bluetooth LE · STN</div></div>
+   <div class="acard"><span class="tag tag-ok">Bevált</span><h3>Vgate vLinker FS / MC+</h3><p>Kedvező árú, jó minőségű BLE adapterek (sok STN-alapú). Megbízhatóan viszik az élő adatot, a hibakódokat és a márkafunkciók nagy részét.</p><div class="conn">Bluetooth LE · ~15 000 Ft</div></div>
+   <div class="acard"><span class="tag tag-ok">Működik</span><h3>Minőségi ELM327 v1.5 (BLE)</h3><p>Valódi v1.5-ös chipes Bluetooth LE ELM327 (pl. Veepeak, Viecar, Panlong). Szabvány OBD-II élő adat, hibakód-olvasás és -törlés, generikus diagnosztika.</p><div class="conn">Bluetooth LE · ~10–15 000 Ft</div></div>
+   <div class="acard"><span class="tag tag-ok">Működik</span><h3>Wi-Fi ELM327</h3><p>ELM327-kompatibilis Wi-Fi adapter (35000-es port). Ugyanaz a szabvány funkciókör, vezeték nélkül a telefon Wi-Fi-jén keresztül.</p><div class="conn">Wi-Fi · 35000 port</div></div>
+   <div class="acard"><span class="tag tag-bmw">BMW gyári</span><h3>BMW ENET / DoIP Wi-Fi</h3><p>Az újabb BMW-khez gyári DoIP/ENET Wi-Fi interfész: VIN, élő adat, hibakód olvasás és törlés az ISO 13400 protokollon.</p><div class="conn">Wi-Fi · DoIP (ISO 13400)</div></div>
+  </div>
+  <p class="lead reveal" style="margin-top:28px;font-size:14.5px">Tipp: az olcsó ELM327-klónok minősége erősen ingadozik. A valódi <b>STN-chipes</b> adapter (OBDLink / vLinker) a legbiztosabb választás — egyszer veszed meg, minden autódhoz jó.</p>
  </div>
 </section>
 
@@ -411,7 +465,7 @@ footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
    <div class="plist">
     <span><b>✓</b>Élő adatok és műszerek — korlátlanul, minden autódon</span>
     <span><b>✓</b>9 533 hibakód magyar címmel, leírással, okokkal — offline is</span>
-    <span><b>✓</b>Mind a 11 márkamodul: mélyszkennelés, gyári kódtárak, vezetett javítás</span>
+    <span><b>✓</b>Mind a 13 márkamodul: mélyszkennelés, gyári kódtárak, vezetett hibakeresés 3 nyelven</span>
     <span><b>✓</b>EV-akku elemzés: SoC · SoH · 96 cella · hőmérsékletek</span>
     <span><b>✓</b>CarPlay 2.0: műszerek, dragméter, hibaolvasás és -törlés</span>
     <span><b>✓</b>AI állapotjelentés, futómű-figyelő, túranapló, szerviz-emlékeztetők</span>
@@ -429,8 +483,8 @@ footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
   <div class="kicker reveal">Gyakori kérdések</div>
   <h2 class="big reveal" style="margin-bottom:44px">Mielőtt <span class="grad">belevágsz</span>.</h2>
   <div class="reveal">
-   <details><summary>Kell hozzá valamilyen eszköz?</summary><p>Igen, egy OBD-adapter — ez a „kábel" az autó és a telefon között. Az ajánlott OBDLink CX (~30 000 Ft) mellett a jó minőségű Bluetooth LE ELM327-adapterek is működnek (~10–15 000 Ft). Egyszer veszed meg, minden autódhoz jó.</p></details>
-   <details><summary>Működni fog az én autómmal?</summary><p>Minden 2001 utáni benzines és 2004 utáni dízel autó kötelezően támogatja az OBD-II-t — ezekkel megy az élő adat és a hibakód-olvasás. A 11 márkamodul (Mercedes, BMW, Alfa, Renault, Opel, Ford, VAG, Toyota, Honda, Hyundai, Maxus) ennél sokkal mélyebbre lát. Az app automatikusan felismeri az autót, és a hozzá tartozó modult kínálja fel.</p></details>
+   <details><summary>Kell hozzá valamilyen eszköz?</summary><p>Igen, egy OBD-adapter — ez a „kábel" az autó és a telefon között. iPhone-hoz <b>Bluetooth LE</b> (vagy Wi-Fi) adapter kell; a klasszikus Bluetooth-adaptereket az iOS nem támogatja. Az ajánlott <b>OBDLink CX</b> (~30 000 Ft) a legmegbízhatóbb, de a jó minőségű vLinker és valódi v1.5-ös ELM327 BLE adapterek is működnek (~10–15 000 Ft). A teljes listát fentebb, az <a href="#adapters" style="color:var(--acc)">Adapterek</a> szekcióban látod.</p></details>
+   <details><summary>Működni fog az én autómmal?</summary><p>Minden 2001 utáni benzines és 2004 utáni dízel autó kötelezően támogatja az OBD-II-t — ezekkel megy az élő adat és a hibakód-olvasás. A 13 márkamodul (Mercedes, BMW, Alfa Romeo, Renault, Opel, Ford, VAG, Toyota/Lexus, Honda, Hyundai/Kia, Maxus, Suzuki, SsangYong) ennél sokkal mélyebbre lát. Az app automatikusan felismeri az autót, és a hozzá tartozó modult kínálja fel.</p></details>
    <details><summary>Tényleg törli a hibakódokat?</summary><p>Igen — a szabványos Mode 04 paranccsal, ugyanazzal, amit a szervizműszerek használnak. Törlés előtt az app megerősítést kér, és figyelmeztet, ha a hiba valószínűleg visszatér, mert az oka nem szűnt meg.</p></details>
    <details><summary>Mi történik az autóm adataival?</summary><p>Semmi — minden elemzés a telefonodon fut. Az autód adatai nem kerülnek felhőbe, nem látja őket senki, és nem adjuk el senkinek. Nincs regisztráció, nincs fiók.</p></details>
    <details><summary>Használt autó vásárlásához jó?</summary><p>Kifejezetten. Hibakód-olvasás (a törölt hibák nyomai is árulkodók), élő adatok próbaút közben, EV-nél pedig cellaszintű akku-elemzés — az akku az elektromos autó legdrágább alkatrésze, az állapota ezres nagyságrendű eurókat ér.</p></details>
@@ -444,17 +498,41 @@ footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
   <div class="kicker reveal">Műszaki adatok</div>
   <h2 class="big reveal">Számokban.</h2>
   <table class="spec reveal">
-   <tr><td>Kompatibilitás</td><td><b>iPhone (iOS 17+)</b> · Apple CarPlay (vezetékes és vezeték nélküli)</td></tr>
-   <tr><td>Adapter</td><td><b>OBDLink CX</b> (ajánlott) és ELM327-kompatibilis Bluetooth LE adapterek</td></tr>
-   <tr><td>Protokollok</td><td>CAN (11/29 bit, 250/500 kbit) · ISO 9141-2 · KWP2000 · <b>DoIP / ENET</b> (BMW) · UDS</td></tr>
+   <tr><td>Kompatibilitás</td><td><b>iPhone (iOS 17+)</b> · Apple CarPlay (vezetékes és vezeték nélküli) · <b>Android hamarosan</b></td></tr>
+   <tr><td>Adapter</td><td><b>OBDLink CX / MX+</b> (ajánlott, STN) · Vgate vLinker · valódi ELM327 v1.5 <b>Bluetooth LE</b> · Wi-Fi ELM327 · BMW ENET/DoIP</td></tr>
+   <tr><td>Protokollok</td><td>CAN (11/29 bit, 250/500 kbit) · ISO 9141-2 · KWP2000 (K-vonal, fast-init) · <b>DoIP / ENET</b> (BMW) · UDS</td></tr>
    <tr><td>Hibakód-adatbázis</td><td><b>9 533 generikus kód</b> valódi magyar címmel, leírással, okokkal — offline</td></tr>
-   <tr><td>Márkamodulok</td><td>11 márka: gyári kódtárak, modul-szkennelés, márka-élőadatok, vezetett javítás</td></tr>
+   <tr><td>Márkamodulok</td><td>13 márka: gyári kódtárak, modul-szkennelés, márka-élőadatok, <b>vezetett hibakeresés 3 nyelven</b></td></tr>
    <tr><td>EV-támogatás</td><td>SoC · SoH · cellafeszültségek · akkuhő · áram (Renault Zoe, Maxus)</td></tr>
    <tr><td>VIN-felismerés</td><td>Automatikus, teljesen <b>offline</b> — rétegzett dekódolás, európai modellekre hangolva</td></tr>
    <tr><td>Nyelvek</td><td>Magyar · angol · német</td></tr>
    <tr><td>Ár</td><td><b>1 990 Ft / hó</b> · első hónap ingyenes · a zárt béta alatt ingyenes</td></tr>
    <tr><td>Adatkezelés</td><td>Minden elemzés <b>a telefonon fut</b> — az autód adatai nem kerülnek felhőbe</td></tr>
   </table>
+ </div>
+</section>
+
+<section id="platforms" class="androidband">
+ <div class="wrap">
+  <div class="kicker reveal" style="text-align:center">Platformok</div>
+  <h2 class="big reveal">iPhone-on már itt.<br><span class="grad">Androidra hamarosan.</span></h2>
+  <p class="lead reveal" style="margin:22px auto 0;text-align:center">A teljes app — mind a 13 márkamodul, a vezetett hibakeresés három nyelven, az EV-akku elemzés és a DPF-asszisztens — Androidra is érkezik, pontosan ugyanazzal a tudással. Androidon a klasszikus Bluetooth-adapterek is működni fognak.</p>
+  <div class="storerow reveal">
+   <a class="storebadge" href="https://testflight.apple.com/join/gAEQFrxH" aria-label="Letöltés a TestFlighton – App Store">
+    <svg width="27" height="27" viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M17.05 12.04c-.03-2.6 2.12-3.85 2.22-3.9-1.21-1.77-3.09-2.01-3.76-2.04-1.6-.16-3.12.94-3.93.94-.81 0-2.06-.92-3.39-.9-1.74.03-3.35 1.01-4.25 2.57-1.81 3.14-.46 7.78 1.3 10.32.86 1.24 1.88 2.63 3.22 2.58 1.29-.05 1.78-.83 3.34-.83 1.56 0 2 .83 3.37.81 1.39-.03 2.27-1.26 3.12-2.51.98-1.44 1.39-2.83 1.41-2.9-.03-.01-2.7-1.04-2.73-4.12M14.6 4.5c.71-.86 1.19-2.06 1.06-3.25-1.02.04-2.26.68-2.99 1.54-.66.76-1.23 1.98-1.08 3.15 1.14.09 2.3-.58 3.01-1.44"/></svg>
+    <span class="lbl"><small>Letöltés — TestFlight</small><b>App Store</b></span>
+   </a>
+   <div class="storebadge soon-badge" aria-label="Google Play – hamarosan">
+    <span class="ribbon">Hamarosan</span>
+    <svg width="25" height="25" viewBox="0 0 24 24" aria-hidden="true">
+     <path fill="#00d2ff" d="M3.06 2.4a1.6 1.6 0 0 0-.37 1.1v17c0 .46.13.83.37 1.09l.09.08L12.7 12v-.2L3.15 2.32z"/>
+     <path fill="#00f076" d="m16.05 8.53-3.35 3.35v.24l3.35 3.35.08-.05 3.97-2.26c1.13-.64 1.13-1.69 0-2.33l-3.97-2.25z"/>
+     <path fill="#ffce00" d="m16.13 15.42-3.43-3.42-9.64 9.63c.37.4.99.45 1.69.05z"/>
+     <path fill="#ff3d44" d="M16.13 8.58 4.75 2.12c-.7-.4-1.32-.35-1.69.05l9.64 9.63z"/>
+    </svg>
+    <span class="lbl"><small>Hamarosan a</small><b>Google Play</b></span>
+   </div>
+  </div>
  </div>
 </section>
 
