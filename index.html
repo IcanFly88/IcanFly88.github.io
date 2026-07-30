@@ -3,88 +3,131 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AutoGuardian AI — Az autód őrangyala a zsebedben</title>
-<meta name="description" content="Professzionális autódiagnosztika iPhone-on: élő adatok, 9500+ hibakód magyarul, 13 márka mélydiagnosztika, vezetett hibakeresés 3 nyelven, EV-akku elemzés, CarPlay dragméter. Android béta már elérhető. Az első hónap ingyenes.">
-<meta property="og:title" content="AutoGuardian AI — Az autód őrangyala a zsebedben">
-<meta property="og:description" content="Élő motoradatok, 9500+ hibakód magyarul, 13 márka mélydiagnosztika, vezetett hibakeresés magyarul, EV-akku elemzés és CarPlay dragméter — egyetlen apppal. Android béta már elérhető.">
+<title>AutoGuardian AI — Az autód Őrzője a zsebedben</title>
+<meta name="description" content="Professzionális OBD-diagnosztika iPhone-on és Androidon: 9500+ hibakód magyarul, 13 márka mélydiagnosztika, vezetett hibakeresés 3 nyelven, EV-akku elemzés, CarPlay dragméter, saját AI-Őrző. Nyílt béta — most minden ingyen.">
+<meta property="og:title" content="AutoGuardian AI — Az autód Őrzője a zsebedben">
+<meta property="og:description" content="Professzionális OBD-diagnosztika iPhone-on és Androidon: 9500+ hibakód magyarul, 13 márka mélydiagnosztika, vezetett hibakeresés 3 nyelven, EV-akku elemzés, CarPlay dragméter, saját AI-Őrző. Nyílt béta — most minden ingyen.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="assets/logo.png">
 <link rel="icon" type="image/png" href="assets/logo.png">
 <link rel="apple-touch-icon" href="assets/logo.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#07080a; --bg2:#0c0e12; --panel:#12151b; --line:#1d2129;
-  --txt:#e8eaee; --dim:#9aa1ad; --faint:#5b626e;
-  --acc:#31d6ff; --acc2:#3b82f6; --ok:#34d399; --warn:#fbbf24; --hot:#fb4a3e;
+  --bg:#070a0f; --bg2:#0b0f16; --panel:#10151e; --panel2:#0d121a;
+  --line:#1b2430; --line-soft:#141c27;
+  --ink:#e9edf3; --dim:#94a1b3; --faint:#5b6675;
+  --acc:#33d3ff; --acc-deep:#2f80f0; --violet:#8b5cf6;
+  --ok:#34d399; --warn:#fbbf24; --hot:#fb4a3e;
+  --mono:ui-monospace,"SF Mono","JetBrains Mono",Menlo,Consolas,monospace;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,system-ui,"Helvetica Neue",sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--txt);font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.6}
 a{color:inherit;text-decoration:none}
-section{position:relative;padding:110px 24px}
+section{position:relative;padding:104px 24px}
 .wrap{max-width:1180px;margin:0 auto}
-h2.big{font-size:clamp(34px,6vw,64px);font-weight:800;letter-spacing:-.02em;line-height:1.08}
-p.lead{font-size:clamp(16px,2vw,20px);color:var(--dim);line-height:1.65;max-width:640px}
-.grad{background:linear-gradient(92deg,#31d6ff 0%,#3b82f6 55%,#8b5cf6 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
-.kicker{font-size:13px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--acc);margin-bottom:18px}
-.reveal{opacity:0;transform:translateY(34px);transition:opacity .8s cubic-bezier(.2,.6,.2,1),transform .8s cubic-bezier(.2,.6,.2,1)}
+.grad{background:linear-gradient(96deg,#4ddcff 0%,#3b82f6 52%,#9b7bff 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+h2.big{font-size:clamp(32px,5.4vw,58px);font-weight:800;letter-spacing:-.022em;line-height:1.08;text-wrap:balance}
+p.lead{font-size:clamp(15.5px,1.7vw,19px);color:var(--dim);line-height:1.66;max-width:640px}
+.kicker{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--acc);margin-bottom:16px;display:flex;align-items:center;gap:9px}
+.kicker::before{content:"";width:22px;height:1px;background:var(--acc);opacity:.6}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s cubic-bezier(.2,.6,.2,1),transform .8s cubic-bezier(.2,.6,.2,1)}
 .reveal.in{opacity:1;transform:none}
-.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 32px;border-radius:999px;font-weight:700;font-size:16px;transition:.25s}
-.btn-p{background:linear-gradient(92deg,#31d6ff,#3b82f6);color:#03131c}
-.btn-p:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(49,214,255,.35)}
-.btn-g{border:1px solid var(--line);color:var(--txt)}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+.btn{display:inline-flex;align-items:center;gap:9px;padding:14px 30px;border-radius:12px;font-weight:700;font-size:15.5px;transition:.22s;font-family:var(--sans)}
+.btn-p{background:linear-gradient(96deg,#3ad2ff,#2f80f0);color:#03131c;box-shadow:0 0 0 1px rgba(58,210,255,.3)}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(51,211,255,.32)}
+.btn-g{border:1px solid var(--line);color:var(--ink)}
 .btn-g:hover{border-color:var(--acc);color:var(--acc)}
 
-nav{position:fixed;top:0;left:0;right:0;z-index:50;backdrop-filter:blur(18px);background:rgba(7,8,10,.72);border-bottom:1px solid rgba(255,255,255,.06)}
-nav .wrap{display:flex;align-items:center;gap:26px;height:60px;padding:0 24px}
-.logo{font-weight:800;font-size:17px;display:flex;align-items:center;gap:10px}
-.logo img{width:28px;height:28px;border-radius:8px}
-nav .links{display:flex;gap:20px;margin-left:auto;font-size:14px;color:var(--dim)}
-nav .links a:hover{color:var(--txt)}
-nav .cta{font-size:13px;padding:9px 20px}
-@media(max-width:860px){nav .links{display:none}}
+nav{position:fixed;top:0;left:0;right:0;z-index:50;backdrop-filter:blur(20px);background:rgba(7,10,15,.74);border-bottom:1px solid rgba(255,255,255,.05)}
+nav .wrap{display:flex;align-items:center;gap:22px;height:60px;padding:0 24px}
+.logo{font-weight:800;font-size:16.5px;display:flex;align-items:center;gap:10px;letter-spacing:-.01em}
+.logo .mark{width:30px;height:30px;border-radius:8px;overflow:hidden;flex:0 0 auto;background:#0a0e15;display:grid;place-items:center}
+.logo .mark video,.logo .mark img{width:100%;height:100%;object-fit:cover;display:block}
+nav .links{display:flex;gap:18px;margin-left:auto;font-family:var(--mono);font-size:12.5px;letter-spacing:.02em;color:var(--dim)}
+nav .links a:hover{color:var(--acc)}
+.langsw{display:flex;gap:2px;border:1px solid var(--line);border-radius:9px;padding:2px;font-family:var(--mono)}
+.langsw button{background:none;border:0;color:var(--faint);font-size:11.5px;font-weight:700;letter-spacing:.04em;padding:5px 8px;border-radius:6px;cursor:pointer;transition:.18s;font-family:var(--mono)}
+.langsw button:hover{color:var(--dim)}
+.langsw button.on{background:rgba(51,211,255,.14);color:var(--acc)}
+nav .cta{font-size:13px;padding:9px 16px;border-radius:9px}
+@media(max-width:1000px){nav .links{display:none}}
 
-.hero{min-height:100svh;display:flex;align-items:center;padding-top:120px;position:relative;overflow:hidden}
+.hero{min-height:100svh;display:flex;align-items:center;padding-top:118px;position:relative;overflow:hidden}
 #road{position:absolute;inset:0;width:100%;height:100%;display:block}
-.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,8,10,.25) 0%,rgba(7,8,10,.05) 45%,var(--bg) 96%);pointer-events:none}
-.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;position:relative;z-index:2}
-@media(max-width:900px){.hero .wrap{grid-template-columns:1fr}}
-.hero h1{font-size:clamp(42px,7vw,84px);font-weight:800;letter-spacing:-.03em;line-height:1.02;text-shadow:0 2px 30px rgba(0,0,0,.6)}
-.hero .sub{margin:26px 0 38px}
-.badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:44px}
-.chip{font-size:12.5px;font-weight:600;color:var(--dim);border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:7px 14px;background:rgba(7,8,10,.5);backdrop-filter:blur(6px)}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,10,15,.30) 0%,rgba(7,10,15,.04) 44%,var(--bg) 95%);pointer-events:none}
+.hero .wrap{display:grid;grid-template-columns:1.04fr .96fr;gap:52px;align-items:center;position:relative;z-index:2}
+@media(max-width:900px){.hero .wrap{grid-template-columns:1fr;gap:44px}}
+.brandrow{display:flex;align-items:center;gap:14px;margin-bottom:26px}
+.brandrow .halo{width:66px;height:66px;border-radius:16px;overflow:hidden;flex:0 0 auto;background:#0a0e15;box-shadow:0 0 40px rgba(51,211,255,.28),0 0 0 1px rgba(51,211,255,.18)}
+.brandrow .halo video,.brandrow .halo img{width:100%;height:100%;object-fit:cover;display:block}
+.brandrow .wm{font-family:var(--mono);font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);line-height:1.5}
+.brandrow .wm b{color:var(--ink);font-weight:700}
+.betaflag{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ok);border:1px solid rgba(52,211,153,.34);background:rgba(52,211,153,.08);border-radius:999px;padding:6px 14px;margin-bottom:22px}
+.betaflag .pulse{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 0 rgba(52,211,153,.6);animation:beat 2s infinite}
+@keyframes beat{0%{box-shadow:0 0 0 0 rgba(52,211,153,.5)}70%{box-shadow:0 0 0 8px rgba(52,211,153,0)}100%{box-shadow:0 0 0 0 rgba(52,211,153,0)}}
+@media(prefers-reduced-motion:reduce){.betaflag .pulse{animation:none}}
+.hero h1{font-size:clamp(40px,6.4vw,76px);font-weight:800;letter-spacing:-.032em;line-height:1.03;text-shadow:0 2px 30px rgba(0,0,0,.6)}
+.hero .sub{margin:24px 0 34px}
+.herobtns{display:flex;gap:12px;flex-wrap:wrap}
+.readout{display:flex;flex-wrap:wrap;gap:0;margin-top:40px;border:1px solid var(--line);border-radius:14px;background:rgba(10,14,21,.5);backdrop-filter:blur(6px);overflow:hidden}
+.readout .cell{flex:1;min-width:120px;padding:14px 16px;border-right:1px solid var(--line)}
+.readout .cell:last-child{border-right:0}
+.readout .n{font-family:var(--mono);font-size:19px;font-weight:700;color:var(--acc);letter-spacing:-.01em}
+.readout .l{font-size:11px;color:var(--faint);margin-top:2px;letter-spacing:.02em}
 
-.phone{width:min(320px,86vw);margin:0 auto;border-radius:48px;border:1px solid #2a2e38;background:#0b0d11;padding:13px;box-shadow:0 40px 120px rgba(0,0,0,.65);position:relative}
-.phone .notch{width:104px;height:24px;border-radius:14px;background:#05060a;margin:2px auto 8px}
-.screen{border-radius:34px;background:linear-gradient(180deg,#0d1015,#0a0c10);border:1px solid #171a20;padding:16px 14px;min-height:520px;overflow:hidden}
-.scr-title{font-size:11px;color:var(--faint);letter-spacing:.2em;text-transform:uppercase;text-align:center;margin-bottom:12px}
-.gaugegrid{display:grid;grid-template-columns:1fr 1fr;gap:11px}
-.gcard{background:#11141a;border:1px solid #1c2027;border-radius:17px;padding:13px 11px;text-align:center}
+.phone{width:min(324px,86vw);margin:0 auto;border-radius:46px;border:1px solid #2a2f3a;background:#0a0d12;padding:12px;box-shadow:0 40px 120px rgba(0,0,0,.66);position:relative}
+.phone::before{content:"";position:absolute;inset:-30% -20% auto;height:80%;background:radial-gradient(380px 220px at 50% 0%,rgba(51,211,255,.14),transparent 62%);pointer-events:none}
+.phone .notch{width:100px;height:22px;border-radius:13px;background:#05070a;margin:2px auto 8px}
+.screen{border-radius:34px;background:linear-gradient(180deg,#0d1015,#0a0c10);border:1px solid #171a20;padding:15px 13px;min-height:518px;overflow:hidden}
+.scr-title{font-family:var(--mono);font-size:10.5px;color:var(--faint);letter-spacing:.2em;text-transform:uppercase;text-align:center;margin-bottom:12px}
+.gaugegrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.gcard{background:#11141a;border:1px solid #1c2027;border-radius:16px;padding:12px 10px;text-align:center}
 .gcard svg{display:block;margin:0 auto 6px}
-.gval{font-size:18px;font-weight:800;font-variant-numeric:tabular-nums}
-.glab{font-size:10.5px;color:var(--faint);margin-top:2px}
-.healthbar{margin-top:12px;background:#11141a;border:1px solid #1c2027;border-radius:17px;padding:13px 15px}
+.gval{font-family:var(--mono);font-size:17px;font-weight:700;font-variant-numeric:tabular-nums}
+.glab{font-size:10px;color:var(--faint);margin-top:2px}
+.healthbar{margin-top:11px;background:#11141a;border:1px solid #1c2027;border-radius:16px;padding:13px 14px}
 .healthbar .row{display:flex;justify-content:space-between;font-size:12px;color:var(--dim);margin-bottom:8px}
-.track{height:8px;border-radius:99px;background:#1a1e26;overflow:hidden}
-.fill{height:100%;width:0%;border-radius:99px;background:linear-gradient(90deg,#34d399,#31d6ff);transition:width 1.6s cubic-bezier(.2,.7,.2,1)}
+.healthbar .row b{font-family:var(--mono)}
+.track{height:7px;border-radius:99px;background:#1a1e26;overflow:hidden}
+.fill{height:100%;width:0%;border-radius:99px;background:linear-gradient(90deg,#34d399,#33d3ff);transition:width 1.6s cubic-bezier(.2,.7,.2,1)}
 
-.band{border-block:1px solid var(--line);background:var(--bg2);padding:54px 24px}
-.band .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:32px;text-align:center}
-.stat b{display:block;font-size:clamp(28px,4vw,44px);font-weight:800}
-.stat span{font-size:13.5px;color:var(--dim)}
+.betastrip{border-block:1px solid var(--line);background:linear-gradient(180deg,rgba(52,211,153,.06),transparent);padding:26px 24px}
+.betastrip .wrap{display:flex;align-items:center;gap:20px;flex-wrap:wrap;justify-content:center;text-align:center}
+.betastrip .t{font-size:15.5px;color:var(--dim);max-width:760px}
+.betastrip .t b{color:var(--ink)}
 
-.gallery{display:flex;gap:26px;overflow-x:auto;padding:38px 8px 26px;scroll-snap-type:x mandatory;scrollbar-width:thin;scrollbar-color:#2a3140 transparent}
+.band{border-block:1px solid var(--line);background:var(--bg2);padding:50px 24px}
+.band .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:30px;text-align:center}
+.stat b{display:block;font-family:var(--mono);font-size:clamp(28px,4vw,42px);font-weight:700}
+.stat span{font-size:13px;color:var(--dim)}
+
+.cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));gap:18px;margin-top:52px}
+.cat{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:26px 24px;transition:.3s;position:relative;overflow:hidden}
+.cat:hover{transform:translateY(-5px);border-color:#2c3444}
+.cat::after{content:"";position:absolute;inset:auto -30% -60% auto;width:70%;height:120%;background:radial-gradient(200px 130px at 70% 0,rgba(51,211,255,.08),transparent 60%);opacity:0;transition:.3s;pointer-events:none}
+.cat:hover::after{opacity:1}
+.cat .tagn{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint)}
+.cat .ic{width:44px;height:44px;border-radius:13px;display:grid;place-items:center;font-size:20px;margin:10px 0 15px;background:rgba(51,211,255,.09);border:1px solid rgba(51,211,255,.2)}
+.cat h3{font-size:18px;font-weight:750;margin-bottom:8px;letter-spacing:-.01em}
+.cat p{font-size:14px;color:var(--dim);line-height:1.6}
+.cat ul{list-style:none;margin-top:14px;display:flex;flex-direction:column;gap:7px}
+.cat li{font-size:13px;color:var(--dim);padding-left:19px;position:relative;line-height:1.45}
+.cat li::before{content:"›";position:absolute;left:0;color:var(--acc);font-family:var(--mono);font-weight:700}
+.cat .free{display:inline-block;margin-top:14px;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ok);border:1px solid rgba(52,211,153,.3);background:rgba(52,211,153,.08);border-radius:6px;padding:3px 8px}
+
+.gallery{display:flex;gap:24px;overflow-x:auto;padding:36px 8px 24px;scroll-snap-type:x mandatory;scrollbar-width:thin;scrollbar-color:#2a3140 transparent}
 .gallery::-webkit-scrollbar{height:6px}
 .gallery::-webkit-scrollbar-thumb{background:#232833;border-radius:99px}
-.shot{flex:0 0 auto;scroll-snap-align:center;width:262px}
-.shot .frame{border-radius:38px;border:1px solid #262b35;background:#0b0d11;padding:10px;box-shadow:0 24px 70px rgba(0,0,0,.55)}
-.shot .disp{border-radius:30px;background:#0b0e13;border:1px solid #161a21;height:470px;overflow:hidden;display:flex;flex-direction:column}
-.shot figcaption{text-align:center;font-size:13px;color:var(--dim);margin-top:14px}
-.apphead{padding:14px 14px 10px;font-size:15px;font-weight:800;display:flex;align-items:center;gap:8px;border-bottom:1px solid #141821}
-.apphead small{margin-left:auto;font-weight:600;font-size:10.5px;color:var(--ok);border:1px solid rgba(52,211,153,.3);padding:3px 8px;border-radius:99px}
+.shot{flex:0 0 auto;scroll-snap-align:center;width:260px}
+.shot .frame{border-radius:36px;border:1px solid #262b35;background:#0a0d12;padding:10px;box-shadow:0 24px 70px rgba(0,0,0,.55)}
+.shot .disp{border-radius:29px;background:#0b0e13;border:1px solid #161a21;height:466px;overflow:hidden;display:flex;flex-direction:column}
+.shot figcaption{text-align:center;font-size:12.5px;color:var(--dim);margin-top:13px;font-family:var(--mono);letter-spacing:.02em}
+.apphead{padding:14px 14px 10px;font-size:14.5px;font-weight:750;display:flex;align-items:center;gap:8px;border-bottom:1px solid #141821}
+.apphead small{margin-left:auto;font-family:var(--mono);font-weight:600;font-size:10px;color:var(--ok);border:1px solid rgba(52,211,153,.3);padding:3px 8px;border-radius:99px}
 .aprow{display:flex;align-items:center;gap:10px;padding:11px 13px;border-bottom:1px solid #131721;font-size:12.5px}
 .aprow .ttl{font-weight:600;line-height:1.35}
 .aprow .sub2{font-size:10.5px;color:var(--faint);margin-top:2px;line-height:1.35}
@@ -93,114 +136,134 @@ nav .cta{font-size:13px;padding:9px 20px}
 .apbtns{margin-top:auto;display:flex;gap:9px;padding:12px}
 .apbtn{flex:1;text-align:center;font-size:12px;font-weight:700;border-radius:11px;padding:10px 4px}
 .step{display:flex;gap:10px;padding:11px 13px;border-bottom:1px solid #131721;font-size:12px;line-height:1.45}
-.step b{display:block;font-size:11px;color:var(--acc);margin-bottom:2px}
-.stepno{width:22px;height:22px;border-radius:99px;background:rgba(49,214,255,.1);border:1px solid rgba(49,214,255,.3);color:var(--acc);font-size:11px;font-weight:800;display:grid;place-items:center;flex:0 0 auto}
+.step b{display:block;font-family:var(--mono);font-size:10.5px;color:var(--acc);margin-bottom:2px;letter-spacing:.04em}
+.stepno{width:22px;height:22px;border-radius:99px;background:rgba(51,211,255,.1);border:1px solid rgba(51,211,255,.3);color:var(--acc);font-size:11px;font-weight:800;display:grid;place-items:center;flex:0 0 auto;font-family:var(--mono)}
 .cellgrid{display:grid;grid-template-columns:repeat(12,1fr);gap:3px;padding:12px 13px}
 .cellgrid i{aspect-ratio:1;border-radius:3px;background:#17b981;opacity:.85}
 .cellgrid i.w{background:#f4b63f}
 .menurow{display:flex;align-items:center;gap:11px;padding:13px;border-bottom:1px solid #131721;font-size:13px;font-weight:600}
 .menurow .mic{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;font-size:14px}
 
-.split{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
-@media(max-width:900px){.split{grid-template-columns:1fr}}
-.glowbox{position:relative;border-radius:28px;border:1px solid var(--line);background:var(--panel);padding:28px;overflow:hidden}
-.glowbox::before{content:"";position:absolute;inset:-40%;background:radial-gradient(420px 260px at 20% 0%,rgba(49,214,255,.10),transparent 60%);pointer-events:none}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+@media(max-width:900px){.split{grid-template-columns:1fr;gap:40px}}
+.glowbox{position:relative;border-radius:26px;border:1px solid var(--line);background:var(--panel);padding:26px;overflow:hidden}
+.glowbox::before{content:"";position:absolute;inset:-40%;background:radial-gradient(400px 250px at 20% 0%,rgba(51,211,255,.1),transparent 60%);pointer-events:none}
+.chips{display:flex;gap:9px;flex-wrap:wrap;margin-top:28px}
+.chip{font-family:var(--mono);font-size:11.5px;color:var(--dim);border:1px solid var(--line);border-radius:8px;padding:7px 12px;background:var(--panel2)}
 
-.cprow{display:flex;align-items:center;gap:14px;padding:11px 14px;border-bottom:1px solid #171a21;font-size:15px}
+.carplay{background:#0a0d11;border-radius:18px;border:1px solid #191c23;overflow:hidden}
+.cphead{display:flex;align-items:center;gap:10px;padding:11px 16px;border-bottom:1px solid #171a21;font-size:13px;color:var(--dim);font-family:var(--mono)}
+.cphead b{color:var(--ink)}
+.cprow{display:flex;align-items:center;gap:13px;padding:11px 14px;border-bottom:1px solid #171a21;font-size:14.5px}
 .cprow:last-child{border-bottom:0}
-.cprow .v{margin-left:auto;color:var(--dim);font-variant-numeric:tabular-nums}
+.cprow .v{margin-left:auto;color:var(--dim);font-variant-numeric:tabular-nums;font-family:var(--mono);font-size:13px}
 .flag{color:var(--ok);font-weight:700}
-.carplay{background:#0b0d11;border-radius:20px;border:1px solid #191c23;overflow:hidden}
-.cphead{display:flex;align-items:center;gap:10px;padding:11px 16px;border-bottom:1px solid #171a21;font-size:13.5px;color:var(--dim)}
-.cphead b{color:var(--txt)}
-.stopper{font-variant-numeric:tabular-nums;font-weight:800}
-
-.cells{display:flex;gap:5px;align-items:flex-end;height:110px;padding:16px 6px 8px}
+.stopper{font-variant-numeric:tabular-nums;font-weight:800;font-family:var(--mono)}
+.cells{display:flex;gap:5px;align-items:flex-end;height:108px;padding:16px 6px 8px}
 .cells i{flex:1;border-radius:4px 4px 0 0;background:linear-gradient(180deg,#34d399,#0e9f6e);opacity:.9;min-height:20%}
 .cells i.warn{background:linear-gradient(180deg,#fbbf24,#b45309)}
-.cellmeta{display:flex;justify-content:space-between;font-size:12px;color:var(--faint);padding:0 6px 6px}
+.cellmeta{display:flex;justify-content:space-between;font-size:11.5px;color:var(--faint);padding:0 6px 6px;font-family:var(--mono)}
 
-.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-top:56px}
-.fcard{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:30px 26px;transition:.3s}
-.fcard:hover{transform:translateY(-6px);border-color:#2a3140}
-.fcard .ic{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;font-size:21px;margin-bottom:18px;background:rgba(49,214,255,.09);border:1px solid rgba(49,214,255,.2)}
-.fcard h3{font-size:18.5px;font-weight:700;margin-bottom:9px}
-.fcard p{font-size:14.5px;color:var(--dim);line-height:1.6}
+.orzo{background:var(--bg2);border-block:1px solid var(--line)}
+.voicecard{border:1px solid var(--line);border-radius:16px;background:var(--panel);padding:16px 18px;display:flex;align-items:center;gap:14px;margin-top:14px}
+.voicecard .eq{display:flex;align-items:flex-end;gap:3px;height:30px}
+.voicecard .eq i{width:3px;background:var(--acc);border-radius:2px;animation:eq 1.1s ease-in-out infinite}
+.voicecard .eq i:nth-child(2){animation-delay:.15s}.voicecard .eq i:nth-child(3){animation-delay:.3s}.voicecard .eq i:nth-child(4){animation-delay:.45s}.voicecard .eq i:nth-child(5){animation-delay:.6s}
+@keyframes eq{0%,100%{height:7px}50%{height:26px}}
+@media(prefers-reduced-motion:reduce){.voicecard .eq i{animation:none;height:16px}}
+.voicecard q{font-size:14px;color:var(--ink);font-style:italic;line-height:1.5}
 
-.brands{display:flex;gap:12px;flex-wrap:wrap;margin-top:36px}
-.brand{border:1px solid var(--line);border-radius:14px;padding:13px 22px;font-weight:700;font-size:15px;color:var(--dim);transition:.25s}
-.brand:hover{color:var(--txt);border-color:var(--acc)}
-.brand em{display:block;font-style:normal;font-weight:500;font-size:11.5px;color:var(--faint);margin-top:3px}
+.brands{display:flex;gap:11px;flex-wrap:wrap;margin-top:34px}
+.brand{border:1px solid var(--line);border-radius:12px;padding:12px 20px;font-weight:700;font-size:14.5px;color:var(--dim);transition:.25s}
+.brand:hover{color:var(--ink);border-color:var(--acc)}
+.brand em{display:block;font-style:normal;font-weight:500;font-size:11px;color:var(--faint);margin-top:3px;font-family:var(--mono);letter-spacing:.01em}
 
-.price{max-width:520px;margin:56px auto 0;background:linear-gradient(180deg,#12151c,#0d1016);border:1px solid #2a3140;border-radius:30px;padding:40px 38px;text-align:center;position:relative;overflow:hidden}
-.price::before{content:"";position:absolute;inset:-60% -20% auto;height:120%;background:radial-gradient(400px 220px at 50% 0%,rgba(49,214,255,.14),transparent 65%);pointer-events:none}
-.price .beta{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#03131c;background:linear-gradient(92deg,#34d399,#31d6ff);border-radius:99px;padding:7px 16px;margin-bottom:22px}
-.price .amount{font-size:clamp(44px,7vw,62px);font-weight:900;letter-spacing:-.03em}
-.price .amount small{font-size:18px;font-weight:600;color:var(--dim)}
-.price .note{color:var(--dim);font-size:14.5px;margin:8px 0 28px}
-.plist{text-align:left;display:grid;gap:11px;margin:0 auto 30px;max-width:400px}
-.plist span{display:flex;gap:11px;font-size:14.5px;color:#c6cbd4;line-height:1.45}
-.plist b{color:var(--ok);font-weight:800}
-.pfine{font-size:12.5px;color:var(--faint);margin-top:18px}
-
-details{border:1px solid var(--line);border-radius:16px;background:var(--panel);margin-bottom:12px;overflow:hidden}
-details summary{cursor:pointer;list-style:none;padding:20px 24px;font-weight:700;font-size:16px;display:flex;align-items:center}
-details summary::after{content:"+";margin-left:auto;font-size:22px;color:var(--acc);transition:.25s}
-details[open] summary::after{transform:rotate(45deg)}
-details p{padding:0 24px 20px;color:var(--dim);font-size:14.5px;line-height:1.65;max-width:760px}
-
-table.spec{width:100%;border-collapse:collapse;margin-top:44px}
-table.spec td{padding:17px 8px;border-bottom:1px solid var(--line);font-size:15px;vertical-align:top}
-table.spec td:first-child{color:var(--faint);width:34%;font-size:13.5px;letter-spacing:.06em;text-transform:uppercase}
-table.spec td b{font-weight:600}
+.mflow{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:40px}
+.mstep{border:1px solid var(--line);border-radius:16px;background:var(--panel);padding:22px;position:relative}
+.mstep .no{font-family:var(--mono);font-size:12px;color:var(--acc);letter-spacing:.1em}
+.mstep h3{font-size:16px;font-weight:700;margin:10px 0 7px}
+.mstep p{font-size:13.5px;color:var(--dim);line-height:1.55}
 
 .adapters{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:40px}
 .acard{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:24px 22px 20px;transition:.25s;position:relative}
 .acard:hover{transform:translateY(-4px);border-color:#2a3140}
-.acard .tag{position:absolute;top:16px;right:16px;font-size:10px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;padding:4px 10px;border-radius:99px}
-.acard h3{font-size:17px;font-weight:800;margin-bottom:8px;padding-right:78px}
+.acard .tag{position:absolute;top:16px;right:16px;font-family:var(--mono);font-size:9.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:4px 9px;border-radius:99px}
+.acard h3{font-size:16.5px;font-weight:800;margin-bottom:8px;padding-right:76px}
 .acard p{font-size:13px;color:var(--dim);line-height:1.55}
-.acard .conn{font-size:11px;color:var(--faint);margin-top:12px;letter-spacing:.04em}
-.tag-best{color:#03131c;background:linear-gradient(92deg,#34d399,#31d6ff)}
+.acard .conn{font-family:var(--mono);font-size:10.5px;color:var(--faint);margin-top:12px;letter-spacing:.04em}
+.tag-best{color:#03131c;background:linear-gradient(92deg,#34d399,#33d3ff)}
 .tag-ok{color:var(--ok);border:1px solid rgba(52,211,153,.32)}
 .tag-bmw{color:#a78bfa;border:1px solid rgba(139,92,246,.35)}
-.abuy{display:inline-flex;align-items:center;gap:7px;margin-top:14px;padding:9px 15px;border-radius:99px;font-size:12.5px;font-weight:800;background:linear-gradient(92deg,#ff9e2c,#ff7a00);color:#1a1000;transition:.2s}
+.abuy{display:inline-flex;align-items:center;gap:7px;margin-top:14px;padding:9px 15px;border-radius:10px;font-size:12.5px;font-weight:800;background:linear-gradient(92deg,#ff9e2c,#ff7a00);color:#1a1000;transition:.2s}
 .abuy:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(255,140,0,.34)}
 .abuy svg{width:14px;height:14px}
 .abuyrow{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
 .abuyrow .abuy{margin-top:0}
-.androidband{border-block:1px solid var(--line);background:linear-gradient(180deg,#0c0e12,#0a0c10);padding:78px 24px;text-align:center}
-.storerow{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:36px}
-.storebadge{display:inline-flex;align-items:center;gap:13px;background:#000;border:1px solid #2a2f38;border-radius:14px;padding:11px 22px;min-width:210px;transition:.25s;position:relative}
+
+.beta-banner{max-width:900px;margin:34px auto 0;border:1px solid rgba(52,211,153,.34);background:linear-gradient(180deg,rgba(52,211,153,.09),rgba(52,211,153,.02));border-radius:16px;padding:18px 22px;display:flex;align-items:center;gap:14px;justify-content:center;text-align:center;flex-wrap:wrap}
+.beta-banner .t{font-size:15px;color:var(--ink)}
+.beta-banner .t b{color:var(--ok)}
+.tiers{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:34px;text-align:left}
+@media(max-width:940px){.tiers{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.tiers{grid-template-columns:1fr}}
+.tier{border:1px solid var(--line);border-radius:18px;background:var(--panel);padding:24px 22px;position:relative;display:flex;flex-direction:column}
+.tier.pop{border-color:rgba(51,211,255,.45);box-shadow:0 0 0 1px rgba(51,211,255,.25),0 20px 50px rgba(51,211,255,.08)}
+.tier .rib{position:absolute;top:-10px;left:22px;font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:#03131c;background:linear-gradient(92deg,#3ad2ff,#2f80f0);border-radius:6px;padding:4px 10px;font-weight:700}
+.tier .nm{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-bottom:10px}
+.tier.pop .nm{color:var(--acc)}
+.tier .pr{font-size:27px;font-weight:800;letter-spacing:-.02em;font-family:var(--mono)}
+.tier .pr small{font-size:13px;font-weight:500;color:var(--dim)}
+.tier .yr{font-size:11.5px;color:var(--faint);margin-top:3px}
+.tier .who{font-size:12.5px;color:var(--dim);margin:12px 0;border-top:1px solid var(--line);padding-top:12px}
+.tier ul{list-style:none;display:flex;flex-direction:column;gap:8px;margin-top:4px}
+.tier li{font-size:12.5px;color:var(--dim);padding-left:18px;position:relative;line-height:1.42}
+.tier li::before{content:"✓";position:absolute;left:0;color:var(--ok);font-size:11px;font-weight:800}
+.tier li.plus::before{content:"+";color:var(--acc)}
+.vipnote{max-width:900px;margin:20px auto 0;text-align:center;font-size:13px;color:var(--faint)}
+.vipnote b{color:var(--dim)}
+
+details{border:1px solid var(--line);border-radius:15px;background:var(--panel);margin-bottom:11px;overflow:hidden}
+details summary{cursor:pointer;list-style:none;padding:19px 22px;font-weight:700;font-size:15.5px;display:flex;align-items:center}
+details summary::after{content:"+";margin-left:auto;font-size:22px;color:var(--acc);transition:.25s;font-family:var(--mono)}
+details[open] summary::after{transform:rotate(45deg)}
+details p{padding:0 22px 20px;color:var(--dim);font-size:14px;line-height:1.65;max-width:760px}
+details a{color:var(--acc)}
+table.spec{width:100%;border-collapse:collapse;margin-top:40px}
+table.spec td{padding:16px 8px;border-bottom:1px solid var(--line);font-size:14.5px;vertical-align:top}
+table.spec td:first-child{color:var(--faint);width:32%;font-family:var(--mono);font-size:12px;letter-spacing:.05em;text-transform:uppercase}
+table.spec td b{font-weight:650}
+
+.androidband{border-block:1px solid var(--line);background:linear-gradient(180deg,#0b0f16,#0a0c10);padding:74px 24px;text-align:center}
+.storerow{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:34px}
+.storebadge{display:inline-flex;align-items:center;gap:13px;background:#000;border:1px solid #2a2f38;border-radius:13px;padding:11px 22px;min-width:210px;transition:.25s;position:relative}
 a.storebadge:hover{transform:translateY(-3px);border-color:#3a4150;box-shadow:0 14px 40px rgba(0,0,0,.5)}
-.storebadge svg{flex:0 0 auto}
 .storebadge .lbl{display:flex;flex-direction:column;line-height:1.16;text-align:left}
-.storebadge .lbl small{font-size:11px;font-weight:600;color:#c7ccd4;letter-spacing:.02em}
-.storebadge .lbl b{font-size:19px;font-weight:700;color:#fff;letter-spacing:-.01em}
-.storebadge.soon-badge{opacity:.92;cursor:default}
-.storebadge .ribbon{position:absolute;top:-11px;right:-9px;font-size:9.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#03131c;background:linear-gradient(92deg,#fbbf24,#31d6ff);border-radius:99px;padding:4px 10px;box-shadow:0 4px 14px rgba(0,0,0,.45)}
-.final{min-height:78svh;display:flex;align-items:center;text-align:center;background:radial-gradient(900px 500px at 50% 115%,rgba(59,130,246,.18),transparent 65%)}
+.storebadge .lbl small{font-size:10.5px;font-weight:600;color:#c7ccd4}
+.storebadge .lbl b{font-size:18px;font-weight:700;color:#fff}
+.final{min-height:76svh;display:flex;align-items:center;text-align:center;background:radial-gradient(900px 500px at 50% 115%,rgba(47,128,240,.18),transparent 64%)}
 .final .wrap{max-width:820px}
-footer{border-top:1px solid var(--line);padding:36px 24px;color:var(--faint);font-size:13px}
-footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
+footer{border-top:1px solid var(--line);padding:34px 24px;color:var(--faint);font-size:12.5px}
+footer .wrap{display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between}
+footer a{color:var(--dim)}
 </style>
+
 </head>
 <body>
-
 <nav>
  <div class="wrap">
-  <a class="logo" href="#top"><img src="assets/logo.png" alt="AutoGuardian AI logó">AutoGuardian <span style="color:var(--acc)">AI</span></a>
+  <a class="logo" href="#top"><span class="mark"><video autoplay loop muted playsinline poster="assets/logo.png" src="assets/logo-anim.webm"></video></span>AutoGuardian <span style="color:var(--acc)">AI</span></a>
   <div class="links">
-   <a href="#screens">Az app</a>
-   <a href="#live">Élő diagnosztika</a>
-   <a href="#carplay">CarPlay</a>
-   <a href="#ev">EV-akku</a>
-   <a href="#brands">Márkák</a>
-   <a href="#adapters">Adapterek</a>
-   <a href="#pricing">Ár</a>
-   <a href="#specs">Műszaki adatok</a>
+   <a href="#funkciok" data-i18n="nav_feat">Funkciók</a>
+   <a href="#orzo" data-i18n="nav_orzo">Az Őrző</a>
+   <a href="#brands" data-i18n="nav_brands">Márkák</a>
+   <a href="#szerelo" data-i18n="nav_mech">Szerelő</a>
+   <a href="#adapters" data-i18n="nav_adapt">Adapterek</a>
+   <a href="#pricing" data-i18n="nav_price">Árak</a>
   </div>
-  <a class="btn btn-p cta" href="#platforms">Béta letöltése</a>
+  <div class="langsw" id="langsw">
+   <button data-l="hu">HU</button><button data-l="en">EN</button><button data-l="de">DE</button>
+  </div>
+  <a class="btn btn-p cta" href="#platforms" data-i18n="nav_cta">Béta — ingyen</a>
  </div>
 </nav>
 
@@ -208,30 +271,32 @@ footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
  <canvas id="road"></canvas>
  <div class="wrap">
   <div>
-   <div class="kicker reveal">Professzionális OBD-diagnosztika · iPhone + CarPlay</div>
-   <h1 class="reveal">Az autód<br><span class="grad">őrangyala</span><br>a zsebedben.</h1>
-   <p class="lead sub reveal">Csatlakozz az autódhoz, és láss mindent, amit a szerviz lát — élő motoradatok, hibakódok érthető magyar magyarázattal, márka-mélydiagnosztika és vezetett hibaelhárítás. Egyetlen apppal.</p>
-   <div class="reveal">
-    <a class="btn btn-p" href="#platforms">Kipróbálom ingyen</a>
-    <a class="btn btn-g" href="#screens" style="margin-left:10px">Nézz bele az appba</a>
+   <div class="brandrow reveal">
+    <span class="halo"><video autoplay loop muted playsinline poster="assets/logo.png" src="assets/logo-anim.webm"></video></span>
+    <span class="wm" data-i18n="hero_wm"><b>AutoGuardian AI</b><br>OBD-diagnosztika · iOS &amp; Android</span>
    </div>
-   <div class="badges reveal">
-    <span class="chip">9 500+ hibakód magyarul</span>
-    <span class="chip">13 márka mélydiagnosztika</span>
-    <span class="chip">Vezetett hibakeresés · 3 nyelv</span>
-    <span class="chip">CarPlay dragméter</span>
-    <span class="chip">EV-akku elemzés</span>
-    <span class="chip">Hamarosan Androidra is</span>
+   <div class="betaflag reveal"><span class="pulse"></span><span data-i18n="hero_beta">Nyílt béta — most minden ingyen</span></div>
+   <h1 class="reveal" data-i18n="hero_h1">Az autód<br><span class="grad">Őrzője</span><br>a zsebedben.</h1>
+   <p class="lead sub reveal" data-i18n="hero_sub">Csatlakozz az autódhoz, és láss mindent, amit a szerviz lát — élő adatok, hibakódok érthető magyar magyarázattal, márka-mélydiagnosztika és egy saját AI, ami sosem talál ki veszélyes tanácsot.</p>
+   <div class="herobtns reveal">
+    <a class="btn btn-p" href="#platforms" data-i18n="hero_cta1">Kipróbálom ingyen</a>
+    <a class="btn btn-g" href="#funkciok" data-i18n="hero_cta2">Mit tud?</a>
+   </div>
+   <div class="readout reveal">
+    <div class="cell"><div class="n">9 500+</div><div class="l" data-i18n="ro1">hibakód magyarul</div></div>
+    <div class="cell"><div class="n">13</div><div class="l" data-i18n="ro2">márka mélydiag</div></div>
+    <div class="cell"><div class="n">3</div><div class="l" data-i18n="ro3">nyelv · hu/en/de</div></div>
+    <div class="cell"><div class="n">6+</div><div class="l" data-i18n="ro4">adapter-típus</div></div>
    </div>
   </div>
   <div class="reveal">
    <div class="phone">
     <div class="notch"></div>
     <div class="screen">
-     <div class="scr-title">Élő adatok</div>
+     <div class="scr-title" data-i18n="ph_live">Élő adatok</div>
      <div class="gaugegrid" id="gauges"></div>
      <div class="healthbar">
-      <div class="row"><span>Jármű-egészség</span><b id="hs" style="color:var(--ok)">—</b></div>
+      <div class="row"><span data-i18n="ph_health">Jármű-egészség</span><b id="hs" style="color:var(--ok)">—</b></div>
       <div class="track"><div class="fill" id="hfill"></div></div>
      </div>
     </div>
@@ -240,278 +305,312 @@ footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
  </div>
 </header>
 
-<div class="band">
+<div class="betastrip">
  <div class="wrap">
-  <div class="stat reveal"><b class="grad" data-count="9533">0</b><span>hibakód valódi magyar leírással</span></div>
-  <div class="stat reveal"><b class="grad" data-count="13">0</b><span>márka-specifikus mélymodul</span></div>
-  <div class="stat reveal"><b class="grad" data-count="96">0</b><span>cellafeszültség egy EV-akkuból</span></div>
-  <div class="stat reveal"><b class="grad" data-count="3">0</b><span>nyelv: magyar · angol · német</span></div>
+  <span class="betaflag" style="margin:0"><span class="pulse"></span><span data-i18n="bs_tag">Béta</span></span>
+  <span class="t" data-i18n="bs_text"><b>Az AutoGuardian AI jelenleg nyílt bétában van — a béta ideje alatt MINDEN funkció ingyenes.</b> Használd korlátok nélkül, jelezz hibát, és segíts formálni. Regisztráció nélkül indul.</span>
  </div>
 </div>
 
-<section id="news" style="padding:74px 24px 40px">
+<div class="band">
  <div class="wrap">
-  <div class="kicker reveal">Friss az appban</div>
-  <h2 class="big reveal">Ami most <span class="grad">új</span>.</h2>
-  <div class="grid3">
-   <div class="fcard reveal"><div class="ic">🧭</div><h3>Vezetett hibakeresés — 3 nyelven</h3><p>Több mint 180 lépésről lépésre eljárás mind a 13 márkánál, most teljesen magyarul, angolul és németül. A legolcsóbb októl a legdrágábbig vezet — pontosan úgy, ahogy egy jó szerelő gondolkodik.</p></div>
-   <div class="fcard reveal"><div class="ic">🌫️</div><h3>DPF-regeneráció asszisztens</h3><p>Végigvezet egy szabályos regenerációs körön, és BMW-nél élőben olvassa a koromterhelést — csak a felismert dízeleknél jelenik meg, biztonságosan.</p></div>
-   <div class="fcard reveal"><div class="ic">🚗</div><h3>+2 új márka · passzív CAN</h3><p>Suzuki és SsangYong márkamodul (már 13 márka), plusz BMW passzív CAN-monitor élő adatokhoz — mind valós, hiteles adatokkal, kitalálás nélkül.</p></div>
+  <div class="stat reveal"><b class="grad" data-count="9533">0</b><span data-i18n="st1">hibakód valódi magyar leírással</span></div>
+  <div class="stat reveal"><b class="grad" data-count="13">0</b><span data-i18n="st2">márka-specifikus mélymodul</span></div>
+  <div class="stat reveal"><b class="grad" data-count="96">0</b><span data-i18n="st3">cellafeszültség egy EV-akkuból</span></div>
+  <div class="stat reveal"><b class="grad" data-count="3">0</b><span data-i18n="st4">nyelv: magyar · angol · német</span></div>
+ </div>
+</div>
+
+<section id="funkciok">
+ <div class="wrap">
+  <div class="kicker reveal" data-i18n="f_kick">Mit tud</div>
+  <h2 class="big reveal" data-i18n="f_h2">Minden, amit az autód<br><span class="grad">elárul</span> magáról.</h2>
+  <p class="lead reveal" style="margin-top:20px" data-i18n="f_lead">Nyolc terület, egyetlen appban — az egyszerű hibakód-olvasástól a gyári mélydiagnosztikáig. Minden adat valós; semmi kitalálva.</p>
+  <div class="cats">
+   <div class="cat reveal" data-i18n="cat1"><div class="tagn">01 · Diagnosztika</div><div class="ic">🔍</div><h3>Hibakódok &amp; élő adat</h3><p>A szerviz-szintű alapok — magyarul, érthetően.</p><ul><li>9 500+ hibakód valódi magyar leírással</li><li>Olvasás + törlés (Mode 03/04)</li><li>Élő adat + freeze frame pillanatkép</li><li>VIN + automatikus jármű-profil</li></ul></div>
+   <div class="cat reveal" data-i18n="cat2"><div class="tagn">02 · Saját AI</div><div class="ic">🛡️</div><h3>Az Őrző figyel rád</h3><p>Nem csak beolvassa a hibát — elmondja, mit jelent.</p><ul><li>Mi a hiba és mennyire súlyos</li><li>Prediktív karbantartás + Health Score</li><li>Proaktív hang-értesítés (az Őrző hangja)</li><li>Szabály-alapú → sosem talál ki veszélyes javítást</li></ul></div>
+   <div class="cat reveal" data-i18n="cat3"><div class="tagn">03 · Márka-mélység</div><div class="ic">🧠</div><h3>13 márka mélydiagnosztika</h3><p>A generikus OBD csak a felszín. Mi mélyre megyünk.</p><ul><li>Gyári hibakód-tárak + modul-szkennelés</li><li>Vezetett hibakeresés 3 nyelven</li><li>Kódolás · DID-kalibráció · aktuátor-teszt</li><li>Szerviz-reset funkciók</li></ul></div>
+   <div class="cat reveal" data-i18n="cat4"><div class="tagn">04 · Élő mérés</div><div class="ic">📈</div><h3>Mérés &amp; monitorozás</h3><p>Amit vezetés közben érdemes figyelni.</p><ul><li>Guminyomás — élő figyelés, szivárgás-észlelés</li><li>Dragméter (GPS + IMU): 0–100, ¼ mérföld, G</li><li>DPF-státusz + regeneráció-asszisztens</li><li>Túranapló + fogyasztás</li></ul><span class="free">Guminyomás — ingyen mindenkinek</span></div>
+   <div class="cat reveal" data-i18n="cat5"><div class="tagn">05 · Elektromos</div><div class="ic">🔋</div><h3>EV-akku elemzés</h3><p>Az akku az EV legdrágább alkatrésze — lásd az állapotát.</p><ul><li>SoC · SoH · pillanatnyi áram</li><li>Cellafeszültségek egyenként (96 cella)</li><li>Cella-kiegyenlítettség Δ mV, hőmérsékletek</li><li>Renault Zoe · Hyundai/Kia · Maxus…</li></ul></div>
+   <div class="cat reveal" data-i18n="cat6"><div class="tagn">06 · Szerelő</div><div class="ic">🔧</div><h3>Szerelő-kapcsolat</h3><p>Ha magadtól nem oldod meg — egy koppintás a szerelődig.</p><ul><li>Szerelő keresése a közelben</li><li>A szerelő behívhat az ügyfélkörébe</li><li>Időpont-foglalás az appból</li><li>Szerelőknek: teljes szerviz-szerep</li></ul></div>
+   <div class="cat reveal" data-i18n="cat7"><div class="tagn">07 · Fejegység</div><div class="ic">🚗</div><h3>CarPlay &amp; Android Auto</h3><p>A műszerfalon is — a telefonhoz hozzá sem kell nyúlnod.</p><ul><li>Élő műszerek + dragméter a fejegységen</li><li>Hibaolvasás és -törlés a kijelzőről</li><li>Kezdőképernyő-widgetek</li><li>Siri-parancsok</li></ul></div>
+   <div class="cat reveal" data-i18n="cat8"><div class="tagn">08 · Adapterek</div><div class="ic">🔌</div><h3>Csatlakozás bármivel</h3><p>Egy OBD-adapter kell — a többit az app intézi.</p><ul><li>OBDLink CX / MX+ (STN, ajánlott)</li><li>Vgate vLinker · valódi ELM327 v1.5</li><li>Wi-Fi ELM327 · BMW ENET/DoIP</li><li>Automatikus csatlakozás</li></ul></div>
   </div>
  </div>
 </section>
 
-<section id="screens" style="padding-bottom:80px">
+<section id="screens" style="padding-top:40px;padding-bottom:80px">
  <div class="wrap">
-  <div class="kicker reveal">Nézz bele az appba</div>
-  <h2 class="big reveal">Pontosan ezt<br><span class="grad">kapod</span>.</h2>
-  <p class="lead reveal" style="margin-top:22px">Nem marketing-renderek — az app képernyői, a valódi adatbázis szövegeivel. Görgess végig rajtuk.</p>
+  <div class="kicker reveal" data-i18n="sc_kick">Nézz bele</div>
+  <h2 class="big reveal" data-i18n="sc_h2">Nem render — az <span class="grad">igazi</span> app.</h2>
+  <p class="lead reveal" style="margin-top:20px" data-i18n="sc_lead">Az app képernyői, a valódi adatbázis szövegeivel. Görgess végig rajtuk.</p>
  </div>
  <div class="gallery reveal" style="max-width:1180px;margin:0 auto">
-
   <figure class="shot">
-   <div class="frame"><div class="disp">
+   <div class="frame"><div class="disp" data-i18n="mock1">
     <div class="apphead">Műszerfal <small>● Kapcsolódva</small></div>
     <div style="text-align:center;padding:18px 0 8px">
      <svg id="bigring" width="128" height="128"></svg>
-     <div style="font-size:26px;font-weight:900;margin-top:-84px">87</div>
-     <div style="font-size:10px;color:var(--faint);margin-bottom:44px">EGÉSZSÉG / 100</div>
+     <div style="font-size:26px;font-weight:900;margin-top:-84px;font-family:var(--mono)">87</div>
+     <div style="font-size:10px;color:var(--faint);margin-bottom:44px;font-family:var(--mono)">EGÉSZSÉG / 100</div>
     </div>
     <div class="aprow"><span class="dot" style="background:var(--ok)"></span><div class="ttl">Hűtővíz 94 °C<div class="sub2">Üzemi tartományban</div></div><span class="chev">›</span></div>
     <div class="aprow"><span class="dot" style="background:var(--ok)"></span><div class="ttl">Akkumulátor 14,3 V<div class="sub2">Töltés rendben</div></div><span class="chev">›</span></div>
     <div class="aprow"><span class="dot" style="background:var(--hot)"></span><div class="ttl">3 aktív hibakód<div class="sub2">1 kritikus · koppints a részletekért</div></div><span class="chev">›</span></div>
     <div class="aprow"><span class="dot" style="background:var(--warn)"></span><div class="ttl">Szerviz 1 200 km múlva<div class="sub2">Olajcsere esedékes</div></div><span class="chev">›</span></div>
    </div></div>
-   <figcaption>Műszerfal — minden egy pillantásra</figcaption>
+   <figcaption data-i18n="cap1">Műszerfal — egy pillantásra</figcaption>
   </figure>
-
   <figure class="shot">
-   <div class="frame"><div class="disp">
+   <div class="frame"><div class="disp" data-i18n="mock2">
     <div class="apphead">Hibakódok <small style="color:var(--hot);border-color:rgba(251,74,62,.35)">3 aktív</small></div>
     <div class="aprow"><span class="dot" style="background:var(--hot)"></span><div class="ttl">P0238<div class="sub2">Turbófeltöltő töltőnyomás-érzékelő „A" áramkör — magas jel</div></div><span class="chev">›</span></div>
     <div class="aprow"><span class="dot" style="background:var(--warn)"></span><div class="ttl">P0420<div class="sub2">Katalizátorrendszer hatásfok a küszöb alatt (1. blokk)</div></div><span class="chev">›</span></div>
     <div class="aprow"><span class="dot" style="background:var(--warn)"></span><div class="ttl">P0171<div class="sub2">Rendszer túl sovány (1. blokk)</div></div><span class="chev">›</span></div>
     <div class="aprow"><span class="dot" style="background:#2a3140"></span><div class="ttl" style="color:var(--dim)">P0301 <span style="font-weight:400">· korábbi</span><div class="sub2">Henger 1 — gyújtáskimaradás észlelve</div></div><span class="chev">›</span></div>
     <div class="apbtns">
-     <div class="apbtn" style="background:rgba(49,214,255,.1);color:var(--acc);border:1px solid rgba(49,214,255,.3)">↻ Újraolvasás</div>
+     <div class="apbtn" style="background:rgba(51,211,255,.1);color:var(--acc);border:1px solid rgba(51,211,255,.3)">↻ Újraolvasás</div>
      <div class="apbtn" style="background:rgba(251,74,62,.1);color:var(--hot);border:1px solid rgba(251,74,62,.3)">Törlés</div>
     </div>
    </div></div>
-   <figcaption>Hibakódok — magyarul, érthetően</figcaption>
+   <figcaption data-i18n="cap2">Hibakódok — magyarul</figcaption>
   </figure>
-
   <figure class="shot">
-   <div class="frame"><div class="disp">
-    <div class="apphead">Vezetett javítás <small style="color:var(--acc);border-color:rgba(49,214,255,.3)">P0238</small></div>
+   <div class="frame"><div class="disp" data-i18n="mock3">
+    <div class="apphead">Vezetett javítás <small style="color:var(--acc);border-color:rgba(51,211,255,.3)">P0238</small></div>
     <div style="padding:12px 13px 4px;font-size:11px;color:var(--dim);line-height:1.5">Turbónyomás-érzékelő — magas jel. Kezdd a legolcsóbb valószínű okkal:</div>
     <div class="step"><span class="stepno">1</span><div><b>ELLENŐRZÉS · 0 Ft</b>Nézd meg az érzékelő csatlakozóját: korrózió, lazulás, sérült vezeték.</div></div>
     <div class="step"><span class="stepno">2</span><div><b>ELLENŐRZÉS · 0 Ft</b>Vizsgáld át a nyomásérzékelő gumicsövét — repedés, olajosodás, leesés.</div></div>
     <div class="step"><span class="stepno">3</span><div><b>ALKATRÉSZ · ~15 000 Ft</b>Ha a jel továbbra is magas: cseréld a MAP/boost érzékelőt.</div></div>
     <div class="step"><span class="stepno">4</span><div><b>SZERVIZ</b>Változatlan hiba esetén turbó-aktuátor vizsgálat szükséges.</div></div>
    </div></div>
-   <figcaption>Vezetett hibaelhárítás — lépésről lépésre</figcaption>
+   <figcaption data-i18n="cap3">Vezetett hibaelhárítás</figcaption>
   </figure>
-
   <figure class="shot">
-   <div class="frame"><div class="disp">
+   <div class="frame"><div class="disp" data-i18n="mock4">
     <div class="apphead">EV-akkumulátor <small>SoH 91%</small></div>
     <div style="display:flex;gap:12px;padding:14px 13px 4px;text-align:center">
-     <div style="flex:1;background:#11141a;border:1px solid #1c2027;border-radius:14px;padding:12px 6px"><div style="font-size:22px;font-weight:900;color:var(--ok)">78%</div><div style="font-size:10px;color:var(--faint)">TÖLTÖTTSÉG</div></div>
-     <div style="flex:1;background:#11141a;border:1px solid #1c2027;border-radius:14px;padding:12px 6px"><div style="font-size:22px;font-weight:900">387 V</div><div style="font-size:10px;color:var(--faint)">PACK</div></div>
-     <div style="flex:1;background:#11141a;border:1px solid #1c2027;border-radius:14px;padding:12px 6px"><div style="font-size:22px;font-weight:900;color:var(--acc)">Δ18<span style="font-size:11px">mV</span></div><div style="font-size:10px;color:var(--faint)">CELLASZÓRÁS</div></div>
+     <div style="flex:1;background:#11141a;border:1px solid #1c2027;border-radius:14px;padding:12px 6px"><div style="font-size:22px;font-weight:900;color:var(--ok);font-family:var(--mono)">78%</div><div style="font-size:10px;color:var(--faint)">TÖLTÖTTSÉG</div></div>
+     <div style="flex:1;background:#11141a;border:1px solid #1c2027;border-radius:14px;padding:12px 6px"><div style="font-size:22px;font-weight:900;font-family:var(--mono)">387 V</div><div style="font-size:10px;color:var(--faint)">PACK</div></div>
+     <div style="flex:1;background:#11141a;border:1px solid #1c2027;border-radius:14px;padding:12px 6px"><div style="font-size:22px;font-weight:900;color:var(--acc);font-family:var(--mono)">Δ18<span style="font-size:11px">mV</span></div><div style="font-size:10px;color:var(--faint)">SZÓRÁS</div></div>
     </div>
     <div style="padding:14px 13px 2px;font-size:11px;color:var(--dim)">96 cella · mind kiegyensúlyozott</div>
     <div class="cellgrid" id="cg"></div>
-    <div style="padding:0 13px;font-size:10.5px;color:var(--faint)">min 3,921 V · átlag 3,930 V · max 3,939 V</div>
+    <div style="padding:0 13px;font-size:10.5px;color:var(--faint);font-family:var(--mono)">min 3,921 V · átlag 3,930 V · max 3,939 V</div>
    </div></div>
-   <figcaption>EV-akku — cellaszintű betekintés</figcaption>
+   <figcaption data-i18n="cap4">EV-akku — cellaszinten</figcaption>
   </figure>
-
   <figure class="shot">
-   <div class="frame"><div class="disp">
-    <div class="apphead">Mercedes-Benz <small style="color:var(--acc);border-color:rgba(49,214,255,.3)">Vito 119 CDI</small></div>
-    <div class="menurow"><span class="mic" style="background:rgba(49,214,255,.1);color:var(--acc)">📈</span>Márka-élőadatok<span class="chev" style="margin-left:auto">›</span></div>
+   <div class="frame"><div class="disp" data-i18n="mock5">
+    <div class="apphead">Mercedes-Benz <small style="color:var(--acc);border-color:rgba(51,211,255,.3)">Vito 119 CDI</small></div>
+    <div class="menurow"><span class="mic" style="background:rgba(51,211,255,.1);color:var(--acc)">📈</span>Márka-élőadatok<span class="chev" style="margin-left:auto">›</span></div>
     <div class="menurow"><span class="mic" style="background:rgba(251,74,62,.1);color:var(--hot)">⚠️</span>Hibakódok + törlés<span class="chev" style="margin-left:auto">›</span></div>
     <div class="menurow"><span class="mic" style="background:rgba(139,92,246,.12);color:#a78bfa">🧠</span>Modul-mélyszkennelés<span class="chev" style="margin-left:auto">›</span></div>
     <div class="menurow"><span class="mic" style="background:rgba(52,211,153,.1);color:var(--ok)">🎯</span>DID-kalibráció<span class="chev" style="margin-left:auto">›</span></div>
     <div class="menurow"><span class="mic" style="background:rgba(251,191,36,.1);color:var(--warn)">🧭</span>Vezetett javítás<span class="chev" style="margin-left:auto">›</span></div>
     <div style="padding:14px 13px;font-size:10.5px;color:var(--faint);line-height:1.5;margin-top:auto">A márkamodul automatikusan aktiválódik, amikor az app felismeri az autót a VIN-ből.</div>
    </div></div>
-   <figcaption>Márkamodul — itt Mercedes-mélység</figcaption>
+   <figcaption data-i18n="cap5">Márkamodul — Mercedes-mélység</figcaption>
   </figure>
-
  </div>
 </section>
 
-<section id="live" style="padding-top:60px">
+<section id="orzo" class="orzo">
  <div class="wrap split">
   <div>
-   <div class="kicker reveal">Élő diagnosztika</div>
-   <h2 class="big reveal">Látod, amit az<br>autód <span class="grad">érez</span>.</h2>
-   <p class="lead reveal" style="margin-top:22px">Fordulatszám, hűtővíz, turbónyomás, feszültség — valós időben, zónaszínekkel. Az app megtanulja, mely szenzorokat ismeri az autód, és a gyanús tendenciákra magától figyelmeztet, mielőtt a műszerfalon kigyulladna bármi.</p>
-   <div class="grid3" style="margin-top:36px">
-    <div class="fcard reveal"><div class="ic">⚠️</div><h3>Hibakódok — érthetően</h3><p>Nem csak „P0238". Cím, leírás, lehetséges okok és tünetek — magyarul, 9 500+ kódra.</p></div>
-    <div class="fcard reveal"><div class="ic">🧭</div><h3>Vezetett hibaelhárítás</h3><p>Lépésről lépésre megmutatja, mit ellenőrizz — a legolcsóbb valószínű októl a drágábbig.</p></div>
+   <div class="kicker reveal" data-i18n="o_kick">Az Őrző — a saját AI-motor</div>
+   <h2 class="big reveal" data-i18n="o_h2">Nem beolvassa.<br><span class="grad">Elmondja.</span></h2>
+   <p class="lead reveal" style="margin-top:20px" data-i18n="o_lead">A legtöbb app kiírja, hogy „P0238", és magadra hagy. Az Őrző egy helyben futó, szabály-alapú szakértői motor: rangsorolja a tüneteket, megmondja mi sürgős és mi várhat, és — a legfontosabb — <b>emberi hangon szólal meg</b>, még vezetés közben is.</p>
+   <div class="chips reveal">
+    <span class="chip" data-i18n="o_c1">Súlyosság + prioritás</span>
+    <span class="chip" data-i18n="o_c2">Prediktív karbantartás</span>
+    <span class="chip">Health Score</span>
+    <span class="chip" data-i18n="o_c4">Proaktív hang</span>
    </div>
+   <p class="lead reveal" style="margin-top:26px;font-size:14.5px" data-i18n="o_why"><b style="color:var(--ink)">Miért szabály-alapú, és nem chatbot?</b> Mert egy autónál a hibás tanács veszélyes. Az Őrző minden javaslata gyári/szakértői adatból jön — sosem hallucinál. Ez nem korlát, hanem a lényeg.</p>
   </div>
   <div class="glowbox reveal">
-   <div class="carplay">
-    <div class="cphead"><b>Hibakódok</b><span style="margin-left:auto">3 aktív</span></div>
-    <div class="cprow"><span style="color:var(--hot)">⬤</span> P0238 <span class="v">Turbónyomás-érzékelő — magas jel</span></div>
-    <div class="cprow"><span style="color:var(--warn)">⬤</span> P0420 <span class="v">Katalizátor-hatásfok a küszöb alatt</span></div>
-    <div class="cprow"><span style="color:var(--warn)">⬤</span> P0171 <span class="v">Szegény keverék (1. blokk)</span></div>
-    <div class="cprow"><span style="color:var(--acc)">↻</span> Újraolvasás <span class="v">Mode 03</span></div>
-    <div class="cprow"><span style="color:var(--hot)">🗑</span> Törlés megerősítéssel <span class="v">csak álló autónál</span></div>
-   </div>
+   <div class="scr-title" style="text-align:left;margin-bottom:14px" data-i18n="o_voicetitle">Az Őrző hangja</div>
+   <div class="voicecard"><div class="eq"><i></i><i></i><i></i><i></i><i></i></div><q data-i18n="o_q1">„A hűtővíz-hőmérséklet gyorsan emelkedik. Húzódj le biztonságos helyre, mielőtt továbbmennénk."</q></div>
+   <div class="voicecard"><div class="eq"><i></i><i></i><i></i><i></i><i></i></div><q data-i18n="o_q2">„Új hibakódot látok: gyújtáskimaradás az 1. hengeren. Nem kritikus, de érdemes megnézetni."</q></div>
+   <div class="voicecard"><div class="eq"><i></i><i></i><i></i><i></i><i></i></div><q data-i18n="o_q3">„Az akkufeszültség hidegindításkor 11,8 V — az elmúlt héten romlott a tendencia."</q></div>
+   <p style="font-size:12px;color:var(--faint);margin-top:14px;font-family:var(--mono)" data-i18n="o_foot">Magyar nyelvű, természetes hang — offline, per-lekérdezés költség nélkül.</p>
   </div>
  </div>
 </section>
 
-<section id="carplay" style="background:var(--bg2);border-block:1px solid var(--line)">
+<section id="carplay">
  <div class="wrap split">
   <div class="glowbox reveal">
    <div class="carplay">
-    <div class="cphead"><b>Teljesítmény</b><span style="margin-left:auto;letter-spacing:.12em">GYORSULÁS</span></div>
-    <div class="cprow"><svg id="cpring" width="40" height="40"></svg><b id="cpspeed" style="font-size:19px">0 km/h</b><span class="v stopper" id="cptime">⏱ 0.0 s</span></div>
+    <div class="cphead"><b data-i18n="cp_perf">Teljesítmény</b><span style="margin-left:auto;letter-spacing:.12em" data-i18n="cp_accel">GYORSULÁS</span></div>
+    <div class="cprow"><svg id="cpring" width="40" height="40"></svg><b id="cpspeed" style="font-size:19px;font-family:var(--mono)">0 km/h</b><span class="v stopper" id="cptime">0.0 s</span></div>
     <div class="cprow" id="s50" style="opacity:.25"><span class="flag">⚑</span> 0–50 <span class="v" id="t50">—</span></div>
     <div class="cprow" id="s100" style="opacity:.25"><span class="flag">⚑</span> 0–100 <span class="v" id="t100">—</span></div>
-    <div class="cprow"><span style="color:var(--acc)">◎</span> Csúcs G-erő <span class="v" id="cpg">0.00 g</span></div>
+    <div class="cprow"><span style="color:var(--acc)">◎</span> <span data-i18n="cp_peakg">Csúcs G-erő</span> <span class="v" id="cpg">0.00 g</span></div>
    </div>
-   <p style="font-size:12.5px;color:var(--faint);margin-top:14px;text-align:center">Élő demó — a mérés a fejegységen pontosan így fut</p>
+   <p style="font-size:12px;color:var(--faint);margin-top:14px;text-align:center;font-family:var(--mono)" data-i18n="cp_demo">Élő demó — a fejegységen pontosan így fut</p>
   </div>
   <div>
-   <div class="kicker reveal">CarPlay 2.0</div>
-   <h2 class="big reveal">Dragméter a<br><span class="grad">fejegységen</span>.</h2>
-   <p class="lead reveal" style="margin-top:22px">Élesíted a kijelzőn, megállsz, padlógáz. Élő sebességműszer, stopper és G-erő fut a fejegységen, a részidők menet közben villannak be — új egyéni csúcsnál pedig trófea-értesítés jár. A telefonhoz hozzá sem kell nyúlnod.</p>
-   <div class="badges reveal" style="margin-top:30px">
+   <div class="kicker reveal">CarPlay &amp; Android Auto</div>
+   <h2 class="big reveal" data-i18n="cp_h2">Dragméter a<br><span class="grad">fejegységen</span>.</h2>
+   <p class="lead reveal" style="margin-top:20px" data-i18n="cp_lead">Élesíted a kijelzőn, megállsz, padlógáz. Élő sebességműszer, stopper és G-erő fut a fejegységen, a részidők menet közben villannak be — új egyéni csúcsnál trófea-értesítés jár. A telefonhoz hozzá sem kell nyúlnod.</p>
+   <div class="chips reveal">
     <span class="chip">0–50 · 0–100 · 0–130 · 80–120</span>
-    <span class="chip">¼ mérföld + sebesség</span>
-    <span class="chip">Becsült lóerő</span>
-    <span class="chip">Hibatörlés a kijelzőről</span>
+    <span class="chip" data-i18n="cp_c2">¼ mérföld + sebesség</span>
+    <span class="chip" data-i18n="cp_c3">Becsült lóerő</span>
+    <span class="chip" data-i18n="cp_c4">Hibatörlés a kijelzőről</span>
    </div>
   </div>
  </div>
 </section>
 
-<section id="ev">
+<section id="ev" style="background:var(--bg2);border-block:1px solid var(--line)">
  <div class="wrap split">
   <div>
-   <div class="kicker reveal">Elektromos járművek</div>
-   <h2 class="big reveal">Az akku nem titok<br><span class="grad">többé</span>.</h2>
-   <p class="lead reveal" style="margin-top:22px">SoC, SoH, cellafeszültségek egyenként, hőmérsékletek, pillanatnyi áram. Használt EV-t vennél? Tíz perc alatt kiderül, mennyit ér valójában az akkumulátor — az autó legdrágább alkatrésze.</p>
-   <div class="badges reveal" style="margin-top:30px">
-    <span class="chip">Renault Zoe (mindkét generáció)</span>
+   <div class="kicker reveal" data-i18n="ev_kick">Elektromos járművek</div>
+   <h2 class="big reveal" data-i18n="ev_h2">Az akku nem<br>titok <span class="grad">többé</span>.</h2>
+   <p class="lead reveal" style="margin-top:20px" data-i18n="ev_lead">SoC, SoH, cellafeszültségek egyenként, hőmérsékletek, pillanatnyi áram. Használt EV-t vennél? Tíz perc alatt kiderül, mennyit ér valójában az akkumulátor — az autó legdrágább alkatrésze.</p>
+   <div class="chips reveal">
+    <span class="chip" data-i18n="ev_c1">Renault Zoe (mindkét generáció)</span>
+    <span class="chip">Hyundai / Kia</span>
     <span class="chip">Maxus / SAIC EV</span>
-    <span class="chip">Cella-kiegyenlítettség Δ mV</span>
    </div>
   </div>
   <div class="glowbox reveal">
-   <div style="display:flex;justify-content:space-between;font-size:14px;color:var(--dim);padding:0 6px 4px"><span>96 cella · élő</span><b style="color:var(--ok)">Δ 18 mV — kiegyensúlyozott</b></div>
+   <div style="display:flex;justify-content:space-between;font-size:13px;color:var(--dim);padding:0 6px 4px"><span data-i18n="ev_live">96 cella · élő</span><b style="color:var(--ok);font-family:var(--mono)">Δ 18 mV</b></div>
    <div class="cells" id="cells"></div>
-   <div class="cellmeta"><span>min 3.921 V</span><span>átlag 3.930 V</span><span>max 3.939 V</span></div>
+   <div class="cellmeta"><span>min 3.921 V</span><span data-i18n="ev_avg">átlag 3.930 V</span><span>max 3.939 V</span></div>
   </div>
  </div>
 </section>
 
-<section id="brands" style="background:var(--bg2);border-block:1px solid var(--line)">
+<section id="brands">
  <div class="wrap">
-  <div class="kicker reveal">Márka-mélydiagnosztika</div>
-  <h2 class="big reveal">A generikus OBD csak<br>a felszín. Mi <span class="grad">mélyre</span> megyünk.</h2>
-  <p class="lead reveal" style="margin-top:22px">Márkánként külön modul: gyári hibakód-adatbázisok, modul-szkennelés (ABS, légzsák, váltó, komfort), márka-specifikus élő adatok és vezetett hibakeresés — mostantól teljesen magyarul, angolul és németül. A BMW-khez gyári DoIP/ENET Wi-Fi kapcsolat is.</p>
-  <div class="brands reveal">
+  <div class="kicker reveal" data-i18n="br_kick">Márka-mélydiagnosztika</div>
+  <h2 class="big reveal" data-i18n="br_h2">A generikus OBD csak a<br>felszín. Mi <span class="grad">mélyre</span> megyünk.</h2>
+  <p class="lead reveal" style="margin-top:20px" data-i18n="br_lead">Márkánként külön modul: gyári hibakód-adatbázisok, modul-szkennelés (ABS, légzsák, váltó, komfort), márka-specifikus élő adatok és vezetett hibakeresés — magyarul, angolul és németül. A BMW-khez gyári DoIP/ENET Wi-Fi is.</p>
+  <div class="brands reveal" data-i18n="br_list">
    <span class="brand">Mercedes-Benz<em>DID-mélyadat + kalibráció</em></span>
    <span class="brand">BMW<em>DoIP/ENET + passzív CAN</em></span>
-   <span class="brand">Alfa Romeo<em>K-vonal + boost-diagnózis</em></span>
+   <span class="brand">VAG<em>VW · Audi · Škoda · Seat</em></span>
    <span class="brand">Renault<em>+ Zoe EV-akku</em></span>
-   <span class="brand">Maxus<em>EV-flotta támogatás</em></span>
    <span class="brand">Opel / Vauxhall<em>9 modul + K-vonal</em></span>
    <span class="brand">Ford<em>EcoBoost · DPFE · rail</em></span>
-   <span class="brand">VAG<em>VW · Audi · Škoda · Seat</em></span>
-   <span class="brand">Toyota / Lexus<em>hibrid-barát · D-4D</em></span>
    <span class="brand">Honda<em>VTEC · élő adat + hibatár</em></span>
+   <span class="brand">Toyota / Lexus<em>hibrid-barát · D-4D</em></span>
    <span class="brand">Hyundai / Kia<em>CRDi · KSDS · EV-akku</em></span>
+   <span class="brand">Maxus<em>EV-flotta támogatás</em></span>
    <span class="brand">Suzuki<em>K-series · DDiS dízel</em></span>
    <span class="brand">SsangYong<em>Tivoli · e-XDi dízel</em></span>
+   <span class="brand">Alfa Romeo<em>K-vonal + boost-diagnózis</em></span>
   </div>
-  <div class="grid3">
-   <div class="fcard reveal"><div class="ic">🤖</div><h3>AI állapotjelentés</h3><p>Helyben futó elemzés rangsorolja a tüneteket, és megmondja, mi sürgős és mi várhat.</p></div>
-   <div class="fcard reveal"><div class="ic">🛞</div><h3>Futómű-figyelő</h3><p>A telefon szenzoraival méri az úthibákat, a lengéscsillapítást és a kanyarstabilitást.</p></div>
-   <div class="fcard reveal"><div class="ic">🗺️</div><h3>Túranapló + fogyasztás</h3><p>Automatikus útrögzítés, átlagfogyasztás és szerviz-emlékeztetők egy helyen.</p></div>
+ </div>
+</section>
+
+<section id="szerelo" style="background:var(--bg2);border-block:1px solid var(--line)">
+ <div class="wrap">
+  <div class="kicker reveal" data-i18n="m_kick">Szerelő-kapcsolat</div>
+  <h2 class="big reveal" data-i18n="m_h2">Ha nem magad<br>oldod meg — <span class="grad">foglalj</span>.</h2>
+  <p class="lead reveal" style="margin-top:20px" data-i18n="m_lead">Az Őrző megmondja, mi a baj és mennyire sürgős. Ha szakemberre van szükség, egy koppintással eljutsz a szerelődig — az appon belül, valós telefonszám nélkül.</p>
+  <div class="mflow reveal">
+   <div class="mstep" data-i18n="m_s1"><div class="no">01</div><h3>Az app jelez</h3><p>Hibát detektál, felméri a súlyosságot, és felajánlja: foglaljunk időpontot?</p></div>
+   <div class="mstep" data-i18n="m_s2"><div class="no">02</div><h3>Megtalálod a szerelőt</h3><p>Keresel egy szervizt, vagy a szerelőd behív a saját ügyfélkörébe.</p></div>
+   <div class="mstep" data-i18n="m_s3"><div class="no">03</div><h3>Foglalsz</h3><p>Az app elküldi a foglalást a hibákkal együtt — hangosan vagy automatikusan.</p></div>
+   <div class="mstep" data-i18n="m_s4"><div class="no">04</div><h3>A szerelő jóváhagyja</h3><p>Ő megerősíti vagy áthelyezi az időpontot, te pedig push-értesítést kapsz.</p></div>
   </div>
+  <p class="lead reveal" style="margin-top:26px;font-size:14.5px" data-i18n="m_pro">Szerelő vagy? A <b style="color:var(--ink)">Pro</b> szinttel saját szervizként jelensz meg, kezeled az ügyfélköröd, és jóváhagyod a foglalásokat — a mély márkadiagnosztika mellett.</p>
  </div>
 </section>
 
 <section id="adapters">
  <div class="wrap">
-  <div class="kicker reveal">Kompatibilis adapterek</div>
-  <h2 class="big reveal">Ezekkel az adapterekkel<br><span class="grad">biztosan</span> működik.</h2>
-  <p class="lead reveal" style="margin-top:22px">Az OBD-adapter a „kábel" az autó és a telefon között. iPhone-hoz <b>Bluetooth LE</b> (vagy Wi-Fi) adapter kell — a klasszikus Bluetooth-adaptereket az iOS nem támogatja. Íme a bevált eszközök:</p>
+  <div class="kicker reveal" data-i18n="a_kick">Kompatibilis adapterek</div>
+  <h2 class="big reveal" data-i18n="a_h2">Ezekkel <span class="grad">biztosan</span><br>működik.</h2>
+  <p class="lead reveal" style="margin-top:20px" data-i18n="a_lead">Az OBD-adapter a „kábel" az autó és a telefon között. iPhone-hoz <b>Bluetooth LE</b> (vagy Wi-Fi) adapter kell — a klasszikus Bluetooth-adaptereket az iOS nem támogatja; Androidon azok is mennek.</p>
   <div class="adapters reveal">
-   <div class="acard"><span class="tag tag-best">Ajánlott</span><h3>OBDLink CX</h3><p>STN-chipes Bluetooth LE adapter. A leggyorsabb és legmegbízhatóbb — a régebbi K-vonalas autókhoz és a márka-mélyszkenneléshez is. Ezen fejlesztjük az appot.</p><div class="conn">Bluetooth LE</div><a class="abuy" href="https://www.amazon.de/dp/B08NFLL3NT?tag=autoguardian-21&amp;linkId=dac58c2edecc88905017ac1f60581268" target="_blank" rel="sponsored nofollow noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h3l2.4 12.2a1.6 1.6 0 0 0 1.6 1.3h8.2a1.6 1.6 0 0 0 1.6-1.3L21 7H6"/></svg>Megnézem az Amazonon</a></div>
-   <div class="acard"><span class="tag tag-ok">Bevált</span><h3>OBDLink MX+</h3><p>Ugyanaz az STN-firmware család, univerzális mindenevő: iOS, Android és Windows. Kezeli a Ford MS-CAN és a GM SW-CAN gyári hálózatokat is — mély diagnosztika minden autóhoz.</p><div class="conn">Bluetooth LE · STN · univerzális</div><a class="abuy" href="https://www.amazon.de/dp/B07JFRFJG6?tag=autoguardian-21&amp;linkId=e9485de1a0f2a8315965beb76c8937c2" target="_blank" rel="sponsored nofollow noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h3l2.4 12.2a1.6 1.6 0 0 0 1.6 1.3h8.2a1.6 1.6 0 0 0 1.6-1.3L21 7H6"/></svg>Megnézem az Amazonon</a></div>
-   <div class="acard"><span class="tag tag-ok">Bevált</span><h3>Vgate vLinker FS / MC+</h3><p>Kedvező árú, jó minőségű BLE adapterek (sok STN-alapú). Megbízhatóan viszik az élő adatot, a hibakódokat és a márkafunkciók nagy részét.</p><div class="conn">Bluetooth LE</div><div class="abuyrow"><a class="abuy" href="https://www.amazon.de/dp/B0C4H4MV8G?tag=autoguardian-21&amp;linkId=aaf3128b8c13f1186526294f16cd8f91" target="_blank" rel="sponsored nofollow noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h3l2.4 12.2a1.6 1.6 0 0 0 1.6 1.3h8.2a1.6 1.6 0 0 0 1.6-1.3L21 7H6"/></svg>vLinker FS</a><a class="abuy" href="https://www.amazon.de/dp/B0BG4W6MLD?tag=autoguardian-21&amp;linkId=3cc4fe35338c628e071b49902d991701" target="_blank" rel="sponsored nofollow noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h3l2.4 12.2a1.6 1.6 0 0 0 1.6 1.3h8.2a1.6 1.6 0 0 0 1.6-1.3L21 7H6"/></svg>vLinker MC+</a></div></div>
-   <div class="acard"><span class="tag tag-ok">Működik</span><h3>Minőségi ELM327 v1.5 (BLE)</h3><p>Valódi v1.5-ös chipes Bluetooth LE ELM327 (pl. Veepeak, Viecar, Panlong). Szabvány OBD-II élő adat, hibakód-olvasás és -törlés, generikus diagnosztika.</p><div class="conn">Bluetooth LE</div><a class="abuy" href="https://www.amazon.de/dp/B076XVQMVS?tag=autoguardian-21&amp;linkId=c94b442ec8dd73591c5f54769722356b" target="_blank" rel="sponsored nofollow noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h3l2.4 12.2a1.6 1.6 0 0 0 1.6 1.3h8.2a1.6 1.6 0 0 0 1.6-1.3L21 7H6"/></svg>Veepeak az Amazonon</a></div>
-   <div class="acard"><span class="tag tag-ok">Működik</span><h3>Wi-Fi ELM327</h3><p>ELM327-kompatibilis Wi-Fi adapter (35000-es port). Ugyanaz a szabvány funkciókör, vezeték nélkül a telefon Wi-Fi-jén keresztül.</p><div class="conn">Wi-Fi · 35000 port</div></div>
-   <div class="acard"><span class="tag tag-bmw">BMW gyári</span><h3>BMW ENET / DoIP Wi-Fi</h3><p>Az újabb BMW-khez gyári DoIP/ENET Wi-Fi interfész: VIN, élő adat, hibakód olvasás és törlés az ISO 13400 protokollon.</p><div class="conn">Wi-Fi · DoIP (ISO 13400)</div></div>
+   <div class="acard"><span class="tag tag-best" data-i18n="a_t1">Ajánlott</span><h3>OBDLink CX</h3><p data-i18n="a_p1">STN-chipes Bluetooth LE adapter. A leggyorsabb és legmegbízhatóbb — a régebbi K-vonalas autókhoz és a márka-mélyszkenneléshez is. Ezen fejlesztjük az appot.</p><div class="conn">Bluetooth LE</div><a class="abuy" href="https://www.amazon.de/dp/B08NFLL3NT?tag=autoguardian-21&amp;linkId=dac58c2edecc88905017ac1f60581268" target="_blank" rel="sponsored nofollow noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h3l2.4 12.2a1.6 1.6 0 0 0 1.6 1.3h8.2a1.6 1.6 0 0 0 1.6-1.3L21 7H6"/></svg><span data-i18n="a_buy">Megnézem az Amazonon</span></a></div>
+   <div class="acard"><span class="tag tag-ok" data-i18n="a_t2">Bevált</span><h3>OBDLink MX+</h3><p data-i18n="a_p2">Ugyanaz az STN-firmware család, univerzális mindenevő: iOS, Android és Windows. Kezeli a Ford MS-CAN és a GM SW-CAN gyári hálózatokat is — mély diagnosztika minden autóhoz.</p><div class="conn">Bluetooth LE · STN · univerzális</div><a class="abuy" href="https://www.amazon.de/dp/B07JFRFJG6?tag=autoguardian-21&amp;linkId=e9485de1a0f2a8315965beb76c8937c2" target="_blank" rel="sponsored nofollow noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h3l2.4 12.2a1.6 1.6 0 0 0 1.6 1.3h8.2a1.6 1.6 0 0 0 1.6-1.3L21 7H6"/></svg><span data-i18n="a_buy2">Megnézem az Amazonon</span></a></div>
+   <div class="acard"><span class="tag tag-ok" data-i18n="a_t3">Bevált</span><h3>Vgate vLinker FS / MC+</h3><p data-i18n="a_p3">Kedvező árú, jó minőségű BLE adapterek (sok STN-alapú). Megbízhatóan viszik az élő adatot, a hibakódokat és a márkafunkciók nagy részét.</p><div class="conn">Bluetooth LE</div><div class="abuyrow"><a class="abuy" href="https://www.amazon.de/dp/B0C4H4MV8G?tag=autoguardian-21&amp;linkId=aaf3128b8c13f1186526294f16cd8f91" target="_blank" rel="sponsored nofollow noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h3l2.4 12.2a1.6 1.6 0 0 0 1.6 1.3h8.2a1.6 1.6 0 0 0 1.6-1.3L21 7H6"/></svg>vLinker FS</a><a class="abuy" href="https://www.amazon.de/dp/B0BG4W6MLD?tag=autoguardian-21&amp;linkId=3cc4fe35338c628e071b49902d991701" target="_blank" rel="sponsored nofollow noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h3l2.4 12.2a1.6 1.6 0 0 0 1.6 1.3h8.2a1.6 1.6 0 0 0 1.6-1.3L21 7H6"/></svg>vLinker MC+</a></div></div>
+   <div class="acard"><span class="tag tag-ok" data-i18n="a_t4">Működik</span><h3>Minőségi ELM327 v1.5 (BLE)</h3><p data-i18n="a_p4">Valódi v1.5-ös chipes Bluetooth LE ELM327 (pl. Veepeak, Viecar, Panlong). Szabvány OBD-II élő adat, hibakód-olvasás és -törlés, generikus diagnosztika.</p><div class="conn">Bluetooth LE</div><a class="abuy" href="https://www.amazon.de/dp/B076XVQMVS?tag=autoguardian-21&amp;linkId=c94b442ec8dd73591c5f54769722356b" target="_blank" rel="sponsored nofollow noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h3l2.4 12.2a1.6 1.6 0 0 0 1.6 1.3h8.2a1.6 1.6 0 0 0 1.6-1.3L21 7H6"/></svg><span data-i18n="a_buy4">Veepeak az Amazonon</span></a></div>
+   <div class="acard"><span class="tag tag-ok" data-i18n="a_t5">Működik</span><h3>Wi-Fi ELM327</h3><p data-i18n="a_p5">ELM327-kompatibilis Wi-Fi adapter (35000-es port). Ugyanaz a szabvány funkciókör, vezeték nélkül a telefon Wi-Fi-jén keresztül.</p><div class="conn">Wi-Fi · 35000 port</div></div>
+   <div class="acard"><span class="tag tag-bmw" data-i18n="a_t6">BMW gyári</span><h3>BMW ENET / DoIP Wi-Fi</h3><p data-i18n="a_p6">Az újabb BMW-khez gyári DoIP/ENET Wi-Fi interfész: VIN, élő adat, hibakód olvasás és törlés az ISO 13400 protokollon.</p><div class="conn">Wi-Fi · DoIP (ISO 13400)</div></div>
   </div>
-  <p class="lead reveal" style="margin-top:28px;font-size:14.5px">Tipp: az olcsó ELM327-klónok minősége erősen ingadozik. A valódi <b>STN-chipes</b> adapter (OBDLink / vLinker) a legbiztosabb választás — egyszer veszed meg, minden autódhoz jó.</p>
+  <p class="lead reveal" style="margin-top:26px;font-size:14px" data-i18n="a_tip">Tipp: az olcsó ELM327-klónok minősége erősen ingadozik. A valódi <b>STN-chipes</b> adapter (OBDLink / vLinker) a legbiztosabb — egyszer veszed meg, minden autódhoz jó.</p>
  </div>
 </section>
 
 <section id="pricing">
  <div class="wrap" style="text-align:center">
-  <div class="kicker reveal">Előfizetés</div>
-  <h2 class="big reveal">Egy ár. <span class="grad">Minden</span> benne.</h2>
-  <p class="lead reveal" style="margin:22px auto 0">Nincsenek szintek, nincsenek külön megvásárolható „modulok", nincs reklám. Egyetlen előfizetés — és a teljes appot kapod, minden autódra.</p>
-  <div class="price reveal">
-   <span class="beta">A zárt béta alatt ingyenes</span>
-   <div class="amount">1 990 Ft<small> / hó</small></div>
-   <div class="note">Az első hónap ingyenes · bármikor lemondható</div>
-   <div class="plist">
-    <span><b>✓</b>Élő adatok és műszerek — korlátlanul, minden autódon</span>
-    <span><b>✓</b>9 533 hibakód magyar címmel, leírással, okokkal — offline is</span>
-    <span><b>✓</b>Mind a 13 márkamodul: mélyszkennelés, gyári kódtárak, vezetett hibakeresés 3 nyelven</span>
-    <span><b>✓</b>EV-akku elemzés: SoC · SoH · 96 cella · hőmérsékletek</span>
-    <span><b>✓</b>CarPlay 2.0: műszerek, dragméter, hibaolvasás és -törlés</span>
-    <span><b>✓</b>AI állapotjelentés, futómű-figyelő, túranapló, szerviz-emlékeztetők</span>
-    <span><b>✓</b>Akár 100 járműprofil — a flottád is elfér</span>
-    <span><b>✓</b>Minden jövőbeli márka-bővítés és frissítés, felár nélkül</span>
+  <div class="kicker reveal" style="justify-content:center" data-i18n="pr_kick">Előfizetés</div>
+  <h2 class="big reveal" data-i18n="pr_h2">Négy szint.<br>Kezdd <span class="grad">ingyen</span>.</h2>
+  <p class="lead reveal" style="margin:20px auto 0" data-i18n="pr_lead">Freemiumtól a szerelői Pro-ig. A guminyomás és az alap-diagnosztika mindenkinek ingyenes; a fizetős szintek a tudást mélyítik.</p>
+  <div class="beta-banner reveal"><span class="betaflag" style="margin:0"><span class="pulse"></span><span data-i18n="pr_betatag">Béta</span></span><span class="t" data-i18n="pr_betatext"><b>A nyílt béta alatt minden szint teljesen ingyenes.</b> Az alábbi árak az éles indulásra vonatkoznak.</span></div>
+  <div class="tiers reveal">
+   <div class="tier" data-i18n="tier1">
+    <div class="nm">Freemium</div>
+    <div class="pr">Ingyen</div>
+    <div class="yr">örökké</div>
+    <div class="who">Belépő + kóstoló.</div>
+    <ul><li>Csatlakozás + műszerfal</li><li>Élő alap-adat (OBD)</li><li>Hibakód-olvasás magyarul</li><li>VIN + jármű-profil</li><li>Guminyomás — élő figyelés</li></ul>
    </div>
-   <a class="btn btn-p" href="#platforms">Kipróbálom ingyen</a>
-   <div class="pfine">Egy jobb OBD-műszer 150–400 ezer Ft. Az AutoGuardian egy hónapja: két kávé ára.</div>
+   <div class="tier pop" data-i18n="tier2">
+    <div class="rib">Belépő fizetős</div>
+    <div class="nm">Alap</div>
+    <div class="pr">1 990<small> Ft/hó</small></div>
+    <div class="yr">19 900 Ft/év · –2 hónap</div>
+    <div class="who">A hétköznapi tulajnak.</div>
+    <ul><li class="plus">Hibakód-törlés</li><li class="plus">AI: mi a hiba + súlyosság</li><li class="plus">Útnapló · dragméter · DPF</li><li class="plus">Proaktív Őrző + CarPlay</li><li class="plus">Szerelő keresése + foglalás</li></ul>
+   </div>
+   <div class="tier" data-i18n="tier3">
+    <div class="nm">Plusz</div>
+    <div class="pr">4 490<small> Ft/hó</small></div>
+    <div class="yr">44 900 Ft/év · –2 hónap</div>
+    <div class="who">A lelkes tulajnak.</div>
+    <ul><li class="plus">Több jármű (garázs)</li><li class="plus">Enhanced márka élő adat</li><li class="plus">Prediktív karbantartás</li><li>+ minden az Alapból</li></ul>
+   </div>
+   <div class="tier" data-i18n="tier4">
+    <div class="nm">Pro</div>
+    <div class="pr">49 990<small> Ft/hó</small></div>
+    <div class="yr">499 000 Ft/év · bevezető</div>
+    <div class="who">A szerelőnek.</div>
+    <ul><li class="plus">AI: hogyan javítsd</li><li class="plus">Vezetett hibakeresés (3 nyelv)</li><li class="plus">Márka-mélydiag · kódolás · aktuátor</li><li class="plus">EV-akku mély elemzés</li><li class="plus">Szerelő-szerep + ügyfélkezelés</li></ul>
+   </div>
   </div>
+  <p class="vipnote reveal" data-i18n="pr_vip"><b>VIP:</b> a belső tesztelők és a hűséges bétázók admin által kapják a teljes Pro-hozzáférést — ingyen. · Egy jobb OBD-műszer 150–400 ezer Ft; az AutoGuardian Alap egy hónapja két kávé ára.</p>
  </div>
 </section>
 
 <section id="faq" style="background:var(--bg2);border-block:1px solid var(--line)">
  <div class="wrap" style="max-width:860px">
-  <div class="kicker reveal">Gyakori kérdések</div>
-  <h2 class="big reveal" style="margin-bottom:44px">Mielőtt <span class="grad">belevágsz</span>.</h2>
+  <div class="kicker reveal" data-i18n="q_kick">Gyakori kérdések</div>
+  <h2 class="big reveal" style="margin-bottom:40px" data-i18n="q_h2">Mielőtt <span class="grad">belevágsz</span>.</h2>
   <div class="reveal">
-   <details><summary>Kell hozzá valamilyen eszköz?</summary><p>Igen, egy OBD-adapter — ez a „kábel" az autó és a telefon között. iPhone-hoz <b>Bluetooth LE</b> (vagy Wi-Fi) adapter kell; a klasszikus Bluetooth-adaptereket az iOS nem támogatja. Az ajánlott <b>OBDLink CX</b> (~30 000 Ft) a legmegbízhatóbb, de a jó minőségű vLinker és valódi v1.5-ös ELM327 BLE adapterek is működnek (~10–15 000 Ft). A teljes listát fentebb, az <a href="#adapters" style="color:var(--acc)">Adapterek</a> szekcióban látod.</p></details>
-   <details><summary>Működni fog az én autómmal?</summary><p>Minden 2001 utáni benzines és 2004 utáni dízel autó kötelezően támogatja az OBD-II-t — ezekkel megy az élő adat és a hibakód-olvasás. A 13 márkamodul (Mercedes, BMW, Alfa Romeo, Renault, Opel, Ford, VAG, Toyota/Lexus, Honda, Hyundai/Kia, Maxus, Suzuki, SsangYong) ennél sokkal mélyebbre lát. Az app automatikusan felismeri az autót, és a hozzá tartozó modult kínálja fel.</p></details>
-   <details><summary>Tényleg törli a hibakódokat?</summary><p>Igen — a szabványos Mode 04 paranccsal, ugyanazzal, amit a szervizműszerek használnak. Törlés előtt az app megerősítést kér, és figyelmeztet, ha a hiba valószínűleg visszatér, mert az oka nem szűnt meg.</p></details>
-   <details><summary>Mi történik az autóm adataival?</summary><p>Semmi — minden elemzés a telefonodon fut. Az autód adatai nem kerülnek felhőbe, nem látja őket senki, és nem adjuk el senkinek. Nincs regisztráció, nincs fiók.</p></details>
-   <details><summary>Használt autó vásárlásához jó?</summary><p>Kifejezetten. Hibakód-olvasás (a törölt hibák nyomai is árulkodók), élő adatok próbaút közben, EV-nél pedig cellaszintű akku-elemzés — az akku az elektromos autó legdrágább alkatrésze, az állapota ezres nagyságrendű eurókat ér.</p></details>
-   <details><summary>Miért havidíjas?</summary><p>Mert az app hétről hétre fejlődik: új márkatudás, új szenzortérképek, új vezetett javítások — valódi autókon, valódi mérésekkel felderítve. Az előfizetés ezt a folyamatos fejlesztést finanszírozza. Ha nem éri meg, egy koppintással lemondod.</p></details>
+   <details data-i18n="q1"><summary>Mennyibe kerül? Tényleg ingyen a béta?</summary><p>A nyílt béta alatt <b>minden funkció teljesen ingyenes</b> — korlátozás nélkül. Az éles indulás után egy freemium szint marad ingyenes (csatlakozás, műszerfal, hibakód-olvasás, guminyomás), a mélyebb funkciók pedig előfizetéssel érhetők el: Alap 1 990 Ft/hó, Plusz 4 490 Ft/hó, Pro (szerelői) 49 990 Ft/hó — éves fizetésnél két hónap ajándék.</p></details>
+   <details data-i18n="q2"><summary>Kell hozzá valamilyen eszköz?</summary><p>Igen, egy OBD-adapter — ez a „kábel" az autó és a telefon között. iPhone-hoz <b>Bluetooth LE</b> (vagy Wi-Fi) adapter kell; a klasszikus Bluetooth-adaptereket az iOS nem támogatja (Androidon azok is mennek). Az ajánlott <b>OBDLink CX</b> a legmegbízhatóbb, de a jó minőségű vLinker és valódi v1.5-ös ELM327 BLE adapterek is működnek. A teljes listát fentebb, az <a href="#adapters">Adapterek</a> szekcióban látod.</p></details>
+   <details data-i18n="q3"><summary>Működni fog az én autómmal?</summary><p>Minden 2001 utáni benzines és 2004 utáni dízel autó kötelezően támogatja az OBD-II-t — ezekkel megy az élő adat és a hibakód-olvasás. A 13 márkamodul ennél sokkal mélyebbre lát. Az app automatikusan felismeri az autót a VIN-ből, és a hozzá tartozó modult kínálja fel.</p></details>
+   <details data-i18n="q4"><summary>Tényleg törli a hibakódokat?</summary><p>Igen — a szabványos Mode 04 paranccsal, ugyanazzal, amit a szervizműszerek használnak. Törlés előtt az app megerősítést kér, és figyelmeztet, ha a hiba valószínűleg visszatér, mert az oka nem szűnt meg. (A törlés az Alap szinttől érhető el.)</p></details>
+   <details data-i18n="q5"><summary>Mi történik az autóm adataival?</summary><p>Semmi — minden elemzés a telefonodon fut. Az autód adatai nem kerülnek felhőbe, nem látja őket senki, és nem adjuk el senkinek. A sima használathoz nincs regisztráció, nincs fiók — az autó a személyazonosságod, mint a Waze-ban.</p></details>
+   <details data-i18n="q6"><summary>Mi ez a „szerelő-kapcsolat"?</summary><p>Ha a hibát nem magad javítod, az appon belül kereshetsz szerelőt, vagy a szerelőd behívhat az ügyfélkörébe, és időpontot foglalhatsz nála — valós telefonszám nélkül, netes hívással vagy automatikusan. A szerelő jóváhagyja az időpontot, te értesítést kapsz. Ez már az Alap szinttől jár.</p></details>
+   <details data-i18n="q7"><summary>Miért nem egy chatbot az AI?</summary><p>Mert egy autónál a hibás tanács veszélyes. Az Őrző szabály-alapú szakértői motor: minden javaslata gyári/szakértői adatból származik, sosem hallucinál. Ez nem gyengeség, hanem pont az eladható érték — megbízhatsz benne.</p></details>
   </div>
  </div>
 </section>
 
 <section id="specs">
  <div class="wrap">
-  <div class="kicker reveal">Műszaki adatok</div>
-  <h2 class="big reveal">Számokban.</h2>
-  <table class="spec reveal">
-   <tr><td>Kompatibilitás</td><td><b>iPhone (iOS 17+)</b> · Apple CarPlay (vezetékes és vezeték nélküli) · <b>Android hamarosan</b></td></tr>
+  <div class="kicker reveal" data-i18n="sp_kick">Műszaki adatok</div>
+  <h2 class="big reveal" data-i18n="sp_h2">Számokban.</h2>
+  <table class="spec reveal" data-i18n="sp_table">
+   <tr><td>Platform</td><td><b>iPhone (iOS 17+)</b> · Apple CarPlay · <b>Android</b> (Android Auto) — béta</td></tr>
    <tr><td>Adapter</td><td><b>OBDLink CX / MX+</b> (ajánlott, STN) · Vgate vLinker · valódi ELM327 v1.5 <b>Bluetooth LE</b> · Wi-Fi ELM327 · BMW ENET/DoIP</td></tr>
    <tr><td>Protokollok</td><td>CAN (11/29 bit, 250/500 kbit) · ISO 9141-2 · KWP2000 (K-vonal, fast-init) · <b>DoIP / ENET</b> (BMW) · UDS</td></tr>
-   <tr><td>Hibakód-adatbázis</td><td><b>9 533 generikus kód</b> valódi magyar címmel, leírással, okokkal — offline</td></tr>
+   <tr><td>Hibakód-tár</td><td><b>9 533 generikus kód</b> valódi magyar címmel, leírással, okokkal — offline</td></tr>
    <tr><td>Márkamodulok</td><td>13 márka: gyári kódtárak, modul-szkennelés, márka-élőadatok, <b>vezetett hibakeresés 3 nyelven</b></td></tr>
-   <tr><td>EV-támogatás</td><td>SoC · SoH · cellafeszültségek · akkuhő · áram (Renault Zoe, Maxus)</td></tr>
-   <tr><td>VIN-felismerés</td><td>Automatikus, teljesen <b>offline</b> — rétegzett dekódolás, európai modellekre hangolva</td></tr>
+   <tr><td>EV-támogatás</td><td>SoC · SoH · cellafeszültségek · akkuhő · áram (Renault Zoe, Hyundai/Kia, Maxus)</td></tr>
+   <tr><td>Mérés</td><td>Guminyomás élő figyelés · dragméter (GPS+IMU) · DPF-státusz + regeneráció</td></tr>
    <tr><td>Nyelvek</td><td>Magyar · angol · német</td></tr>
-   <tr><td>Ár</td><td><b>1 990 Ft / hó</b> · első hónap ingyenes · a zárt béta alatt ingyenes</td></tr>
+   <tr><td>Ár</td><td>Freemium · Alap <b>1 990</b> · Plusz <b>4 490</b> · Pro <b>49 990</b> Ft/hó — a béta alatt minden ingyen</td></tr>
    <tr><td>Adatkezelés</td><td>Minden elemzés <b>a telefonon fut</b> — az autód adatai nem kerülnek felhőbe</td></tr>
   </table>
  </div>
@@ -519,150 +618,315 @@ footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
 
 <section id="platforms" class="androidband">
  <div class="wrap">
-  <div class="kicker reveal" style="text-align:center">Platformok</div>
-  <h2 class="big reveal">iPhone-on már itt.<br><span class="grad">Androidra hamarosan.</span></h2>
-  <p class="lead reveal" style="margin:22px auto 0;text-align:center">Az Android-app <b>zárt bétán elérhető</b> — a teljes tudással: mind a 13 márkamodul, a vezetett hibakeresés három nyelven, az EV-akku elemzés és a DPF-asszisztens. Androidon a klasszikus Bluetooth-adapterek is működnek. Csatlakozz, és próbáld ki elsőként!</p>
+  <div class="kicker reveal" style="justify-content:center" data-i18n="pl_kick">Csatlakozz a bétához</div>
+  <h2 class="big reveal" data-i18n="pl_h2">iPhone-on és Androidon<br><span class="grad">— most ingyen</span>.</h2>
+  <p class="lead reveal" style="margin:20px auto 0;text-align:center" data-i18n="pl_lead">A teljes tudással: mind a 13 márkamodul, vezetett hibakeresés három nyelven, EV-akku elemzés és DPF-asszisztens. Csatlakozz, és próbáld ki elsőként.</p>
   <div class="storerow reveal">
-   <a class="storebadge" href="https://testflight.apple.com/join/gAEQFrxH" aria-label="Letöltés a TestFlighton – App Store">
+   <a class="storebadge" href="https://testflight.apple.com/join/gAEQFrxH" aria-label="TestFlight — App Store">
     <svg width="27" height="27" viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M17.05 12.04c-.03-2.6 2.12-3.85 2.22-3.9-1.21-1.77-3.09-2.01-3.76-2.04-1.6-.16-3.12.94-3.93.94-.81 0-2.06-.92-3.39-.9-1.74.03-3.35 1.01-4.25 2.57-1.81 3.14-.46 7.78 1.3 10.32.86 1.24 1.88 2.63 3.22 2.58 1.29-.05 1.78-.83 3.34-.83 1.56 0 2 .83 3.37.81 1.39-.03 2.27-1.26 3.12-2.51.98-1.44 1.39-2.83 1.41-2.9-.03-.01-2.7-1.04-2.73-4.12M14.6 4.5c.71-.86 1.19-2.06 1.06-3.25-1.02.04-2.26.68-2.99 1.54-.66.76-1.23 1.98-1.08 3.15 1.14.09 2.3-.58 3.01-1.44"/></svg>
-    <span class="lbl"><small>Letöltés — TestFlight</small><b>App Store</b></span>
+    <span class="lbl"><small data-i18n="pl_dl">Letöltés — TestFlight</small><b>App Store</b></span>
    </a>
-   <a class="storebadge" href="https://play.google.com/apps/testing/com.hpetike.autoguardian" aria-label="Android béta – Google Play opt-in">
+   <a class="storebadge" href="https://play.google.com/apps/testing/com.hpetike.autoguardian" aria-label="Google Play — Android beta">
     <svg width="25" height="25" viewBox="0 0 24 24" aria-hidden="true">
      <path fill="#00d2ff" d="M3.06 2.4a1.6 1.6 0 0 0-.37 1.1v17c0 .46.13.83.37 1.09l.09.08L12.7 12v-.2L3.15 2.32z"/>
      <path fill="#00f076" d="m16.05 8.53-3.35 3.35v.24l3.35 3.35.08-.05 3.97-2.26c1.13-.64 1.13-1.69 0-2.33l-3.97-2.25z"/>
      <path fill="#ffce00" d="m16.13 15.42-3.43-3.42-9.64 9.63c.37.4.99.45 1.69.05z"/>
      <path fill="#ff3d44" d="M16.13 8.58 4.75 2.12c-.7-.4-1.32-.35-1.69.05l9.64 9.63z"/>
     </svg>
-    <span class="lbl"><small>Android béta —</small><b>Google Play</b></span>
+    <span class="lbl"><small data-i18n="pl_abeta">Android béta —</small><b>Google Play</b></span>
    </a>
   </div>
-  <!-- ANDROID ZÁRT BÉTA — 2 lépés: 1) belépés a Google tesztelő-csoportba,
-       2) a Play OPT-IN linkkel tesztelővé válás + telepítés.
-       A HELYES opt-in URL: https://play.google.com/apps/testing/com.hpetike.autoguardian
-       (a /store/apps/details oldal zárt tesztnél NEM telepíthető). -->
   <div class="reveal" style="margin-top:26px;text-align:center">
-   <a class="btn btn-p" href="https://groups.google.com/g/autoguardian-testers/about">1. Csatlakozz a béta-csoporthoz</a>
-   <a class="btn btn-g" href="https://play.google.com/apps/testing/com.hpetike.autoguardian" style="margin-left:10px">2. Lépj be a tesztbe és telepíts</a>
-   <div style="font-size:12.5px;color:var(--faint);margin-top:14px">Előbb lépj be a béta-csoportba <b>azzal a Google-fiókkal, amit a telefonodon használsz</b>. Utána nyisd meg a 2. linket, koppints a „Tesztelő leszek" gombra, és telepítsd az appot a Play Store-ból. Percek alatt kész — és az elsők között próbálhatod ki Androidon.</div>
+   <a class="btn btn-p" href="https://groups.google.com/g/autoguardian-testers/about" data-i18n="pl_b1">1. Csatlakozz a béta-csoporthoz</a>
+   <a class="btn btn-g" href="https://play.google.com/apps/testing/com.hpetike.autoguardian" style="margin-left:10px" data-i18n="pl_b2">2. Lépj be és telepíts</a>
+   <div style="font-size:12px;color:var(--faint);margin-top:14px;max-width:640px;margin-left:auto;margin-right:auto" data-i18n="pl_note">Android: előbb lépj be a béta-csoportba <b>azzal a Google-fiókkal, amit a telefonodon használsz</b>, majd nyisd meg a 2. linket, koppints a „Tesztelő leszek" gombra, és telepítsd a Play Store-ból.</div>
   </div>
  </div>
 </section>
 
 <section class="final" id="get">
  <div class="wrap">
-  <div class="kicker reveal">Zárt béta</div>
-  <h2 class="big reveal">Ne a szerviz mondja meg,<br>mi baja az autódnak.<br><span class="grad">Tudd te előbb.</span></h2>
-  <p class="lead reveal" style="margin:26px auto 40px">A béta most ingyenes. Koppints a gombra, telepítsd a TestFlightot, és egy perc múlva már az autódat olvasod. Az app hétről hétre új márkatudással fejlődik.</p>
+  <div class="kicker reveal" style="justify-content:center" data-i18n="fin_kick">Nyílt béta · ingyen</div>
+  <h2 class="big reveal" data-i18n="fin_h2">Ne a szerviz mondja meg,<br>mi baja az autódnak.<br><span class="grad">Tudd te előbb.</span></h2>
+  <p class="lead reveal" style="margin:24px auto 38px" data-i18n="fin_lead">A béta most ingyenes. Koppints a gombra, telepítsd az appot, és egy perc múlva már az autódat olvasod. Hétről hétre új márkatudással fejlődik.</p>
   <div class="reveal">
-   <a class="btn btn-p" href="https://testflight.apple.com/join/gAEQFrxH">Letöltöm a bétát — ingyen</a>
+   <a class="btn btn-p" href="https://testflight.apple.com/join/gAEQFrxH" data-i18n="fin_cta">Letöltöm a bétát — ingyen</a>
   </div>
  </div>
 </section>
 
 <footer>
  <div class="wrap">
-  <span>© 2026 AutoGuardian AI — Minden jog fenntartva</span>
+  <span data-i18n="foot_c">© 2026 AutoGuardian AI — Minden jog fenntartva</span>
   <span style="display:flex;gap:18px">
-   <a href="privacy.html" style="color:var(--dim)">Adatkezelési tájékoztató</a>
-   <a href="support.html" style="color:var(--dim)">Támogatás</a>
+   <a href="privacy.html" data-i18n="foot_priv">Adatkezelési tájékoztató</a>
+   <a href="support.html" data-i18n="foot_sup">Támogatás</a>
   </span>
-  <span>Az app diagnosztikai segédeszköz; a beavatkozásokat bízd szakemberre.</span>
-  <span style="color:var(--faint);font-size:12px;line-height:1.5">Amazon Partnerként az oldalon elhelyezett ajánlói linkeken keresztül történő minősített vásárlások után jutalékot kapunk. Ez a vásárló számára semmilyen plusz költséggel nem jár. <span style="opacity:.8">As an Amazon Associate we earn from qualifying purchases.</span></span>
+  <span data-i18n="foot_disc">Az app diagnosztikai segédeszköz; a beavatkozásokat bízd szakemberre.</span>
+  <span style="color:var(--faint);font-size:11.5px;line-height:1.5;max-width:520px" data-i18n="foot_amz">Amazon Partnerként az oldalon elhelyezett ajánlói linkeken keresztül történő minősített vásárlások után jutalékot kapunk. Ez a vásárló számára semmilyen plusz költséggel nem jár. <span style="opacity:.8">As an Amazon Associate we earn from qualifying purchases.</span></span>
  </div>
 </footer>
 
 <script>
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.18});
+/* ---------- i18n ---------- */
+const GLAB={hu:["RPM","Sebesség","Hűtővíz","Feszültség"],en:["RPM","Speed","Coolant","Voltage"],de:["Drehzahl","Tempo","Kühlmittel","Spannung"]};
+const GUNIT=["rpm","km/h","°C","V"];
+const T={
+ en:{
+  nav_feat:"Features",nav_orzo:"The Guardian",nav_brands:"Brands",nav_mech:"Mechanic",nav_adapt:"Adapters",nav_price:"Pricing",nav_cta:"Beta — free",
+  hero_wm:"<b>AutoGuardian AI</b><br>OBD diagnostics · iOS &amp; Android",
+  hero_beta:"Open beta — everything free right now",
+  hero_h1:"Your car's<br><span class='grad'>Guardian</span><br>in your pocket.",
+  hero_sub:"Connect to your car and see everything the workshop sees — live data, fault codes explained in plain language, brand-level deep diagnostics, and an on-device AI that never invents a dangerous fix.",
+  hero_cta1:"Try it free",hero_cta2:"What can it do?",
+  ro1:"fault codes explained",ro2:"brands deep-diag",ro3:"languages · hu/en/de",ro4:"adapter types",
+  ph_live:"Live data",ph_health:"Vehicle health",
+  bs_tag:"Beta",bs_text:"<b>AutoGuardian AI is currently in open beta — every feature is free for the duration of the beta.</b> Use it without limits, report bugs, and help shape it. No sign-up needed.",
+  st1:"fault codes with real descriptions",st2:"brand-specific deep modules",st3:"cell voltages from one EV battery",st4:"languages: Hungarian · English · German",
+  f_kick:"What it does",f_h2:"Everything your car<br><span class='grad'>reveals</span> about itself.",f_lead:"Eight areas, one app — from simple fault-code reading to factory-level deep diagnostics. All data is real; nothing invented.",
+  cat1:"<div class='tagn'>01 · Diagnostics</div><div class='ic'>🔍</div><h3>Fault codes &amp; live data</h3><p>The workshop-grade basics — in plain language.</p><ul><li>9,500+ fault codes with real descriptions</li><li>Read + clear (Mode 03/04)</li><li>Live data + freeze-frame snapshot</li><li>VIN + automatic vehicle profile</li></ul>",
+  cat2:"<div class='tagn'>02 · On-device AI</div><div class='ic'>🛡️</div><h3>The Guardian watches over you</h3><p>It doesn't just read the fault — it tells you what it means.</p><ul><li>What the fault is and how serious</li><li>Predictive maintenance + Health Score</li><li>Proactive voice alerts (the Guardian's voice)</li><li>Rule-based → never invents a dangerous fix</li></ul>",
+  cat3:"<div class='tagn'>03 · Brand depth</div><div class='ic'>🧠</div><h3>13 brands, deep diagnostics</h3><p>Generic OBD is only the surface. We go deep.</p><ul><li>Factory fault-code libraries + module scan</li><li>Guided troubleshooting in 3 languages</li><li>Coding · DID calibration · actuator test</li><li>Service-reset functions</li></ul>",
+  cat4:"<div class='tagn'>04 · Live metering</div><div class='ic'>📈</div><h3>Metering &amp; monitoring</h3><p>The things worth watching while you drive.</p><ul><li>Tyre pressure — live watch, leak detection</li><li>Drag meter (GPS + IMU): 0–100, ¼ mile, G</li><li>DPF status + regeneration assistant</li><li>Trip log + consumption</li></ul><span class='free'>Tyre pressure — free for everyone</span>",
+  cat5:"<div class='tagn'>05 · Electric</div><div class='ic'>🔋</div><h3>EV battery analysis</h3><p>The battery is an EV's costliest part — see its condition.</p><ul><li>SoC · SoH · instantaneous current</li><li>Cell voltages individually (96 cells)</li><li>Cell balance Δ mV, temperatures</li><li>Renault Zoe · Hyundai/Kia · Maxus…</li></ul>",
+  cat6:"<div class='tagn'>06 · Mechanic</div><div class='ic'>🔧</div><h3>Mechanic link</h3><p>If you can't fix it yourself — one tap to your mechanic.</p><ul><li>Find a mechanic nearby</li><li>Your mechanic can add you to their client list</li><li>Book an appointment from the app</li><li>For mechanics: the full workshop role</li></ul>",
+  cat7:"<div class='tagn'>07 · Head unit</div><div class='ic'>🚗</div><h3>CarPlay &amp; Android Auto</h3><p>On the dashboard too — you never touch the phone.</p><ul><li>Live gauges + drag meter on the head unit</li><li>Read and clear codes from the screen</li><li>Home-screen widgets</li><li>Siri shortcuts</li></ul>",
+  cat8:"<div class='tagn'>08 · Adapters</div><div class='ic'>🔌</div><h3>Connect with anything</h3><p>All you need is an OBD adapter — the app handles the rest.</p><ul><li>OBDLink CX / MX+ (STN, recommended)</li><li>Vgate vLinker · genuine ELM327 v1.5</li><li>Wi-Fi ELM327 · BMW ENET/DoIP</li><li>Automatic connection</li></ul>",
+  sc_kick:"Take a look",sc_h2:"Not a render — the <span class='grad'>real</span> app.",sc_lead:"The app's screens, with the real database's text. Scroll through them.",
+  cap1:"Dashboard — at a glance",cap2:"Fault codes — in plain language",cap3:"Guided troubleshooting",cap4:"EV battery — cell level",cap5:"Brand module — Mercedes depth",
+  mock1:"<div class='apphead'>Dashboard <small>● Connected</small></div><div style='text-align:center;padding:18px 0 8px'><svg id='bigring' width='128' height='128'></svg><div style='font-size:26px;font-weight:900;margin-top:-84px;font-family:var(--mono)'>87</div><div style='font-size:10px;color:var(--faint);margin-bottom:44px;font-family:var(--mono)'>HEALTH / 100</div></div><div class='aprow'><span class='dot' style='background:var(--ok)'></span><div class='ttl'>Coolant 94 °C<div class='sub2'>Within operating range</div></div><span class='chev'>›</span></div><div class='aprow'><span class='dot' style='background:var(--ok)'></span><div class='ttl'>Battery 14.3 V<div class='sub2'>Charging OK</div></div><span class='chev'>›</span></div><div class='aprow'><span class='dot' style='background:var(--hot)'></span><div class='ttl'>3 active fault codes<div class='sub2'>1 critical · tap for details</div></div><span class='chev'>›</span></div><div class='aprow'><span class='dot' style='background:var(--warn)'></span><div class='ttl'>Service in 1,200 km<div class='sub2'>Oil change due</div></div><span class='chev'>›</span></div>",
+  mock2:"<div class='apphead'>Fault codes <small style='color:var(--hot);border-color:rgba(251,74,62,.35)'>3 active</small></div><div class='aprow'><span class='dot' style='background:var(--hot)'></span><div class='ttl'>P0238<div class='sub2'>Turbocharger boost sensor \"A\" circuit — high input</div></div><span class='chev'>›</span></div><div class='aprow'><span class='dot' style='background:var(--warn)'></span><div class='ttl'>P0420<div class='sub2'>Catalyst system efficiency below threshold (bank 1)</div></div><span class='chev'>›</span></div><div class='aprow'><span class='dot' style='background:var(--warn)'></span><div class='ttl'>P0171<div class='sub2'>System too lean (bank 1)</div></div><span class='chev'>›</span></div><div class='aprow'><span class='dot' style='background:#2a3140'></span><div class='ttl' style='color:var(--dim)'>P0301 <span style='font-weight:400'>· past</span><div class='sub2'>Cylinder 1 — misfire detected</div></div><span class='chev'>›</span></div><div class='apbtns'><div class='apbtn' style='background:rgba(51,211,255,.1);color:var(--acc);border:1px solid rgba(51,211,255,.3)'>↻ Re-read</div><div class='apbtn' style='background:rgba(251,74,62,.1);color:var(--hot);border:1px solid rgba(251,74,62,.3)'>Clear</div></div>",
+  mock3:"<div class='apphead'>Guided repair <small style='color:var(--acc);border-color:rgba(51,211,255,.3)'>P0238</small></div><div style='padding:12px 13px 4px;font-size:11px;color:var(--dim);line-height:1.5'>Boost pressure sensor — high signal. Start with the cheapest likely cause:</div><div class='step'><span class='stepno'>1</span><div><b>CHECK · €0</b>Inspect the sensor connector: corrosion, looseness, damaged wire.</div></div><div class='step'><span class='stepno'>2</span><div><b>CHECK · €0</b>Examine the pressure sensor hose — cracks, oiling, detachment.</div></div><div class='step'><span class='stepno'>3</span><div><b>PART · ~€40</b>If the signal is still high: replace the MAP/boost sensor.</div></div><div class='step'><span class='stepno'>4</span><div><b>WORKSHOP</b>If unchanged, a turbo-actuator inspection is needed.</div></div>",
+  mock4:"<div class='apphead'>EV battery <small>SoH 91%</small></div><div style='display:flex;gap:12px;padding:14px 13px 4px;text-align:center'><div style='flex:1;background:#11141a;border:1px solid #1c2027;border-radius:14px;padding:12px 6px'><div style='font-size:22px;font-weight:900;color:var(--ok);font-family:var(--mono)'>78%</div><div style='font-size:10px;color:var(--faint)'>CHARGE</div></div><div style='flex:1;background:#11141a;border:1px solid #1c2027;border-radius:14px;padding:12px 6px'><div style='font-size:22px;font-weight:900;font-family:var(--mono)'>387 V</div><div style='font-size:10px;color:var(--faint)'>PACK</div></div><div style='flex:1;background:#11141a;border:1px solid #1c2027;border-radius:14px;padding:12px 6px'><div style='font-size:22px;font-weight:900;color:var(--acc);font-family:var(--mono)'>Δ18<span style='font-size:11px'>mV</span></div><div style='font-size:10px;color:var(--faint)'>SPREAD</div></div></div><div style='padding:14px 13px 2px;font-size:11px;color:var(--dim)'>96 cells · all balanced</div><div class='cellgrid' id='cg'></div><div style='padding:0 13px;font-size:10.5px;color:var(--faint);font-family:var(--mono)'>min 3.921 V · avg 3.930 V · max 3.939 V</div>",
+  mock5:"<div class='apphead'>Mercedes-Benz <small style='color:var(--acc);border-color:rgba(51,211,255,.3)'>Vito 119 CDI</small></div><div class='menurow'><span class='mic' style='background:rgba(51,211,255,.1);color:var(--acc)'>📈</span>Brand live data<span class='chev' style='margin-left:auto'>›</span></div><div class='menurow'><span class='mic' style='background:rgba(251,74,62,.1);color:var(--hot)'>⚠️</span>Fault codes + clear<span class='chev' style='margin-left:auto'>›</span></div><div class='menurow'><span class='mic' style='background:rgba(139,92,246,.12);color:#a78bfa'>🧠</span>Module deep scan<span class='chev' style='margin-left:auto'>›</span></div><div class='menurow'><span class='mic' style='background:rgba(52,211,153,.1);color:var(--ok)'>🎯</span>DID calibration<span class='chev' style='margin-left:auto'>›</span></div><div class='menurow'><span class='mic' style='background:rgba(251,191,36,.1);color:var(--warn)'>🧭</span>Guided repair<span class='chev' style='margin-left:auto'>›</span></div><div style='padding:14px 13px;font-size:10.5px;color:var(--faint);line-height:1.5;margin-top:auto'>The brand module activates automatically when the app recognises the car from the VIN.</div>",
+  o_kick:"The Guardian — our own AI engine",o_h2:"It doesn't read it out.<br><span class='grad'>It tells you.</span>",
+  o_lead:"Most apps print \"P0238\" and leave you on your own. The Guardian is an on-device, rule-based expert engine: it ranks the symptoms, tells you what's urgent and what can wait, and — most importantly — <b>speaks in a human voice</b>, even while you drive.",
+  o_c1:"Severity + priority",o_c2:"Predictive maintenance",o_c4:"Proactive voice",
+  o_why:"<b style='color:var(--ink)'>Why rule-based, not a chatbot?</b> Because with a car, a wrong tip is dangerous. Every Guardian suggestion comes from factory/expert data — it never hallucinates. That's not a limit; it's the whole point.",
+  o_voicetitle:"The Guardian's voice",
+  o_q1:"\"Coolant temperature is rising fast. Pull over somewhere safe before we go on.\"",
+  o_q2:"\"I see a new fault code: a misfire on cylinder 1. Not critical, but worth checking.\"",
+  o_q3:"\"Battery voltage on cold start is 11.8 V — the trend has worsened over the past week.\"",
+  o_foot:"Natural voice — offline, with no per-query cost.",
+  cp_perf:"Performance",cp_accel:"ACCELERATION",cp_peakg:"Peak G-force",cp_demo:"Live demo — this is exactly how it runs on the head unit",
+  cp_h2:"Drag meter on the<br><span class='grad'>head unit</span>.",
+  cp_lead:"Arm it on the screen, stop, floor it. A live speedometer, stopwatch and G-force run on the head unit, split times flash up as you go — and a new personal best triggers a trophy alert. You never touch the phone.",
+  cp_c2:"¼ mile + speed",cp_c3:"Estimated horsepower",cp_c4:"Clear codes from the screen",
+  ev_kick:"Electric vehicles",ev_h2:"The battery is no<br>secret <span class='grad'>anymore</span>.",
+  ev_lead:"SoC, SoH, individual cell voltages, temperatures, instantaneous current. Buying a used EV? In ten minutes you'll know what the battery — the car's most expensive part — is really worth.",
+  ev_c1:"Renault Zoe (both generations)",ev_live:"96 cells · live",ev_avg:"avg 3.930 V",
+  br_kick:"Brand deep diagnostics",br_h2:"Generic OBD is only the<br>surface. We go <span class='grad'>deep</span>.",
+  br_lead:"A separate module per brand: factory fault-code databases, module scanning (ABS, airbag, transmission, comfort), brand-specific live data and guided troubleshooting — in Hungarian, English and German. For BMWs, factory DoIP/ENET Wi-Fi too.",
+  br_list:"<span class='brand'>Mercedes-Benz<em>DID deep data + calibration</em></span><span class='brand'>BMW<em>DoIP/ENET + passive CAN</em></span><span class='brand'>VAG<em>VW · Audi · Škoda · Seat</em></span><span class='brand'>Renault<em>+ Zoe EV battery</em></span><span class='brand'>Opel / Vauxhall<em>9 modules + K-line</em></span><span class='brand'>Ford<em>EcoBoost · DPFE · rail</em></span><span class='brand'>Honda<em>VTEC · live data + code DB</em></span><span class='brand'>Toyota / Lexus<em>hybrid-friendly · D-4D</em></span><span class='brand'>Hyundai / Kia<em>CRDi · KSDS · EV battery</em></span><span class='brand'>Maxus<em>EV fleet support</em></span><span class='brand'>Suzuki<em>K-series · DDiS diesel</em></span><span class='brand'>SsangYong<em>Tivoli · e-XDi diesel</em></span><span class='brand'>Alfa Romeo<em>K-line + boost diagnosis</em></span>",
+  m_kick:"Mechanic link",m_h2:"If you won't fix it<br>yourself — <span class='grad'>book it</span>.",
+  m_lead:"The Guardian tells you what's wrong and how urgent. If you need a pro, one tap gets you to your mechanic — inside the app, with no real phone number.",
+  m_s1:"<div class='no'>01</div><h3>The app flags it</h3><p>It detects a fault, gauges the severity, and offers: shall we book an appointment?</p>",
+  m_s2:"<div class='no'>02</div><h3>You find the mechanic</h3><p>Search for a workshop, or your mechanic adds you to their own client list.</p>",
+  m_s3:"<div class='no'>03</div><h3>You book</h3><p>The app sends the booking together with the faults — by voice or automatically.</p>",
+  m_s4:"<div class='no'>04</div><h3>The mechanic approves</h3><p>They confirm or reschedule, and you get a push notification.</p>",
+  m_pro:"Are you a mechanic? With the <b style='color:var(--ink)'>Pro</b> tier you appear as your own workshop, manage your client list, and approve bookings — alongside the deep brand diagnostics.",
+  a_kick:"Compatible adapters",a_h2:"It's <span class='grad'>guaranteed</span> to<br>work with these.",
+  a_lead:"The OBD adapter is the \"cable\" between the car and the phone. For iPhone you need a <b>Bluetooth LE</b> (or Wi-Fi) adapter — iOS doesn't support classic Bluetooth adapters; on Android those work too.",
+  a_t1:"Recommended",a_p1:"STN-chip Bluetooth LE adapter. The fastest and most reliable — great for older K-line cars and brand deep-scanning alike. This is what we develop the app on.",a_buy:"View on Amazon",
+  a_t2:"Proven",a_p2:"Same STN firmware family, a universal all-rounder: iOS, Android and Windows. It even handles Ford MS-CAN and GM SW-CAN factory networks — deep diagnostics for any car.",a_buy2:"View on Amazon",
+  a_t3:"Proven",a_p3:"Affordable, good-quality BLE adapters (many STN-based). They reliably carry live data, fault codes and most brand functions.",
+  a_t4:"Works",a_p4:"A genuine v1.5-chip Bluetooth LE ELM327 (e.g. Veepeak, Viecar, Panlong). Standard OBD-II live data, fault-code read and clear, generic diagnostics.",a_buy4:"Veepeak on Amazon",
+  a_t5:"Works",a_p5:"An ELM327-compatible Wi-Fi adapter (port 35000). The same standard feature set, wirelessly over the phone's Wi-Fi.",
+  a_t6:"BMW factory",a_p6:"A factory DoIP/ENET Wi-Fi interface for newer BMWs: VIN, live data, fault-code read and clear over the ISO 13400 protocol.",
+  a_tip:"Tip: the quality of cheap ELM327 clones varies wildly. A genuine <b>STN-chip</b> adapter (OBDLink / vLinker) is the safest bet — buy it once, good for every car you own.",
+  pr_kick:"Subscription",pr_h2:"Four tiers.<br>Start <span class='grad'>free</span>.",
+  pr_lead:"From Freemium to the mechanic's Pro. Tyre pressure and basic diagnostics are free for everyone; the paid tiers deepen the knowledge.",
+  pr_betatag:"Beta",pr_betatext:"<b>During the open beta every tier is completely free.</b> The prices below apply at launch.",
+  tier1:"<div class='nm'>Freemium</div><div class='pr'>Free</div><div class='yr'>forever</div><div class='who'>Entry + taster.</div><ul><li>Connect + dashboard</li><li>Live basic data (OBD)</li><li>Fault-code reading</li><li>VIN + vehicle profile</li><li>Tyre pressure — live watch</li></ul>",
+  tier2:"<div class='rib'>Entry paid</div><div class='nm'>Basic</div><div class='pr'>1,990<small> HUF/mo</small></div><div class='yr'>19,900 HUF/yr · –2 months</div><div class='who'>For the everyday owner.</div><ul><li class='plus'>Fault-code clearing</li><li class='plus'>AI: what's wrong + severity</li><li class='plus'>Trip log · drag meter · DPF</li><li class='plus'>Proactive Guardian + CarPlay</li><li class='plus'>Find a mechanic + booking</li></ul>",
+  tier3:"<div class='nm'>Plus</div><div class='pr'>4,490<small> HUF/mo</small></div><div class='yr'>44,900 HUF/yr · –2 months</div><div class='who'>For the keen owner.</div><ul><li class='plus'>Multiple vehicles (garage)</li><li class='plus'>Enhanced brand live data</li><li class='plus'>Predictive maintenance</li><li>+ everything in Basic</li></ul>",
+  tier4:"<div class='nm'>Pro</div><div class='pr'>49,990<small> HUF/mo</small></div><div class='yr'>499,000 HUF/yr · intro</div><div class='who'>For the mechanic.</div><ul><li class='plus'>AI: how to fix it</li><li class='plus'>Guided troubleshooting (3 languages)</li><li class='plus'>Brand deep-diag · coding · actuator</li><li class='plus'>EV battery deep analysis</li><li class='plus'>Workshop role + client management</li></ul>",
+  pr_vip:"<b>VIP:</b> internal testers and loyal beta users get full Pro access — free — granted by an admin. · A decent OBD tool costs €400–1,000; a month of AutoGuardian Basic is the price of two coffees.",
+  q_kick:"Frequently asked",q_h2:"Before you <span class='grad'>dive in</span>.",
+  q1:"<summary>How much does it cost? Is the beta really free?</summary><p>During the open beta <b>every feature is completely free</b> — no limits. After launch a freemium tier stays free (connect, dashboard, fault-code reading, tyre pressure), and the deeper features are available by subscription: Basic 1,990 HUF/mo, Plus 4,490 HUF/mo, Pro (mechanic) 49,990 HUF/mo — with two months free on annual billing.</p>",
+  q2:"<summary>Do I need any device?</summary><p>Yes, an OBD adapter — the \"cable\" between the car and the phone. For iPhone you need a <b>Bluetooth LE</b> (or Wi-Fi) adapter; iOS doesn't support classic Bluetooth adapters (on Android those work too). The recommended <b>OBDLink CX</b> is the most reliable, but good-quality vLinker and genuine v1.5 ELM327 BLE adapters also work. See the full list above in the <a href='#adapters'>Adapters</a> section.</p>",
+  q3:"<summary>Will it work with my car?</summary><p>Every petrol car after 2001 and diesel after 2004 must support OBD-II — those give you live data and fault-code reading. The 13 brand modules see far deeper. The app recognises the car from its VIN and offers the matching module.</p>",
+  q4:"<summary>Does it really clear fault codes?</summary><p>Yes — with the standard Mode 04 command, the same one workshop tools use. Before clearing, the app asks for confirmation and warns you if the fault is likely to return because its cause hasn't been fixed. (Clearing is available from the Basic tier.)</p>",
+  q5:"<summary>What happens to my car's data?</summary><p>Nothing — all analysis runs on your phone. Your car's data never goes to the cloud, no one sees it, and we don't sell it to anyone. Ordinary use needs no registration and no account — your car is your identity, like in Waze.</p>",
+  q6:"<summary>What is this \"mechanic link\"?</summary><p>If you don't fix the fault yourself, you can search for a mechanic in the app, or your mechanic can add you to their client list, and you can book an appointment — with no real phone number, via an internet call or automatically. The mechanic approves the time and you get a notification. This is included from the Basic tier.</p>",
+  q7:"<summary>Why isn't the AI a chatbot?</summary><p>Because with a car, a wrong tip is dangerous. The Guardian is a rule-based expert engine: every suggestion comes from factory/expert data, it never hallucinates. That's not a weakness — it's exactly the value you can rely on.</p>",
+  sp_kick:"Technical details",sp_h2:"By the numbers.",
+  sp_table:"<tr><td>Platform</td><td><b>iPhone (iOS 17+)</b> · Apple CarPlay · <b>Android</b> (Android Auto) — beta</td></tr><tr><td>Adapter</td><td><b>OBDLink CX / MX+</b> (recommended, STN) · Vgate vLinker · genuine ELM327 v1.5 <b>Bluetooth LE</b> · Wi-Fi ELM327 · BMW ENET/DoIP</td></tr><tr><td>Protocols</td><td>CAN (11/29 bit, 250/500 kbit) · ISO 9141-2 · KWP2000 (K-line, fast-init) · <b>DoIP / ENET</b> (BMW) · UDS</td></tr><tr><td>Fault-code DB</td><td><b>9,533 generic codes</b> with real titles, descriptions and causes — offline</td></tr><tr><td>Brand modules</td><td>13 brands: factory code libraries, module scanning, brand live data, <b>guided troubleshooting in 3 languages</b></td></tr><tr><td>EV support</td><td>SoC · SoH · cell voltages · battery temp · current (Renault Zoe, Hyundai/Kia, Maxus)</td></tr><tr><td>Metering</td><td>Tyre-pressure live watch · drag meter (GPS+IMU) · DPF status + regeneration</td></tr><tr><td>Languages</td><td>Hungarian · English · German</td></tr><tr><td>Price</td><td>Freemium · Basic <b>1,990</b> · Plus <b>4,490</b> · Pro <b>49,990</b> HUF/mo — free during the beta</td></tr><tr><td>Data handling</td><td>All analysis <b>runs on the phone</b> — your car's data never goes to the cloud</td></tr>",
+  pl_kick:"Join the beta",pl_h2:"On iPhone and Android<br><span class='grad'>— free right now</span>.",
+  pl_lead:"With the full toolset: all 13 brand modules, guided troubleshooting in three languages, EV battery analysis and the DPF assistant. Join and be among the first to try it.",
+  pl_dl:"Download — TestFlight",pl_abeta:"Android beta —",
+  pl_b1:"1. Join the tester group",pl_b2:"2. Opt in and install",
+  pl_note:"Android: first join the tester group <b>with the Google account you use on your phone</b>, then open link 2, tap \"Become a tester\" and install from the Play Store.",
+  fin_kick:"Open beta · free",fin_h2:"Don't let the workshop tell you<br>what's wrong with your car.<br><span class='grad'>Know it first.</span>",
+  fin_lead:"The beta is free right now. Tap the button, install the app, and a minute later you're reading your own car. It grows with new brand knowledge week after week.",
+  fin_cta:"Get the beta — free",
+  foot_c:"© 2026 AutoGuardian AI — All rights reserved",foot_priv:"Privacy policy",foot_sup:"Support",
+  foot_disc:"The app is a diagnostic aid; leave repairs to a professional.",
+  foot_amz:"As an Amazon Associate we earn from qualifying purchases made through the referral links on this site. This costs the buyer nothing extra."
+ },
+ de:{
+  nav_feat:"Funktionen",nav_orzo:"Der Wächter",nav_brands:"Marken",nav_mech:"Werkstatt",nav_adapt:"Adapter",nav_price:"Preise",nav_cta:"Beta — gratis",
+  hero_wm:"<b>AutoGuardian AI</b><br>OBD-Diagnose · iOS &amp; Android",
+  hero_beta:"Offene Beta — jetzt alles kostenlos",
+  hero_h1:"Der <span class='grad'>Wächter</span><br>deines Autos<br>in der Tasche.",
+  hero_sub:"Verbinde dich mit deinem Auto und sieh alles, was die Werkstatt sieht — Live-Daten, verständlich erklärte Fehlercodes, markentiefe Diagnose und eine KI auf dem Gerät, die nie einen gefährlichen Rat erfindet.",
+  hero_cta1:"Gratis testen",hero_cta2:"Was kann sie?",
+  ro1:"Fehlercodes erklärt",ro2:"Marken Tiefendiag.",ro3:"Sprachen · hu/en/de",ro4:"Adaptertypen",
+  ph_live:"Live-Daten",ph_health:"Fahrzeugzustand",
+  bs_tag:"Beta",bs_text:"<b>AutoGuardian AI ist derzeit in offener Beta — während der Beta ist jede Funktion kostenlos.</b> Nutze sie ohne Limits, melde Fehler und hilf mit, sie zu gestalten. Ohne Anmeldung.",
+  st1:"Fehlercodes mit echten Beschreibungen",st2:"markenspezifische Tiefenmodule",st3:"Zellspannungen aus einer EV-Batterie",st4:"Sprachen: Ungarisch · Englisch · Deutsch",
+  f_kick:"Was sie kann",f_h2:"Alles, was dein Auto<br>über sich <span class='grad'>verrät</span>.",f_lead:"Acht Bereiche, eine App — vom einfachen Fehlercode-Lesen bis zur werkseitigen Tiefendiagnose. Alle Daten sind echt; nichts erfunden.",
+  cat1:"<div class='tagn'>01 · Diagnose</div><div class='ic'>🔍</div><h3>Fehlercodes &amp; Live-Daten</h3><p>Die Werkstatt-Grundlagen — verständlich.</p><ul><li>9.500+ Fehlercodes mit echten Beschreibungen</li><li>Lesen + Löschen (Mode 03/04)</li><li>Live-Daten + Freeze-Frame</li><li>VIN + automatisches Fahrzeugprofil</li></ul>",
+  cat2:"<div class='tagn'>02 · Eigene KI</div><div class='ic'>🛡️</div><h3>Der Wächter passt auf dich auf</h3><p>Er liest den Fehler nicht nur — er sagt, was er bedeutet.</p><ul><li>Was der Fehler ist und wie ernst</li><li>Vorausschauende Wartung + Health Score</li><li>Proaktive Sprachhinweise (die Stimme des Wächters)</li><li>Regelbasiert → erfindet nie eine gefährliche Reparatur</li></ul>",
+  cat3:"<div class='tagn'>03 · Markentiefe</div><div class='ic'>🧠</div><h3>13 Marken, Tiefendiagnose</h3><p>Generisches OBD ist nur die Oberfläche. Wir gehen tief.</p><ul><li>Werks-Fehlercodebibliotheken + Modulscan</li><li>Geführte Fehlersuche in 3 Sprachen</li><li>Codierung · DID-Kalibrierung · Stellglied-Test</li><li>Service-Reset-Funktionen</li></ul>",
+  cat4:"<div class='tagn'>04 · Live-Messung</div><div class='ic'>📈</div><h3>Messen &amp; Überwachen</h3><p>Was sich während der Fahrt zu beobachten lohnt.</p><ul><li>Reifendruck — Live-Überwachung, Leckerkennung</li><li>Dragmeter (GPS + IMU): 0–100, ¼ Meile, G</li><li>DPF-Status + Regenerationsassistent</li><li>Fahrtenbuch + Verbrauch</li></ul><span class='free'>Reifendruck — für alle gratis</span>",
+  cat5:"<div class='tagn'>05 · Elektro</div><div class='ic'>🔋</div><h3>EV-Batterieanalyse</h3><p>Die Batterie ist das teuerste Teil eines EV — sieh ihren Zustand.</p><ul><li>SoC · SoH · Momentanstrom</li><li>Zellspannungen einzeln (96 Zellen)</li><li>Zellbalance Δ mV, Temperaturen</li><li>Renault Zoe · Hyundai/Kia · Maxus…</li></ul>",
+  cat6:"<div class='tagn'>06 · Werkstatt</div><div class='ic'>🔧</div><h3>Werkstatt-Verbindung</h3><p>Wenn du es nicht selbst löst — ein Tipp zu deiner Werkstatt.</p><ul><li>Werkstatt in der Nähe finden</li><li>Deine Werkstatt kann dich in ihren Kundenkreis aufnehmen</li><li>Termin aus der App buchen</li><li>Für Werkstätten: die volle Werkstatt-Rolle</li></ul>",
+  cat7:"<div class='tagn'>07 · Head-Unit</div><div class='ic'>🚗</div><h3>CarPlay &amp; Android Auto</h3><p>Auch am Armaturenbrett — das Telefon bleibt unberührt.</p><ul><li>Live-Anzeigen + Dragmeter auf der Head-Unit</li><li>Codes vom Bildschirm lesen und löschen</li><li>Homescreen-Widgets</li><li>Siri-Kurzbefehle</li></ul>",
+  cat8:"<div class='tagn'>08 · Adapter</div><div class='ic'>🔌</div><h3>Verbindung mit allem</h3><p>Du brauchst nur einen OBD-Adapter — den Rest übernimmt die App.</p><ul><li>OBDLink CX / MX+ (STN, empfohlen)</li><li>Vgate vLinker · echter ELM327 v1.5</li><li>Wi-Fi ELM327 · BMW ENET/DoIP</li><li>Automatische Verbindung</li></ul>",
+  sc_kick:"Schau rein",sc_h2:"Kein Render — die <span class='grad'>echte</span> App.",sc_lead:"Die Bildschirme der App, mit den Texten der echten Datenbank. Wisch dich durch.",
+  cap1:"Armaturenbrett — auf einen Blick",cap2:"Fehlercodes — verständlich",cap3:"Geführte Fehlersuche",cap4:"EV-Batterie — auf Zellebene",cap5:"Markenmodul — Mercedes-Tiefe",
+  mock1:"<div class='apphead'>Armaturenbrett <small>● Verbunden</small></div><div style='text-align:center;padding:18px 0 8px'><svg id='bigring' width='128' height='128'></svg><div style='font-size:26px;font-weight:900;margin-top:-84px;font-family:var(--mono)'>87</div><div style='font-size:10px;color:var(--faint);margin-bottom:44px;font-family:var(--mono)'>ZUSTAND / 100</div></div><div class='aprow'><span class='dot' style='background:var(--ok)'></span><div class='ttl'>Kühlmittel 94 °C<div class='sub2'>Im Betriebsbereich</div></div><span class='chev'>›</span></div><div class='aprow'><span class='dot' style='background:var(--ok)'></span><div class='ttl'>Batterie 14,3 V<div class='sub2'>Laden in Ordnung</div></div><span class='chev'>›</span></div><div class='aprow'><span class='dot' style='background:var(--hot)'></span><div class='ttl'>3 aktive Fehlercodes<div class='sub2'>1 kritisch · für Details tippen</div></div><span class='chev'>›</span></div><div class='aprow'><span class='dot' style='background:var(--warn)'></span><div class='ttl'>Service in 1.200 km<div class='sub2'>Ölwechsel fällig</div></div><span class='chev'>›</span></div>",
+  mock2:"<div class='apphead'>Fehlercodes <small style='color:var(--hot);border-color:rgba(251,74,62,.35)'>3 aktiv</small></div><div class='aprow'><span class='dot' style='background:var(--hot)'></span><div class='ttl'>P0238<div class='sub2'>Turbolader-Ladedrucksensor \"A\" Stromkreis — hohes Signal</div></div><span class='chev'>›</span></div><div class='aprow'><span class='dot' style='background:var(--warn)'></span><div class='ttl'>P0420<div class='sub2'>Katalysator-Wirkungsgrad unter Schwelle (Bank 1)</div></div><span class='chev'>›</span></div><div class='aprow'><span class='dot' style='background:var(--warn)'></span><div class='ttl'>P0171<div class='sub2'>System zu mager (Bank 1)</div></div><span class='chev'>›</span></div><div class='aprow'><span class='dot' style='background:#2a3140'></span><div class='ttl' style='color:var(--dim)'>P0301 <span style='font-weight:400'>· früher</span><div class='sub2'>Zylinder 1 — Zündaussetzer erkannt</div></div><span class='chev'>›</span></div><div class='apbtns'><div class='apbtn' style='background:rgba(51,211,255,.1);color:var(--acc);border:1px solid rgba(51,211,255,.3)'>↻ Neu lesen</div><div class='apbtn' style='background:rgba(251,74,62,.1);color:var(--hot);border:1px solid rgba(251,74,62,.3)'>Löschen</div></div>",
+  mock3:"<div class='apphead'>Geführte Reparatur <small style='color:var(--acc);border-color:rgba(51,211,255,.3)'>P0238</small></div><div style='padding:12px 13px 4px;font-size:11px;color:var(--dim);line-height:1.5'>Ladedrucksensor — hohes Signal. Beginne mit der günstigsten wahrscheinlichen Ursache:</div><div class='step'><span class='stepno'>1</span><div><b>PRÜFEN · 0 €</b>Steckverbinder des Sensors prüfen: Korrosion, lose, beschädigtes Kabel.</div></div><div class='step'><span class='stepno'>2</span><div><b>PRÜFEN · 0 €</b>Den Schlauch des Drucksensors untersuchen — Risse, Ölspuren, gelöst.</div></div><div class='step'><span class='stepno'>3</span><div><b>TEIL · ~40 €</b>Bleibt das Signal hoch: MAP-/Ladedrucksensor tauschen.</div></div><div class='step'><span class='stepno'>4</span><div><b>WERKSTATT</b>Unverändert: Prüfung des Turbo-Stellglieds nötig.</div></div>",
+  mock4:"<div class='apphead'>EV-Batterie <small>SoH 91%</small></div><div style='display:flex;gap:12px;padding:14px 13px 4px;text-align:center'><div style='flex:1;background:#11141a;border:1px solid #1c2027;border-radius:14px;padding:12px 6px'><div style='font-size:22px;font-weight:900;color:var(--ok);font-family:var(--mono)'>78%</div><div style='font-size:10px;color:var(--faint)'>LADUNG</div></div><div style='flex:1;background:#11141a;border:1px solid #1c2027;border-radius:14px;padding:12px 6px'><div style='font-size:22px;font-weight:900;font-family:var(--mono)'>387 V</div><div style='font-size:10px;color:var(--faint)'>PACK</div></div><div style='flex:1;background:#11141a;border:1px solid #1c2027;border-radius:14px;padding:12px 6px'><div style='font-size:22px;font-weight:900;color:var(--acc);font-family:var(--mono)'>Δ18<span style='font-size:11px'>mV</span></div><div style='font-size:10px;color:var(--faint)'>STREUUNG</div></div></div><div style='padding:14px 13px 2px;font-size:11px;color:var(--dim)'>96 Zellen · alle ausgeglichen</div><div class='cellgrid' id='cg'></div><div style='padding:0 13px;font-size:10.5px;color:var(--faint);font-family:var(--mono)'>min 3,921 V · Ø 3,930 V · max 3,939 V</div>",
+  mock5:"<div class='apphead'>Mercedes-Benz <small style='color:var(--acc);border-color:rgba(51,211,255,.3)'>Vito 119 CDI</small></div><div class='menurow'><span class='mic' style='background:rgba(51,211,255,.1);color:var(--acc)'>📈</span>Marken-Live-Daten<span class='chev' style='margin-left:auto'>›</span></div><div class='menurow'><span class='mic' style='background:rgba(251,74,62,.1);color:var(--hot)'>⚠️</span>Fehlercodes + löschen<span class='chev' style='margin-left:auto'>›</span></div><div class='menurow'><span class='mic' style='background:rgba(139,92,246,.12);color:#a78bfa'>🧠</span>Modul-Tiefenscan<span class='chev' style='margin-left:auto'>›</span></div><div class='menurow'><span class='mic' style='background:rgba(52,211,153,.1);color:var(--ok)'>🎯</span>DID-Kalibrierung<span class='chev' style='margin-left:auto'>›</span></div><div class='menurow'><span class='mic' style='background:rgba(251,191,36,.1);color:var(--warn)'>🧭</span>Geführte Reparatur<span class='chev' style='margin-left:auto'>›</span></div><div style='padding:14px 13px;font-size:10.5px;color:var(--faint);line-height:1.5;margin-top:auto'>Das Markenmodul aktiviert sich automatisch, sobald die App das Auto an der VIN erkennt.</div>",
+  o_kick:"Der Wächter — unsere eigene KI-Engine",o_h2:"Er liest es nicht vor.<br><span class='grad'>Er sagt es dir.</span>",
+  o_lead:"Die meisten Apps drucken \"P0238\" und lassen dich allein. Der Wächter ist eine regelbasierte Experten-Engine auf dem Gerät: Er priorisiert die Symptome, sagt, was dringend ist und was warten kann, und — am wichtigsten — <b>spricht mit menschlicher Stimme</b>, sogar während der Fahrt.",
+  o_c1:"Schweregrad + Priorität",o_c2:"Vorausschauende Wartung",o_c4:"Proaktive Stimme",
+  o_why:"<b style='color:var(--ink)'>Warum regelbasiert und kein Chatbot?</b> Weil bei einem Auto ein falscher Rat gefährlich ist. Jeder Vorschlag des Wächters stammt aus Werks-/Expertendaten — er halluziniert nie. Das ist keine Grenze, sondern der Kern.",
+  o_voicetitle:"Die Stimme des Wächters",
+  o_q1:"\"Die Kühlmitteltemperatur steigt schnell. Fahr an einen sicheren Ort, bevor wir weitermachen.\"",
+  o_q2:"\"Ich sehe einen neuen Fehlercode: Zündaussetzer an Zylinder 1. Nicht kritisch, aber prüfenswert.\"",
+  o_q3:"\"Batteriespannung beim Kaltstart 11,8 V — der Trend hat sich in der letzten Woche verschlechtert.\"",
+  o_foot:"Natürliche Stimme — offline, ohne Kosten pro Abfrage.",
+  cp_perf:"Leistung",cp_accel:"BESCHLEUNIGUNG",cp_peakg:"Spitzen-G-Kraft",cp_demo:"Live-Demo — genau so läuft es auf der Head-Unit",
+  cp_h2:"Dragmeter auf der<br><span class='grad'>Head-Unit</span>.",
+  cp_lead:"Auf dem Bildschirm scharfstellen, anhalten, Vollgas. Live-Tacho, Stoppuhr und G-Kraft laufen auf der Head-Unit, Zwischenzeiten blitzen unterwegs auf — und eine neue Bestzeit löst eine Trophäen-Meldung aus. Das Telefon bleibt unberührt.",
+  cp_c2:"¼ Meile + Tempo",cp_c3:"Geschätzte PS",cp_c4:"Codes vom Bildschirm löschen",
+  ev_kick:"Elektrofahrzeuge",ev_h2:"Die Batterie ist kein<br>Geheimnis <span class='grad'>mehr</span>.",
+  ev_lead:"SoC, SoH, einzelne Zellspannungen, Temperaturen, Momentanstrom. Kaufst du ein gebrauchtes EV? In zehn Minuten weißt du, was die Batterie — das teuerste Teil des Autos — wirklich wert ist.",
+  ev_c1:"Renault Zoe (beide Generationen)",ev_live:"96 Zellen · live",ev_avg:"Ø 3,930 V",
+  br_kick:"Markentiefe Diagnose",br_h2:"Generisches OBD ist nur die<br>Oberfläche. Wir gehen <span class='grad'>tief</span>.",
+  br_lead:"Ein eigenes Modul pro Marke: Werks-Fehlercode-Datenbanken, Modulscan (ABS, Airbag, Getriebe, Komfort), markenspezifische Live-Daten und geführte Fehlersuche — auf Ungarisch, Englisch und Deutsch. Für BMW auch werkseitiges DoIP/ENET-WLAN.",
+  br_list:"<span class='brand'>Mercedes-Benz<em>DID-Tiefendaten + Kalibrierung</em></span><span class='brand'>BMW<em>DoIP/ENET + passives CAN</em></span><span class='brand'>VAG<em>VW · Audi · Škoda · Seat</em></span><span class='brand'>Renault<em>+ Zoe EV-Batterie</em></span><span class='brand'>Opel / Vauxhall<em>9 Module + K-Leitung</em></span><span class='brand'>Ford<em>EcoBoost · DPFE · Rail</em></span><span class='brand'>Honda<em>VTEC · Live-Daten + Code-DB</em></span><span class='brand'>Toyota / Lexus<em>hybridfreundlich · D-4D</em></span><span class='brand'>Hyundai / Kia<em>CRDi · KSDS · EV-Batterie</em></span><span class='brand'>Maxus<em>EV-Flottenunterstützung</em></span><span class='brand'>Suzuki<em>K-Serie · DDiS Diesel</em></span><span class='brand'>SsangYong<em>Tivoli · e-XDi Diesel</em></span><span class='brand'>Alfa Romeo<em>K-Leitung + Ladedruck-Diagnose</em></span>",
+  m_kick:"Werkstatt-Verbindung",m_h2:"Wenn du es nicht selbst<br>machst — <span class='grad'>buche</span>.",
+  m_lead:"Der Wächter sagt dir, was los ist und wie dringend. Brauchst du einen Profi, bringt dich ein Tipp zu deiner Werkstatt — in der App, ohne echte Telefonnummer.",
+  m_s1:"<div class='no'>01</div><h3>Die App meldet</h3><p>Sie erkennt einen Fehler, schätzt den Schweregrad und fragt: Termin buchen?</p>",
+  m_s2:"<div class='no'>02</div><h3>Du findest die Werkstatt</h3><p>Such eine Werkstatt, oder deine Werkstatt nimmt dich in ihren Kundenkreis auf.</p>",
+  m_s3:"<div class='no'>03</div><h3>Du buchst</h3><p>Die App sendet die Buchung samt Fehlern — per Sprache oder automatisch.</p>",
+  m_s4:"<div class='no'>04</div><h3>Die Werkstatt bestätigt</h3><p>Sie bestätigt oder verschiebt den Termin, und du bekommst eine Push-Nachricht.</p>",
+  m_pro:"Bist du Mechaniker? Mit der Stufe <b style='color:var(--ink)'>Pro</b> erscheinst du als eigene Werkstatt, verwaltest deinen Kundenkreis und bestätigst Buchungen — zusätzlich zur tiefen Markendiagnose.",
+  a_kick:"Kompatible Adapter",a_h2:"Damit funktioniert es<br><span class='grad'>garantiert</span>.",
+  a_lead:"Der OBD-Adapter ist das \"Kabel\" zwischen Auto und Telefon. Fürs iPhone brauchst du einen <b>Bluetooth-LE</b>- (oder WLAN-)Adapter — iOS unterstützt klassische Bluetooth-Adapter nicht; auf Android gehen auch diese.",
+  a_t1:"Empfohlen",a_p1:"Bluetooth-LE-Adapter mit STN-Chip. Der schnellste und zuverlässigste — auch für ältere K-Leitungs-Autos und das Marken-Tiefenscannen. Darauf entwickeln wir die App.",a_buy:"Bei Amazon ansehen",
+  a_t2:"Bewährt",a_p2:"Dieselbe STN-Firmware-Familie, ein universeller Allrounder: iOS, Android und Windows. Er beherrscht sogar Ford MS-CAN und GM SW-CAN Werksnetze — Tiefendiagnose für jedes Auto.",a_buy2:"Bei Amazon ansehen",
+  a_t3:"Bewährt",a_p3:"Günstige, hochwertige BLE-Adapter (viele STN-basiert). Sie übertragen zuverlässig Live-Daten, Fehlercodes und die meisten Markenfunktionen.",
+  a_t4:"Funktioniert",a_p4:"Ein echter ELM327 mit v1.5-Chip via Bluetooth LE (z. B. Veepeak, Viecar, Panlong). Standard-OBD-II-Live-Daten, Codes lesen und löschen, generische Diagnose.",a_buy4:"Veepeak bei Amazon",
+  a_t5:"Funktioniert",a_p5:"Ein ELM327-kompatibler WLAN-Adapter (Port 35000). Derselbe Standard-Funktionsumfang, drahtlos über das WLAN des Telefons.",
+  a_t6:"BMW werkseitig",a_p6:"Ein werkseitiges DoIP/ENET-WLAN-Interface für neuere BMW: VIN, Live-Daten, Codes lesen und löschen über das Protokoll ISO 13400.",
+  a_tip:"Tipp: Die Qualität billiger ELM327-Klone schwankt stark. Ein echter <b>STN-Chip</b>-Adapter (OBDLink / vLinker) ist die sicherste Wahl — einmal gekauft, für jedes Auto gut.",
+  pr_kick:"Abonnement",pr_h2:"Vier Stufen.<br>Starte <span class='grad'>gratis</span>.",
+  pr_lead:"Von Freemium bis zum Pro für Werkstätten. Reifendruck und Basisdiagnose sind für alle gratis; die Bezahlstufen vertiefen das Wissen.",
+  pr_betatag:"Beta",pr_betatext:"<b>Während der offenen Beta ist jede Stufe komplett kostenlos.</b> Die Preise unten gelten ab dem Start.",
+  tier1:"<div class='nm'>Freemium</div><div class='pr'>Gratis</div><div class='yr'>für immer</div><div class='who'>Einstieg + Kostprobe.</div><ul><li>Verbindung + Armaturenbrett</li><li>Live-Basisdaten (OBD)</li><li>Fehlercode-Lesen</li><li>VIN + Fahrzeugprofil</li><li>Reifendruck — Live-Überwachung</li></ul>",
+  tier2:"<div class='rib'>Einstieg zahlpflichtig</div><div class='nm'>Basis</div><div class='pr'>1.990<small> HUF/Mon</small></div><div class='yr'>19.900 HUF/Jahr · –2 Monate</div><div class='who'>Für den Alltagsfahrer.</div><ul><li class='plus'>Fehlercodes löschen</li><li class='plus'>KI: was ist der Fehler + Schweregrad</li><li class='plus'>Fahrtenbuch · Dragmeter · DPF</li><li class='plus'>Proaktiver Wächter + CarPlay</li><li class='plus'>Werkstatt finden + Buchung</li></ul>",
+  tier3:"<div class='nm'>Plus</div><div class='pr'>4.490<small> HUF/Mon</small></div><div class='yr'>44.900 HUF/Jahr · –2 Monate</div><div class='who'>Für den begeisterten Fahrer.</div><ul><li class='plus'>Mehrere Fahrzeuge (Garage)</li><li class='plus'>Erweiterte Marken-Live-Daten</li><li class='plus'>Vorausschauende Wartung</li><li>+ alles aus Basis</li></ul>",
+  tier4:"<div class='nm'>Pro</div><div class='pr'>49.990<small> HUF/Mon</small></div><div class='yr'>499.000 HUF/Jahr · Einführung</div><div class='who'>Für die Werkstatt.</div><ul><li class='plus'>KI: wie du es reparierst</li><li class='plus'>Geführte Fehlersuche (3 Sprachen)</li><li class='plus'>Marken-Tiefendiag · Codierung · Stellglied</li><li class='plus'>EV-Batterie-Tiefenanalyse</li><li class='plus'>Werkstatt-Rolle + Kundenverwaltung</li></ul>",
+  pr_vip:"<b>VIP:</b> Interne Tester und treue Beta-Nutzer erhalten vollen Pro-Zugang — gratis — vom Admin vergeben. · Ein gutes OBD-Gerät kostet 400–1000 €; ein Monat AutoGuardian Basis ist der Preis von zwei Kaffees.",
+  q_kick:"Häufige Fragen",q_h2:"Bevor du <span class='grad'>einsteigst</span>.",
+  q1:"<summary>Was kostet es? Ist die Beta wirklich gratis?</summary><p>Während der offenen Beta ist <b>jede Funktion komplett kostenlos</b> — ohne Limits. Nach dem Start bleibt eine Freemium-Stufe gratis (Verbindung, Armaturenbrett, Fehlercode-Lesen, Reifendruck), die tieferen Funktionen gibt es per Abo: Basis 1.990 HUF/Mon, Plus 4.490 HUF/Mon, Pro (Werkstatt) 49.990 HUF/Mon — mit zwei Gratismonaten bei Jahreszahlung.</p>",
+  q2:"<summary>Brauche ich ein Gerät?</summary><p>Ja, einen OBD-Adapter — das \"Kabel\" zwischen Auto und Telefon. Fürs iPhone brauchst du einen <b>Bluetooth-LE</b>- (oder WLAN-)Adapter; iOS unterstützt klassische Bluetooth-Adapter nicht (auf Android gehen auch diese). Der empfohlene <b>OBDLink CX</b> ist am zuverlässigsten, aber auch gute vLinker und echte v1.5-ELM327-BLE-Adapter funktionieren. Die ganze Liste oben im Abschnitt <a href='#adapters'>Adapter</a>.</p>",
+  q3:"<summary>Funktioniert es mit meinem Auto?</summary><p>Jeder Benziner nach 2001 und Diesel nach 2004 muss OBD-II unterstützen — damit gibt es Live-Daten und Fehlercode-Lesen. Die 13 Markenmodule sehen viel tiefer. Die App erkennt das Auto an der VIN und bietet das passende Modul an.</p>",
+  q4:"<summary>Löscht sie wirklich Fehlercodes?</summary><p>Ja — mit dem Standard-Befehl Mode 04, demselben, den Werkstattgeräte nutzen. Vor dem Löschen fragt die App nach Bestätigung und warnt, wenn der Fehler wahrscheinlich zurückkehrt, weil die Ursache nicht behoben ist. (Löschen ist ab der Basis-Stufe verfügbar.)</p>",
+  q5:"<summary>Was passiert mit den Daten meines Autos?</summary><p>Nichts — jede Analyse läuft auf deinem Telefon. Die Daten deines Autos gehen nie in die Cloud, niemand sieht sie, und wir verkaufen sie an niemanden. Die normale Nutzung braucht keine Registrierung und kein Konto — dein Auto ist deine Identität, wie bei Waze.</p>",
+  q6:"<summary>Was ist diese \"Werkstatt-Verbindung\"?</summary><p>Wenn du den Fehler nicht selbst behebst, kannst du in der App eine Werkstatt suchen, oder deine Werkstatt nimmt dich in ihren Kundenkreis auf, und du buchst einen Termin — ohne echte Telefonnummer, per Internetanruf oder automatisch. Die Werkstatt bestätigt den Termin, du bekommst eine Benachrichtigung. Ab der Basis-Stufe enthalten.</p>",
+  q7:"<summary>Warum ist die KI kein Chatbot?</summary><p>Weil bei einem Auto ein falscher Rat gefährlich ist. Der Wächter ist eine regelbasierte Experten-Engine: Jeder Vorschlag stammt aus Werks-/Expertendaten, er halluziniert nie. Das ist keine Schwäche, sondern genau der Wert, auf den du dich verlassen kannst.</p>",
+  sp_kick:"Technische Daten",sp_h2:"In Zahlen.",
+  sp_table:"<tr><td>Plattform</td><td><b>iPhone (iOS 17+)</b> · Apple CarPlay · <b>Android</b> (Android Auto) — Beta</td></tr><tr><td>Adapter</td><td><b>OBDLink CX / MX+</b> (empfohlen, STN) · Vgate vLinker · echter ELM327 v1.5 <b>Bluetooth LE</b> · Wi-Fi ELM327 · BMW ENET/DoIP</td></tr><tr><td>Protokolle</td><td>CAN (11/29 Bit, 250/500 kbit) · ISO 9141-2 · KWP2000 (K-Leitung, Fast-Init) · <b>DoIP / ENET</b> (BMW) · UDS</td></tr><tr><td>Fehlercode-DB</td><td><b>9.533 generische Codes</b> mit echten Titeln, Beschreibungen und Ursachen — offline</td></tr><tr><td>Markenmodule</td><td>13 Marken: Werks-Codebibliotheken, Modulscan, Marken-Live-Daten, <b>geführte Fehlersuche in 3 Sprachen</b></td></tr><tr><td>EV-Unterstützung</td><td>SoC · SoH · Zellspannungen · Batterietemp. · Strom (Renault Zoe, Hyundai/Kia, Maxus)</td></tr><tr><td>Messung</td><td>Reifendruck-Live-Überwachung · Dragmeter (GPS+IMU) · DPF-Status + Regeneration</td></tr><tr><td>Sprachen</td><td>Ungarisch · Englisch · Deutsch</td></tr><tr><td>Preis</td><td>Freemium · Basis <b>1.990</b> · Plus <b>4.490</b> · Pro <b>49.990</b> HUF/Mon — während der Beta alles gratis</td></tr><tr><td>Datenverarbeitung</td><td>Jede Analyse <b>läuft auf dem Telefon</b> — die Daten deines Autos gehen nie in die Cloud</td></tr>",
+  pl_kick:"Zur Beta beitreten",pl_h2:"Auf iPhone und Android<br><span class='grad'>— jetzt gratis</span>.",
+  pl_lead:"Mit dem vollen Werkzeugkasten: alle 13 Markenmodule, geführte Fehlersuche in drei Sprachen, EV-Batterieanalyse und DPF-Assistent. Tritt bei und teste es als Erste.",
+  pl_dl:"Herunterladen — TestFlight",pl_abeta:"Android-Beta —",
+  pl_b1:"1. Der Testergruppe beitreten",pl_b2:"2. Beitreten und installieren",
+  pl_note:"Android: Tritt zuerst der Testergruppe bei <b>mit dem Google-Konto, das du am Telefon nutzt</b>, öffne dann Link 2, tippe auf \"Tester werden\" und installiere aus dem Play Store.",
+  fin_kick:"Offene Beta · gratis",fin_h2:"Lass nicht die Werkstatt sagen,<br>was deinem Auto fehlt.<br><span class='grad'>Wisse es zuerst.</span>",
+  fin_lead:"Die Beta ist jetzt kostenlos. Tippe auf den Button, installiere die App, und eine Minute später liest du dein eigenes Auto. Sie wächst Woche für Woche mit neuem Markenwissen.",
+  fin_cta:"Beta holen — gratis",
+  foot_c:"© 2026 AutoGuardian AI — Alle Rechte vorbehalten",foot_priv:"Datenschutz",foot_sup:"Support",
+  foot_disc:"Die App ist ein Diagnosehilfsmittel; überlasse Eingriffe einem Fachmann.",
+  foot_amz:"Als Amazon-Partner verdienen wir an qualifizierten Käufen über die Empfehlungslinks auf dieser Seite. Für den Käufer entstehen dadurch keine Mehrkosten."
+ }
+};
+let HU={};
+function capHU(){document.querySelectorAll('[data-i18n]').forEach(el=>{HU[el.dataset.i18n]=el.innerHTML})}
+function setGaugeLabels(l){const a=GLAB[l]||GLAB.hu;document.querySelectorAll('#gauges .glab').forEach((el,i)=>{if(a[i])el.textContent=a[i]+' · '+GUNIT[i]})}
+function applyLang(l){const dict=l==='hu'?HU:(T[l]||HU);
+ document.querySelectorAll('[data-i18n]').forEach(el=>{const v=dict[el.dataset.i18n];if(v!=null)el.innerHTML=v});
+ document.documentElement.lang=l;document.title=(l==='en')?"AutoGuardian AI — Your car's Guardian in your pocket":(l==='de')?"AutoGuardian AI — Der Wächter deines Autos in der Tasche":"AutoGuardian AI — Az autód Őrzője a zsebedben";
+ document.querySelectorAll('#langsw button').forEach(b=>b.classList.toggle('on',b.dataset.l===l));
+ setGaugeLabels(l);if(typeof ring==='function'){ring('bigring',.87,'#34d399',128)}if(typeof fillCells==='function'){fillCells()}try{localStorage.setItem('ag_lang',l)}catch(e){}}
+function initLang(){capHU();let l='';try{l=localStorage.getItem('ag_lang')||''}catch(e){}
+ if(!l){const n=(navigator.language||'hu').slice(0,2).toLowerCase();l=(n==='de')?'de':(n==='hu')?'hu':'en'}
+ document.querySelectorAll('#langsw button').forEach(b=>b.addEventListener('click',()=>applyLang(b.dataset.l)));
+ applyLang(l)}
+
+/* ---------- reveal + animations ---------- */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
 const cv=document.getElementById('road'),cx2=cv.getContext('2d');
 let W,H,streaks=[];
 function sizeCv(){W=cv.width=cv.offsetWidth*devicePixelRatio;H=cv.height=cv.offsetHeight*devicePixelRatio}
 sizeCv();addEventListener('resize',sizeCv);
-function mkStreak(){
- const a=Math.random()*Math.PI*2;
- return{a,d:6+Math.random()*30,v:.6+Math.random()*2.4,w:.6+Math.random()*1.8,
-        c:Math.random()<.55?'49,214,255':(Math.random()<.5?'59,130,246':'139,92,246'),
-        o:.25+Math.random()*.6};
-}
-for(let i=0;i<170;i++){const s=mkStreak();s.d=Math.random()*Math.max(innerWidth,900);streaks.push(s)}
-function road(){
- cx2.clearRect(0,0,W,H);
- const vx=W*.62,vy=H*.40,maxd=Math.hypot(W,H);
- cx2.globalCompositeOperation='lighter';
- for(const s of streaks){
-  s.d*=1+.016*s.v; s.d+=.4*s.v;
-  const p=s.d/maxd;
-  if(p>1.1){Object.assign(s,mkStreak())}
-  const x1=vx+Math.cos(s.a)*s.d, y1=vy+Math.sin(s.a)*s.d*.62;
-  const tail=s.d*.16+6;
-  const x0=vx+Math.cos(s.a)*(s.d-tail), y0=vy+Math.sin(s.a)*(s.d-tail)*.62;
-  const gr=cx2.createLinearGradient(x0,y0,x1,y1);
-  gr.addColorStop(0,`rgba(${s.c},0)`);
-  gr.addColorStop(1,`rgba(${s.c},${Math.min(.9,s.o*(p*1.6+.08))})`);
-  cx2.strokeStyle=gr;cx2.lineWidth=s.w*(0.4+p*2.6)*devicePixelRatio;cx2.lineCap='round';
-  cx2.beginPath();cx2.moveTo(x0,y0);cx2.lineTo(x1,y1);cx2.stroke();
- }
- cx2.globalCompositeOperation='source-over';
- requestAnimationFrame(road);
-}
+function mkStreak(){const a=Math.random()*Math.PI*2;return{a,d:6+Math.random()*30,v:.6+Math.random()*2.4,w:.6+Math.random()*1.8,c:Math.random()<.6?'51,211,255':(Math.random()<.5?'47,128,240':'139,92,246'),o:.25+Math.random()*.6}}
+for(let i=0;i<160;i++){const s=mkStreak();s.d=Math.random()*Math.max(innerWidth,900);streaks.push(s)}
+function road(){cx2.clearRect(0,0,W,H);const vx=W*.62,vy=H*.40,maxd=Math.hypot(W,H);cx2.globalCompositeOperation='lighter';
+ for(const s of streaks){s.d*=1+.016*s.v;s.d+=.4*s.v;const p=s.d/maxd;if(p>1.1){Object.assign(s,mkStreak())}
+  const x1=vx+Math.cos(s.a)*s.d,y1=vy+Math.sin(s.a)*s.d*.62,tail=s.d*.16+6,x0=vx+Math.cos(s.a)*(s.d-tail),y0=vy+Math.sin(s.a)*(s.d-tail)*.62;
+  const gr=cx2.createLinearGradient(x0,y0,x1,y1);gr.addColorStop(0,`rgba(${s.c},0)`);gr.addColorStop(1,`rgba(${s.c},${Math.min(.9,s.o*(p*1.6+.08))})`);
+  cx2.strokeStyle=gr;cx2.lineWidth=s.w*(0.4+p*2.6)*devicePixelRatio;cx2.lineCap='round';cx2.beginPath();cx2.moveTo(x0,y0);cx2.lineTo(x1,y1);cx2.stroke()}
+ cx2.globalCompositeOperation='source-over';requestAnimationFrame(road)}
 requestAnimationFrame(road);
 
-function ring(id,frac,color,size){
-  const r=size/2-size*.1-1,cx=size/2,cy=size/2,a0=135,sw=270*Math.max(0,Math.min(1,frac));
-  const pt=a=>{a*=Math.PI/180;return(cx+r*Math.cos(a)).toFixed(1)+','+(cy+r*Math.sin(a)).toFixed(1)};
-  const arc=(s,e,c)=>`<path d="M ${pt(s)} A ${r} ${r} 0 ${e-s>180?1:0} 1 ${pt(e)}" stroke="${c}" stroke-width="${size*.13}" fill="none" stroke-linecap="round"/>`;
-  let s=arc(a0,405,'rgba(255,255,255,.10)');
-  if(sw>3)s+=arc(a0,a0+sw,color);
-  s+=`<circle cx="${cx}" cy="${cy}" r="${size*.08}" fill="${color}"/>`;
-  const el=document.getElementById(id);if(el){el.setAttribute('viewBox',`0 0 ${size} ${size}`);el.innerHTML=s}
-}
+function ring(id,frac,color,size){const r=size/2-size*.1-1,cx=size/2,cy=size/2,a0=135,sw=270*Math.max(0,Math.min(1,frac));
+ const pt=a=>{a*=Math.PI/180;return(cx+r*Math.cos(a)).toFixed(1)+','+(cy+r*Math.sin(a)).toFixed(1)};
+ const arc=(s,e,c)=>`<path d="M ${pt(s)} A ${r} ${r} 0 ${e-s>180?1:0} 1 ${pt(e)}" stroke="${c}" stroke-width="${size*.13}" fill="none" stroke-linecap="round"/>`;
+ let s=arc(a0,405,'rgba(255,255,255,.10)');if(sw>3)s+=arc(a0,a0+sw,color);s+=`<circle cx="${cx}" cy="${cy}" r="${size*.08}" fill="${color}"/>`;
+ const el=document.getElementById(id);if(el){el.setAttribute('viewBox',`0 0 ${size} ${size}`);el.innerHTML=s}}
 
-const G=[["RPM","rpm",0,6500,"#31d6ff"],["Sebesség","km/h",0,220,"#3b82f6"],["Hűtővíz","°C",40,120,"#34d399"],["Feszültség","V",10,15,"#34d399"]];
+const GC=[[0,6500,"#33d3ff"],[0,220,"#2f80f0"],[40,120,"#34d399"],[10,15,"#34d399"]];
 const gg=document.getElementById('gauges');
-G.forEach((g,i)=>{gg.insertAdjacentHTML('beforeend',
- `<div class="gcard"><svg id="g${i}" width="70" height="70"></svg><div class="gval" id="v${i}">—</div><div class="glab">${g[0]} · ${g[1]}</div></div>`)});
+GC.forEach((g,i)=>{gg.insertAdjacentHTML('beforeend',`<div class="gcard"><svg id="g${i}" width="70" height="70"></svg><div class="gval" id="v${i}">—</div><div class="glab"></div></div>`)});
 let t=0;
-setInterval(()=>{t+=.09;
- const vals=[2350+1350*Math.abs(Math.sin(t)), 74+46*Math.abs(Math.sin(t*.7)), 91+3*Math.sin(t*.3), 14.1+.25*Math.sin(t*1.3)];
- vals.forEach((v,i)=>{const[n,u,lo,hi,c]=G[i];ring('g'+i,(v-lo)/(hi-lo),c,70);
-  document.getElementById('v'+i).textContent=i===3?v.toFixed(1):Math.round(v).toLocaleString('hu-HU')});
-},120);
+setInterval(()=>{t+=.09;const vals=[2350+1350*Math.abs(Math.sin(t)),74+46*Math.abs(Math.sin(t*.7)),91+3*Math.sin(t*.3),14.1+.25*Math.sin(t*1.3)];
+ vals.forEach((v,i)=>{const[lo,hi,c]=GC[i];ring('g'+i,(v-lo)/(hi-lo),c,70);document.getElementById('v'+i).textContent=i===3?v.toFixed(1):Math.round(v).toLocaleString('hu-HU')})},120);
 setTimeout(()=>{document.getElementById('hfill').style.width='87%';document.getElementById('hs').textContent='87 / 100'},600);
 ring('bigring',.87,'#34d399',128);
 
-const counters=document.querySelectorAll('[data-count]');
 const cio=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;cio.unobserve(e.target);
  const end=+e.target.dataset.count,t0=performance.now();
- (function step(now){const p=Math.min(1,(now-t0)/1400),ease=1-Math.pow(1-p,3);
-  e.target.textContent=Math.round(end*ease).toLocaleString('hu-HU');
-  if(p<1)requestAnimationFrame(step)})(t0);}),{threshold:.6});
-counters.forEach(c=>cio.observe(c));
+ (function step(now){const p=Math.min(1,(now-t0)/1400),ease=1-Math.pow(1-p,3);e.target.textContent=Math.round(end*ease).toLocaleString('hu-HU');if(p<1)requestAnimationFrame(step)})(t0)}),{threshold:.6});
+document.querySelectorAll('[data-count]').forEach(c=>cio.observe(c));
 
-const cells=document.getElementById('cells');
-for(let i=0;i<48;i++){const h=78+Math.random()*14;cells.insertAdjacentHTML('beforeend',`<i style="height:${h.toFixed(0)}%" ${Math.random()<.04?'class="warn"':''}></i>`)}
-const cg=document.getElementById('cg');
-for(let i=0;i<96;i++){cg.insertAdjacentHTML('beforeend',`<i style="opacity:${(.6+Math.random()*.4).toFixed(2)}" ${Math.random()<.03?'class="w"':''}></i>`)}
+function fillCells(){const cells=document.getElementById('cells');if(cells&&!cells.children.length){for(let i=0;i<48;i++){const h=78+Math.random()*14;cells.insertAdjacentHTML('beforeend',`<i style="height:${h.toFixed(0)}%" ${Math.random()<.04?'class="warn"':''}></i>`)}}
+ const cg=document.getElementById('cg');if(cg&&!cg.children.length){for(let i=0;i<96;i++){cg.insertAdjacentHTML('beforeend',`<i style="opacity:${(.6+Math.random()*.4).toFixed(2)}" ${Math.random()<.03?'class="w"':''}></i>`)}}}
+fillCells();
 
 let dragOn=false;
 const dio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting&&!dragOn){dragOn=true;runDrag()}}),{threshold:.5});
 dio.observe(document.getElementById('carplay'));
-function runDrag(){
- let dragT=0;
- document.getElementById('s50').style.opacity=.25;document.getElementById('s100').style.opacity=.25;
- document.getElementById('t50').textContent='—';document.getElementById('t100').textContent='—';
- const iv=setInterval(()=>{dragT+=.1;
-  const v=Math.min(118,118*(1-Math.exp(-dragT/3.1)));
-  ring('cpring',v/160,'#31d6ff',40);
-  document.getElementById('cpspeed').textContent=Math.round(v)+' km/h';
-  document.getElementById('cptime').textContent='⏱ '+dragT.toFixed(1)+' s';
-  document.getElementById('cpg').textContent=(0.15+0.65*Math.exp(-dragT/4)).toFixed(2)+' g';
-  if(v>=50&&document.getElementById('t50').textContent==='—'){document.getElementById('s50').style.opacity=1;document.getElementById('t50').textContent=dragT.toFixed(2)+' s'}
-  if(v>=100&&document.getElementById('t100').textContent==='—'){document.getElementById('s100').style.opacity=1;document.getElementById('t100').textContent=dragT.toFixed(2)+' s'}
-  if(dragT>=11){clearInterval(iv);setTimeout(runDrag,3500)}
- },100);
-}
+function gid(x){return document.getElementById(x)}
+function runDrag(){let dragT=0;
+ gid('s50').style.opacity=.25;gid('s100').style.opacity=.25;gid('t50').textContent='—';gid('t100').textContent='—';
+ const iv=setInterval(()=>{dragT+=.1;const v=Math.min(118,118*(1-Math.exp(-dragT/3.1)));
+  ring('cpring',v/160,'#33d3ff',40);gid('cpspeed').textContent=Math.round(v)+' km/h';
+  gid('cptime').textContent=dragT.toFixed(1)+' s';gid('cpg').textContent=(0.15+0.65*Math.exp(-dragT/4)).toFixed(2)+' g';
+  if(v>=50&&gid('t50').textContent==='—'){gid('s50').style.opacity=1;gid('t50').textContent=dragT.toFixed(2)+' s'}
+  if(v>=100&&gid('t100').textContent==='—'){gid('s100').style.opacity=1;gid('t100').textContent=dragT.toFixed(2)+' s'}
+  if(dragT>=11){clearInterval(iv);setTimeout(runDrag,3500)}},100)}
+
+initLang();
 </script>
+
 </body>
 </html>
