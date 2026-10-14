@@ -1,9 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AutoGuardian AI — Privacy Policy</title>
+<title>AutoGuardian AI — Adatkezelési tájékoztató / Privacy Policy</title>
+<!--
+  🔴 FELTÖLTÉS ELŐTT (a userre tartozik):
+   1. Ellenőrizd a Supabase-projekt RÉGIÓJÁT (Dashboard → Project Settings → General). Ha az EU-n
+      KÍVÜL van, a „Hol tároljuk” bekezdéshez kell egy adattovábbítási mondat (EU általános
+      szerződési feltételek). Az EU-n belüli régióra a mostani szöveg pontos.
+   2. A Play Console „Data safety” és az App Store „App Privacy” űrlapját EHHEZ igazítsd — ma
+      mindkettő azt mondja, hogy az app nem gyűjt adatot, ami nem igaz.
+   3. A fiók-törlés webes oldala: delete-account.html (ugyanebben a mappában).
+-->
 <style>
   :root { --accent: #2185f0; --ink: #1a1a1c; --muted: #5f5f66; --bg: #ffffff; --card: #f5f6f8; }
   * { box-sizing: border-box; }
@@ -19,12 +28,14 @@
   .updated { color: var(--muted); font-size: 14px; margin-bottom: 8px; }
   a { color: var(--accent); }
   .card { background: var(--card); border-radius: 14px; padding: 16px 20px; margin: 16px 0; }
+  .langs { display: flex; gap: 14px; flex-wrap: wrap; margin: 12px 0 4px; font-size: 14px; }
+  section + section { margin-top: 56px; padding-top: 24px; border-top: 1px solid #e6e7ea; }
   ul { padding-left: 20px; }
   li { margin: 6px 0; }
   footer { margin-top: 48px; padding-top: 18px; border-top: 1px solid #e6e7ea; color: var(--muted); font-size: 14px; }
   @media (prefers-color-scheme: dark) {
     :root { --ink: #f2f2f4; --muted: #a0a0a8; --bg: #111114; --card: #1c1c20; }
-    footer { border-top-color: #2a2a30; }
+    footer, section + section { border-top-color: #2a2a30; }
   }
 </style>
 </head>
@@ -32,58 +43,256 @@
 <div class="wrap">
   <header>
     <div class="logo">🚗</div>
-    <div><strong>AutoGuardian AI</strong><br><span class="muted">Privacy Policy</span></div>
+    <div><strong>AutoGuardian AI</strong><br><span class="muted">Adatkezelési tájékoztató · Privacy Policy · Datenschutz</span></div>
   </header>
+  <nav class="langs"><a href="#hu">Magyar</a><a href="#en">English</a><a href="#de">Deutsch</a></nav>
 
+  <!-- ═══════════════════════════════ MAGYAR ═══════════════════════════════ -->
+  <section id="hu" lang="hu">
+  <h1>Adatkezelési tájékoztató</h1>
+  <p class="updated">Hatályos: 2026. október 12.</p>
+
+  <p>Ez a tájékoztató leírja, hogyan kezeli az <strong>AutoGuardian AI</strong> alkalmazás (a továbbiakban:
+  az app) az adataidat. Adatkezelő: <strong>Hajdu Péter</strong>, elérhetőség: <a href="mailto:hpetike88@gmail.com">hpetike88@gmail.com</a>.</p>
+
+  <h2>Ami a telefonodon marad</h2>
+  <div class="card"><ul>
+    <li><strong>Az elemzés.</strong> A hibakódok értelmezése, az élő adatok figyelése és az AI-összegzés a telefonon
+    fut — ehhez semmit nem küldünk külső mesterségesintelligencia-szolgáltatónak.</li>
+    <li><strong>Élő adatok és naplók.</strong> Az OBD-adapteren át kiolvasott mérések, az útnapló (helyadatokkal), a
+    tankolási napló, a szerviztörténet, a gyorsulásmérések, az autóról készített fotó és a diagnosztikai napló a
+    készülékeden tárolódik.</li>
+    <li><strong>Helyadat.</strong> Csak akkor használjuk, ha útfelvételt indítasz (vagy az automatikus útfelvétel
+    bekapcsol), és csak a megtett táv és az útvonal rögzítéséhez. Nem töltjük fel.</li>
+    <li><strong>Kamera.</strong> Az alvázszám (VIN) beolvasásához; a képet a telefon dolgozza fel, nem töltjük fel.</li>
+    <li><strong>Bluetooth / Wi-Fi.</strong> Kizárólag az OBD-adapterhez való kapcsolódáshoz.</li>
+  </ul></div>
+
+  <h2>Ami a felhőbe kerül — és miért</h2>
+  <p>Az app az első indításkor automatikusan létrehoz egy <strong>név és e-mail nélküli (névtelen) fiókot</strong>.
+  Ehhez kötjük:</p>
+  <div class="card"><ul>
+    <li><strong>Az autód azonosítói:</strong> alvázszám (VIN), márka, modell, évjárat, motor, km-óra állás, az általad
+    adott becenév, valamint a <strong>legutóbbi hibalista</strong> (a kódok, a kiolvasás ideje és köre). Cél: hogy a
+    garázsod egy másik telefonon is meglegyen, és hogy a szervizkereső és a foglalás működjön.</li>
+    <li><strong>A profilod:</strong> becenév és profilkép (ha megadod), a felület nyelve, az előfizetésed állapota.</li>
+    <li><strong>A készüléked:</strong> egy telepítés-azonosító, a platform (iOS/Android), az app verziója, a
+    push-értesítéshez szükséges token és az utolsó használat ideje. Cél: értesítések a foglalásaidról.</li>
+    <li><strong>Szerviz-kapcsolatok és foglalások:</strong> ha szervizzel kapcsolódsz vagy időpontot foglalsz, a
+    kapcsolat, a foglalás ideje, típusa, a megjegyzéseid, a hibakódok összefoglalója és az autó adatai a foglalás
+    pillanatában. Ezeket <strong>az a szerviz látja</strong>, akivel kapcsolódtál vagy akinél foglaltál.</li>
+    <li><strong>Ha szervizként regisztrálsz:</strong> a szerviz neve, címe, városa, telefonszáma, logója, nyitvatartása,
+    valamint a naptárba általad felvett ügyfél-adatok (név, telefonszám, jármű) és időpontok.</li>
+    <li><strong>Belépés (nem kötelező):</strong> ha Apple- vagy Google-fiókkal belépsz, a szolgáltató által átadott
+    azonosítót (és e-mail-címet, ha átadja) a fiókodhoz kötjük, hogy több telefonon is ugyanazt a garázst lásd.
+    Teszt- és bírálói fiókoknál a belépés egy általunk kiadott e-mail-címmel és jelszóval történik; ilyenkor az
+    e-mail-cím a fiókhoz tartozik (az appban regisztrálni nem lehet).</li>
+  </ul></div>
+
+  <h2>Kik dolgoznak az adatokkal (adatfeldolgozók)</h2>
+  <div class="card"><ul>
+    <li><strong>Supabase</strong> — adatbázis, bejelentkezés és fájltárolás (a felhő-fiók és a fenti adatok).</li>
+    <li><strong>Apple</strong> — push-értesítés (APNs), „Bejelentkezés az Apple-lel”, App Store-vásárlás.</li>
+    <li><strong>Google</strong> — push-értesítés (Firebase Cloud Messaging), Google-bejelentkezés, Google Play-vásárlás.</li>
+  </ul>
+  <p>Az előfizetést az App Store vagy a Google Play kezeli; a fizetési adataidat mi nem látjuk.</p></div>
+
+  <h2>Amit nem teszünk</h2>
+  <div class="card"><ul>
+    <li>Nem adjuk el és nem adjuk bérbe az adataidat.</li>
+    <li>Nincs reklám, és nincs harmadik féltől származó követő vagy analitikai eszköz.</li>
+    <li>Szerelő csak akkor látja az autódat, ha te kapcsolódsz hozzá vagy foglalsz nála.</li>
+  </ul></div>
+
+  <h2>Jogalap és megőrzés</h2>
+  <p>A felhő-funkciók (garázs-szinkron, szervizkereső, foglalás) a szolgáltatás nyújtásához szükségesek (GDPR 6. cikk
+  (1) b)); a helyadat és a push-értesítés a hozzájárulásodon alapul, amit a telefon beállításaiban bármikor
+  visszavonhatsz. Az adatokat addig őrizzük, amíg a fiókod létezik.</p>
+
+  <h2>Hozzáférés, kimentés, törlés</h2>
+  <div class="card"><ul>
+    <li><strong>Kimentés:</strong> az appban az „Adataim kimentése” (Profilom → Fiókom) egy fájlban adja ki a felhőben tárolt adataidat.</li>
+    <li><strong>Törlés az appban:</strong> Profilom → Fiókom → „Felhő-fiók törlése” (Androidon: „Fiók és felhő-adat törlése”). Ez törli a felhő-fiókodat, a profilodat,
+    az eszközeidet, az autóidat, a kapcsolataidat és a tulajdonosként tett foglalásaidat. A telefonon lévő adatokat az
+    app törlésével vagy az appon belül törölheted.</li>
+    <li><strong>Törlés az app nélkül:</strong> lásd <a href="delete-account.html">Fiók törlése</a>.</li>
+    <li>Ha <strong>szervizként</strong> törlöd a fiókodat, az ügyfeleid foglalásai megmaradnak (az ő adataik), „a szerviz
+    megszűnt” állapotban.</li>
+  </ul>
+  <p>Jogod van hozzáférni az adataidhoz, helyesbíttetni, töröltetni, korlátozni a kezelésüket, tiltakozni és
+  adathordozhatóságot kérni. Panaszt tehetsz a Nemzeti Adatvédelmi és Információszabadság Hatóságnál
+  (<a href="https://www.naih.hu">naih.hu</a>).</p></div>
+
+  <h2>Gyermekek</h2>
+  <p>Az app nem 16 év alattiaknak szól, és tudatosan nem kezeli az ő adataikat.</p>
+
+  <h2>Változások</h2>
+  <p>A tájékoztatót frissíthetjük; a fenti dátum mutatja a legutóbbi változatot.</p>
+  </section>
+
+  <!-- ═══════════════════════════════ ENGLISH ═══════════════════════════════ -->
+  <section id="en" lang="en">
   <h1>Privacy Policy</h1>
-  <p class="updated">Last updated: 29 June 2026</p>
+  <p class="updated">Effective: 12 October 2026</p>
 
-  <p>This Privacy Policy explains how <strong>AutoGuardian AI</strong> ("the App"), developed by
-  Peter Hajdu ("we", "us"), handles your information. We built the App to respect your privacy:
-  it works without an account, and your data stays on your device.</p>
+  <p>This policy explains how <strong>AutoGuardian AI</strong> ("the App") handles your data. Controller:
+  <strong>Peter Hajdu</strong>, contact: <a href="mailto:hpetike88@gmail.com">hpetike88@gmail.com</a>.</p>
 
-  <h2>Information the App uses</h2>
-  <div class="card">
-    <ul>
-      <li><strong>Vehicle &amp; diagnostic data.</strong> When you connect a Bluetooth or Wi-Fi
-      OBD-II adapter, the App reads data from your vehicle (such as engine values, fault codes and
-      VIN) to show diagnostics. This data is processed and stored <strong>only on your device</strong>.</li>
-      <li><strong>Location data.</strong> If you enable trip recording, the App uses your device
-      location to record routes, distance and speed. This is stored <strong>only on your device</strong>
-      and is never shared with us or any third party.</li>
-      <li><strong>Bluetooth.</strong> Used solely to connect to your OBD-II adapter.</li>
-    </ul>
-  </div>
+  <h2>What stays on your phone</h2>
+  <div class="card"><ul>
+    <li><strong>The analysis.</strong> Fault-code interpretation, live-data monitoring and the AI summary run on the
+    phone — nothing is sent to an external AI provider.</li>
+    <li><strong>Live data and logs.</strong> Readings from your OBD adapter, the trip log (with location), fuel log,
+    service history, acceleration runs, your car photo and the diagnostic log are stored on your device.</li>
+    <li><strong>Location.</strong> Used only when you start trip recording (or automatic trip recording starts), and
+    only to record distance and route. Not uploaded.</li>
+    <li><strong>Camera.</strong> To scan the VIN; the image is processed on the phone and not uploaded.</li>
+    <li><strong>Bluetooth / Wi-Fi.</strong> Only to connect to the OBD adapter.</li>
+  </ul></div>
 
-  <h2>What we do NOT do</h2>
-  <div class="card">
-    <ul>
-      <li>We do <strong>not</strong> require an account or collect your name, email or password.</li>
-      <li>We do <strong>not</strong> operate our own servers; your vehicle and location data stay
-      on your device.</li>
-      <li>We do <strong>not</strong> sell, rent or share your personal data.</li>
-      <li>We do <strong>not</strong> use third-party advertising or tracking SDKs.</li>
-    </ul>
-  </div>
+  <h2>What goes to the cloud — and why</h2>
+  <p>On first launch the App automatically creates an <strong>anonymous account with no name or email</strong>.
+  Linked to it:</p>
+  <div class="card"><ul>
+    <li><strong>Your car's identifiers:</strong> VIN, make, model, model year, engine, odometer, a nickname you set,
+    and the <strong>latest fault list</strong> (codes, time and scope of the read). Purpose: your garage on another
+    phone, the workshop finder and booking.</li>
+    <li><strong>Your profile:</strong> nickname and avatar (if you set them), interface language, subscription status.</li>
+    <li><strong>Your device:</strong> an install ID, platform (iOS/Android), app version, push token and last-seen time.
+    Purpose: notifications about your bookings.</li>
+    <li><strong>Workshop connections and bookings:</strong> if you connect to a workshop or book, the connection, the
+    booking time, type, your notes, the fault summary and the car's data at the time of booking. <strong>That workshop
+    sees them.</strong></li>
+    <li><strong>If you register as a workshop:</strong> shop name, address, city, phone, logo, opening hours, and the
+    customer details (name, phone, vehicle) and appointments you enter in your calendar.</li>
+    <li><strong>Sign-in (optional):</strong> if you sign in with Apple or Google, the identifier (and email, if shared)
+    from that provider is linked to your account so you see the same garage on more than one phone.
+    Test and app-review accounts sign in with an email address and password that we issue; in that case the
+    email address belongs to the account (you cannot register in the app).</li>
+  </ul></div>
 
-  <h2>Data storage and deletion</h2>
-  <p>All data is stored locally on your device (and is only included in your own device/iCloud
-  backups, which are controlled by Apple and your settings). You can delete records inside the App,
-  or remove all data at any time by deleting the App from your device.</p>
+  <h2>Who processes the data</h2>
+  <div class="card"><ul>
+    <li><strong>Supabase</strong> — database, sign-in and file storage.</li>
+    <li><strong>Apple</strong> — push notifications (APNs), Sign in with Apple, App Store purchases.</li>
+    <li><strong>Google</strong> — push notifications (Firebase Cloud Messaging), Google sign-in, Google Play purchases.</li>
+  </ul>
+  <p>Subscriptions are handled by the App Store or Google Play; we never see your payment details.</p></div>
+
+  <h2>What we don't do</h2>
+  <div class="card"><ul>
+    <li>We don't sell or rent your data.</li>
+    <li>No ads, and no third-party tracking or analytics SDKs.</li>
+    <li>A mechanic sees your car only if you connect to them or book with them.</li>
+  </ul></div>
+
+  <h2>Legal basis and retention</h2>
+  <p>The cloud features (garage sync, workshop finder, booking) are necessary to provide the service (GDPR Art. 6(1)(b));
+  location and push notifications are based on your consent, which you can withdraw in your phone's settings at any
+  time. Data is kept as long as your account exists.</p>
+
+  <h2>Access, export, deletion</h2>
+  <div class="card"><ul>
+    <li><strong>Export:</strong> in the App, "Export my data" (My profile → My account) gives you the data stored in the cloud as a file.</li>
+    <li><strong>Delete in the App:</strong> My profile → My account → "Delete cloud account" (on Android: "Delete account and cloud data"). This deletes your cloud account,
+    profile, devices, vehicles, connections and the bookings you made as an owner. Data on the phone is removed by
+    deleting it in the App or uninstalling the App.</li>
+    <li><strong>Delete without the App:</strong> see <a href="delete-account.html">Delete account</a>.</li>
+    <li>If you delete a <strong>workshop</strong> account, your customers' bookings remain (they are their data), marked
+    "workshop closed".</li>
+  </ul>
+  <p>You have the right to access, rectify, erase, restrict and port your data, and to object. You can complain to the
+  data protection authority of your country (in Hungary: <a href="https://www.naih.hu">naih.hu</a>).</p></div>
 
   <h2>Children</h2>
-  <p>The App is not directed to children and does not knowingly collect data from children.</p>
+  <p>The App is not directed to children under 16 and does not knowingly process their data.</p>
 
   <h2>Changes</h2>
-  <p>We may update this policy from time to time. The "Last updated" date above reflects the latest
-  version.</p>
+  <p>We may update this policy; the date above shows the latest version.</p>
+  </section>
 
-  <h2>Contact</h2>
-  <p>Questions about this policy? Email <a href="mailto:hpetike88@gmail.com">hpetike88@gmail.com</a>.</p>
+  <!-- ═══════════════════════════════ DEUTSCH ═══════════════════════════════ -->
+  <section id="de" lang="de">
+  <h1>Datenschutzerklärung</h1>
+  <p class="updated">Gültig ab: 12. Oktober 2026</p>
 
-  <footer>
-    © 2026 Peter Hajdu · AutoGuardian AI · <a href="support.html">Support</a>
-  </footer>
+  <p>Diese Erklärung beschreibt, wie <strong>AutoGuardian AI</strong> („die App“) mit deinen Daten umgeht.
+  Verantwortlicher: <strong>Peter Hajdu</strong>, Kontakt: <a href="mailto:hpetike88@gmail.com">hpetike88@gmail.com</a>.</p>
+
+  <h2>Was auf deinem Telefon bleibt</h2>
+  <div class="card"><ul>
+    <li><strong>Die Analyse.</strong> Die Auswertung der Fehlercodes, die Live-Daten und die KI-Zusammenfassung laufen
+    auf dem Telefon — es wird nichts an einen externen KI-Anbieter gesendet.</li>
+    <li><strong>Live-Daten und Protokolle.</strong> Messwerte über den OBD-Adapter, das Fahrtenbuch (mit Standort),
+    Tankbuch, Wartungsverlauf, Beschleunigungsmessungen, dein Autofoto und das Diagnoseprotokoll bleiben auf dem Gerät.</li>
+    <li><strong>Standort.</strong> Nur wenn du eine Fahrtaufzeichnung startest (oder die automatische Aufzeichnung
+    startet), und nur für Strecke und Route. Wird nicht hochgeladen.</li>
+    <li><strong>Kamera.</strong> Zum Scannen der FIN; das Bild wird auf dem Telefon verarbeitet und nicht hochgeladen.</li>
+    <li><strong>Bluetooth / WLAN.</strong> Nur zur Verbindung mit dem OBD-Adapter.</li>
+  </ul></div>
+
+  <h2>Was in die Cloud geht — und warum</h2>
+  <p>Beim ersten Start legt die App automatisch ein <strong>anonymes Konto ohne Namen und E-Mail</strong> an.
+  Damit verknüpft:</p>
+  <div class="card"><ul>
+    <li><strong>Die Kennungen deines Autos:</strong> FIN, Marke, Modell, Baujahr, Motor, Kilometerstand, ein von dir
+    vergebener Spitzname und die <strong>letzte Fehlerliste</strong> (Codes, Zeitpunkt und Umfang des Auslesens). Zweck:
+    deine Garage auf einem anderen Telefon, die Werkstattsuche und die Buchung.</li>
+    <li><strong>Dein Profil:</strong> Spitzname und Profilbild (falls angegeben), Sprache, Abo-Status.</li>
+    <li><strong>Dein Gerät:</strong> eine Installations-ID, Plattform (iOS/Android), App-Version, Push-Token und letzte
+    Nutzung. Zweck: Benachrichtigungen zu deinen Buchungen.</li>
+    <li><strong>Werkstattverbindungen und Buchungen:</strong> wenn du dich mit einer Werkstatt verbindest oder buchst,
+    die Verbindung, Zeitpunkt, Art, deine Notizen, die Fehlerzusammenfassung und die Fahrzeugdaten zum Buchungszeitpunkt.
+    <strong>Diese Werkstatt sieht sie.</strong></li>
+    <li><strong>Wenn du dich als Werkstatt registrierst:</strong> Name, Adresse, Ort, Telefon, Logo, Öffnungszeiten der
+    Werkstatt sowie die Kundendaten (Name, Telefon, Fahrzeug) und Termine, die du im Kalender einträgst.</li>
+    <li><strong>Anmeldung (optional):</strong> bei Anmeldung mit Apple oder Google wird die Kennung (und E-Mail, falls
+    übermittelt) des Anbieters mit deinem Konto verknüpft, damit du auf mehreren Telefonen dieselbe Garage siehst.
+    Test- und Prüfkonten melden sich mit einer von uns vergebenen E-Mail-Adresse und einem Passwort an; dann gehört
+    die E-Mail-Adresse zum Konto (in der App kann man sich nicht registrieren).</li>
+  </ul></div>
+
+  <h2>Auftragsverarbeiter</h2>
+  <div class="card"><ul>
+    <li><strong>Supabase</strong> — Datenbank, Anmeldung und Dateispeicher.</li>
+    <li><strong>Apple</strong> — Push-Benachrichtigungen (APNs), „Mit Apple anmelden“, App-Store-Käufe.</li>
+    <li><strong>Google</strong> — Push-Benachrichtigungen (Firebase Cloud Messaging), Google-Anmeldung, Google-Play-Käufe.</li>
+  </ul>
+  <p>Abos laufen über den App Store oder Google Play; deine Zahlungsdaten sehen wir nicht.</p></div>
+
+  <h2>Was wir nicht tun</h2>
+  <div class="card"><ul>
+    <li>Wir verkaufen oder vermieten deine Daten nicht.</li>
+    <li>Keine Werbung, keine Tracking- oder Analyse-SDKs von Dritten.</li>
+    <li>Eine Werkstatt sieht dein Auto nur, wenn du dich mit ihr verbindest oder bei ihr buchst.</li>
+  </ul></div>
+
+  <h2>Rechtsgrundlage und Speicherdauer</h2>
+  <p>Die Cloud-Funktionen (Garage-Synchronisierung, Werkstattsuche, Buchung) sind zur Erbringung des Dienstes erforderlich
+  (Art. 6 Abs. 1 lit. b DSGVO); Standort und Push-Benachrichtigungen beruhen auf deiner Einwilligung, die du jederzeit in
+  den Telefoneinstellungen widerrufen kannst. Die Daten werden gespeichert, solange dein Konto besteht.</p>
+
+  <h2>Auskunft, Export, Löschung</h2>
+  <div class="card"><ul>
+    <li><strong>Export:</strong> in der App liefert „Meine Daten exportieren“ (Mein Profil → Mein Konto) die in der Cloud gespeicherten Daten als Datei.</li>
+    <li><strong>Löschen in der App:</strong> Mein Profil → Mein Konto → „Cloud-Konto löschen“ (unter Android: „Konto und Cloud-Daten löschen“). Das löscht dein Cloud-Konto, Profil,
+    Geräte, Fahrzeuge, Verbindungen und die Buchungen, die du als Halter gemacht hast. Daten auf dem Telefon entfernst du
+    in der App oder durch Deinstallieren.</li>
+    <li><strong>Löschen ohne die App:</strong> siehe <a href="delete-account.html">Konto löschen</a>.</li>
+    <li>Löschst du ein <strong>Werkstatt</strong>-Konto, bleiben die Buchungen deiner Kunden (deren Daten) als „Werkstatt
+    geschlossen“ bestehen.</li>
+  </ul>
+  <p>Du hast das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit und Widerspruch. Du kannst
+  dich bei der Datenschutzbehörde deines Landes beschweren.</p></div>
+
+  <h2>Kinder</h2>
+  <p>Die App richtet sich nicht an Kinder unter 16 Jahren und verarbeitet wissentlich keine Daten von ihnen.</p>
+
+  <h2>Änderungen</h2>
+  <p>Wir können diese Erklärung aktualisieren; das Datum oben zeigt die neueste Fassung.</p>
+  </section>
+
+  <footer>© 2026 Peter Hajdu · AutoGuardian AI · <a href="support.html">Support</a> · <a href="delete-account.html">Fiók törlése / Delete account / Konto löschen</a></footer>
 </div>
 </body>
 </html>

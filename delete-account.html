@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AutoGuardian AI — Fiók törlése / Delete account</title>
+<!--
+  Google Play „Account deletion” követelmény: ezt az URL-t kell megadni a Play Console
+  Data safety → Data deletion mezőben (https://autoguardianai.app/delete-account.html).
+  A tartalom a valós működést írja le: public.delete_my_account() → auth.users törlés, kaszkád.
+-->
+<style>
+  :root { --accent: #2185f0; --ink: #1a1a1c; --muted: #5f5f66; --bg: #ffffff; --card: #f5f6f8; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+         color: var(--ink); background: var(--bg); line-height: 1.65; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 40px 22px 80px; }
+  header { display: flex; align-items: center; gap: 14px; margin-bottom: 8px; }
+  .logo { width: 46px; height: 46px; border-radius: 12px; background: linear-gradient(135deg, #1a4fb8, var(--accent), #52cdef);
+          display: flex; align-items: center; justify-content: center; color: #fff; font-size: 24px; }
+  h1 { font-size: 28px; margin: 22px 0 4px; }
+  h2 { font-size: 19px; margin: 28px 0 8px; }
+  .muted { color: var(--muted); }
+  a { color: var(--accent); }
+  .card { background: var(--card); border-radius: 14px; padding: 16px 20px; margin: 16px 0; }
+  .langs { display: flex; gap: 14px; flex-wrap: wrap; margin: 12px 0 4px; font-size: 14px; }
+  section + section { margin-top: 56px; padding-top: 24px; border-top: 1px solid #e6e7ea; }
+  ol, ul { padding-left: 22px; }
+  li { margin: 6px 0; }
+  footer { margin-top: 48px; padding-top: 18px; border-top: 1px solid #e6e7ea; color: var(--muted); font-size: 14px; }
+  @media (prefers-color-scheme: dark) {
+    :root { --ink: #f2f2f4; --muted: #a0a0a8; --bg: #111114; --card: #1c1c20; }
+    footer, section + section { border-top-color: #2a2a30; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo">🚗</div>
+    <div><strong>AutoGuardian AI</strong><br><span class="muted">Hajdu Péter · Fiók törlése · Delete account · Konto löschen</span></div>
+  </header>
+  <nav class="langs"><a href="#hu">Magyar</a><a href="#en">English</a><a href="#de">Deutsch</a></nav>
+
+  <section id="hu" lang="hu">
+  <h1>Fiók és adatok törlése</h1>
+
+  <h2>1. Az appban (azonnali)</h2>
+  <div class="card"><ol>
+    <li>Nyisd meg az <strong>AutoGuardian AI</strong> appot.</li>
+    <li><strong>iPhone:</strong> Profilom → Fiókom → <strong>„Felhő-fiók törlése”</strong>.</li>
+    <li><strong>Android:</strong> Profilom → Fiókom (vagy Továbbiak → Fiók) → <strong>„Fiók és felhő-adat törlése”</strong>.</li>
+    <li>Erősítsd meg a törlést.</li>
+  </ol></div>
+
+  <h2>2. Az app nélkül (e-mailben)</h2>
+  <div class="card">
+    <p>Írj a <a href="mailto:hpetike88@gmail.com?subject=AutoGuardian%20AI%20fi%C3%B3k%20t%C3%B6rl%C3%A9se">hpetike88@gmail.com</a>
+    címre „AutoGuardian AI fiók törlése” tárggyal, és add meg az egyiket:</p>
+    <ul>
+      <li>azt az e-mail-címet, amellyel <strong>Apple- vagy Google-fiókkal</strong> beléptél az appba, vagy</li>
+      <li>a <strong>Fiók-azonosítót</strong> (az app fiók-oldalán látszik).</li>
+    </ul>
+    <p>A kérést legkésőbb <strong>30 napon belül</strong> teljesítjük, és visszaigazoljuk.</p>
+    <p class="muted">Ha soha nem léptél be, és a Fiók-azonosítót sem tudod, a névtelen fiókot nem tudjuk hozzád kötni —
+    abban viszont nincs neved és e-mail-címed sem.</p>
+  </div>
+
+  <h2>Mi törlődik</h2>
+  <div class="card"><ul>
+    <li>a felhő-fiókod és a profilod (becenév, profilkép, nyelv, előfizetés-állapot),</li>
+    <li>az eszközeid (telepítés-azonosító, push-token),</li>
+    <li>az autóid a felhőben (alvázszám, márka, modell, évjárat, motor, km-óra, hibalisták),</li>
+    <li>a szerviz-kapcsolataid és a tulajdonosként tett foglalásaid.</li>
+  </ul></div>
+
+  <h2>Mi marad</h2>
+  <div class="card"><ul>
+    <li>A <strong>telefonodon</strong> lévő adatok (élő adatok, naplók, útnapló, tankolások) — ezeket az appban vagy az
+    app eltávolításával törölheted.</li>
+    <li>Ha <strong>szervizként</strong> törlöd a fiókodat, az ügyfeleid foglalásai megmaradnak „a szerviz megszűnt”
+    állapotban, mert azok az ügyfelek adatai.</li>
+    <li>Az App Store és a Google Play a vásárlásaidat a saját szabályaik szerint őrzi; azokhoz mi nem férünk hozzá.</li>
+  </ul></div>
+  </section>
+
+  <section id="en" lang="en">
+  <h1>Delete your account and data</h1>
+
+  <h2>1. In the App (immediate)</h2>
+  <div class="card"><ol>
+    <li>Open the <strong>AutoGuardian AI</strong> app.</li>
+    <li><strong>iPhone:</strong> My profile → My account → <strong>"Delete cloud account"</strong>.</li>
+    <li><strong>Android:</strong> My profile → My account (or More → Account) → <strong>"Delete account and cloud data"</strong>.</li>
+    <li>Confirm the deletion.</li>
+  </ol></div>
+
+  <h2>2. Without the App (by email)</h2>
+  <div class="card">
+    <p>Email <a href="mailto:hpetike88@gmail.com?subject=AutoGuardian%20AI%20account%20deletion">hpetike88@gmail.com</a>
+    with the subject "AutoGuardian AI account deletion" and include one of:</p>
+    <ul>
+      <li>the email address you used to <strong>sign in with Apple or Google</strong> in the App, or</li>
+      <li>your <strong>Account ID</strong> (shown on the App's Account screen).</li>
+    </ul>
+    <p>We complete the request within <strong>30 days</strong> and confirm it.</p>
+    <p class="muted">If you never signed in and don't know your Account ID, we can't link the anonymous account to you —
+    but it contains neither your name nor your email.</p>
+  </div>
+
+  <h2>What is deleted</h2>
+  <div class="card"><ul>
+    <li>your cloud account and profile (nickname, avatar, language, subscription status),</li>
+    <li>your devices (install ID, push token),</li>
+    <li>your vehicles in the cloud (VIN, make, model, year, engine, odometer, fault lists),</li>
+    <li>your workshop connections and the bookings you made as an owner.</li>
+  </ul></div>
+
+  <h2>What is kept</h2>
+  <div class="card"><ul>
+    <li>Data <strong>on your phone</strong> (live data, logs, trip and fuel logs) — delete it in the App or by uninstalling the App.</li>
+    <li>If you delete a <strong>workshop</strong> account, your customers' bookings remain, marked "workshop closed",
+    because they are the customers' data.</li>
+    <li>The App Store and Google Play keep your purchases under their own rules; we have no access to them.</li>
+  </ul></div>
+  </section>
+
+  <section id="de" lang="de">
+  <h1>Konto und Daten löschen</h1>
+
+  <h2>1. In der App (sofort)</h2>
+  <div class="card"><ol>
+    <li>Öffne die App <strong>AutoGuardian AI</strong>.</li>
+    <li><strong>iPhone:</strong> Mein Profil → Mein Konto → <strong>„Cloud-Konto löschen“</strong>.</li>
+    <li><strong>Android:</strong> Mein Profil → Mein Konto (oder Mehr → Konto) → <strong>„Konto und Cloud-Daten löschen“</strong>.</li>
+    <li>Bestätige die Löschung.</li>
+  </ol></div>
+
+  <h2>2. Ohne die App (per E-Mail)</h2>
+  <div class="card">
+    <p>Schreib an <a href="mailto:hpetike88@gmail.com?subject=AutoGuardian%20AI%20Konto%20l%C3%B6schen">hpetike88@gmail.com</a>
+    mit dem Betreff „AutoGuardian AI Konto löschen“ und gib eines davon an:</p>
+    <ul>
+      <li>die E-Mail-Adresse, mit der du dich in der App <strong>mit Apple oder Google angemeldet</strong> hast, oder</li>
+      <li>deine <strong>Konto-ID</strong> (auf der Konto-Seite der App).</li>
+    </ul>
+    <p>Wir erledigen die Anfrage innerhalb von <strong>30 Tagen</strong> und bestätigen sie.</p>
+    <p class="muted">Wenn du dich nie angemeldet hast und deine Konto-ID nicht kennst, können wir das anonyme Konto dir
+    nicht zuordnen — es enthält aber weder deinen Namen noch deine E-Mail.</p>
+  </div>
+
+  <h2>Was gelöscht wird</h2>
+  <div class="card"><ul>
+    <li>dein Cloud-Konto und Profil (Spitzname, Profilbild, Sprache, Abo-Status),</li>
+    <li>deine Geräte (Installations-ID, Push-Token),</li>
+    <li>deine Fahrzeuge in der Cloud (FIN, Marke, Modell, Baujahr, Motor, Kilometerstand, Fehlerlisten),</li>
+    <li>deine Werkstattverbindungen und die Buchungen, die du als Halter gemacht hast.</li>
+  </ul></div>
+
+  <h2>Was bleibt</h2>
+  <div class="card"><ul>
+    <li>Daten <strong>auf deinem Telefon</strong> (Live-Daten, Protokolle, Fahrten- und Tankbuch) — lösch sie in der App oder durch Deinstallieren.</li>
+    <li>Löschst du ein <strong>Werkstatt</strong>-Konto, bleiben die Buchungen deiner Kunden als „Werkstatt geschlossen“
+    bestehen, weil es die Daten der Kunden sind.</li>
+    <li>App Store und Google Play bewahren deine Käufe nach ihren eigenen Regeln auf; darauf haben wir keinen Zugriff.</li>
+  </ul></div>
+  </section>
+
+  <footer>© 2026 Peter Hajdu · AutoGuardian AI · <a href="privacy.html">Adatkezelés / Privacy / Datenschutz</a> · <a href="support.html">Support</a></footer>
+</div>
+</body>
+</html>
